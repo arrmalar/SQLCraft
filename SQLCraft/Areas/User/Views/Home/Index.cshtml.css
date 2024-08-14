@@ -1,0 +1,58 @@
+﻿.card {
+    border-radius: 10px;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.card-header {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom: 3px solid #dee2e6;
+}
+
+.btn-primary {
+    background: linear-gradient(45deg, #007bff, #0056b3);
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(45deg, #0056b3, #004494);
+}
+
+.form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+@media (max-width: 576px) {
+    .card-header h2 {
+        font-size: 1.5rem;
+    }
+}
+
+.custom-input-group {
+    position: relative;
+    border: 2px solid #dee2e6;
+    border-radius: 5px;
+    transition: border-color 0.3s;
+}
+
+.custom-input-group:hover {
+    border-color: #007bff;
+}
+
+.custom-input-group .form-control {
+    border: none;
+    border-radius: 0;
+}
+
+.custom-input-group .input-group-text {
+    border: none;
+    background-color: transparent;
+    font-weight: bold;
+}
