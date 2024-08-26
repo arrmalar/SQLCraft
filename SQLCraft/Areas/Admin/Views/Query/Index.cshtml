@@ -19,20 +19,12 @@
             </div>
         </div>
 
-        <div class="row pb-3">
-            <div class="col-6">
-            </div>
-            <div class="col-6 text-end">
-                <a asp-controller="Query" asp-action="CreateAI" class="btn btn-primary">
-                    Create new Query (AI)
-                </a>
-            </div>
-        </div>
-
         <table id="queryTblData" class="table table-bordered table-striped" style="width:100%">
             <thead>
                 <tr>
-                    <th>Id</th>
+                    <th>ID</th>
+                    <th>DBSchema</th>
+                    <th>QuestionLevel</th>
                     <th>Question</th>
                     <th>Correct Answer</th>
                     <th></th>

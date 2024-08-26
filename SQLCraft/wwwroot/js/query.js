@@ -6,9 +6,11 @@ function loadDataTable() {
     dataTable = $('#queryTblData').DataTable({
         "ajax": { url: '/admin/query/getall' },
         "columns": [
-            { data: 'id', "width": "20%" },
-            { data: 'question', "width": "25%" },
-            { data: 'correctAnswer', "width": "25%" },
+            { data: 'id', "width": "5%" },
+            { data: 'dbSchema.name', "width": "5%" },
+            { data: 'questionLevel.name', "width": "5%" },
+            { data: 'question', "width": "30%" },
+            { data: 'questionCorrectAnswer.correctAnswer', "width": "25%" },
             {
                 data: 'id',
                 "render": function (data) {

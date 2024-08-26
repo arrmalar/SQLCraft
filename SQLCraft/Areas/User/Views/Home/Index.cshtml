@@ -1,40 +1,103 @@
 ﻿@model QueryAnswer
 
-<div class="container mt-5">
+<div class="container-fluid mt-5">
     <div class="card shadow-lg border-0 mt-4">
         <div class="card-body p-4">
-            <form asp-action="Index" method="post" class="row g-3" novalidate>
-                <input asp-for="QueryRiddle.Id" type="hidden" />
-                <input asp-for="QueryRiddle.Question" type="hidden" />
-                <input asp-for="QueryRiddle.CorrectAnswer" type="hidden" />
-
-                <div class="row mb-3">
-                    <div class="col-sm-12">
-                        @Model.QueryRiddle.Question
+            <div class="row">
+                
+                <div class="col-md-7">
+                    
+                    <div class="mb-3">
+                        <h4>@Model.QueryRiddle.Question</h4>
                     </div>
-                </div>
 
-                <div class="row mb-3">
-                    <div class="col-sm-12">
-                        <textarea asp-for="@Model.UserAnswer" class="form-control"></textarea>
-                    </div>
-                </div>
+                    
+                    <form asp-action="Index" method="post" class="g-3" novalidate>
 
-                <div class="col-12">
-                    <div class="row mt-3 justify-content-center">
-                        <div class="col-auto">
+                        <input asp-for="QueryRiddle.ID" type="hidden" />
+                        <input asp-for="QueryRiddle.Question" type="hidden" />
+                        <input asp-for="QueryRiddle.QuestionCorrectAnswerID" type="hidden" />
+
+                        <div class="mb-3">
+                            <label for="UserAnswer" class="form-label">Your Answer</label>
+                            <textarea asp-for="@Model.UserAnswer" class="form-control"></textarea>
+                        </div>
+
+                        <div class="text-center mt-3">
                             <button type="submit" class="btn btn-primary">
-                                <i class="bi bi-plus-circle-fill me-3"></i>Check
+                                <i class="bi bi-check-lg"></i> Validate
                             </button>
                         </div>
-                    </div>
+                    </form>
+
+                    
+                    @if (@Model.UserResult != null && @Model.UserResult.Rows.Count > 0)
+                    {
+                        <div class="mt-5">
+                            <h5>Your Result</h5>
+                            <table class="table table-bordered table-striped mt-3">
+                                <thead>
+                                    <tr>
+                                        @foreach (DataColumn column in @Model.UserResult.Columns)
+                                        {
+                                            <th>@column.ColumnName</th>
+                                        }
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (DataRow row in @Model.UserResult.Rows)
+                                    {
+                                        <tr>
+                                            @foreach (var item in row.ItemArray)
+                                            {
+                                                <td>@item</td>
+                                            }
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+
+                    @if (@Model.CorrectResult != null && @Model.CorrectResult.Rows.Count > 0)
+                    {
+                        <div class="mt-4">
+                            <h5>Correct Result</h5>
+                            <table class="table table-bordered table-striped mt-3">
+                                <thead>
+                                    <tr>
+                                        @foreach (DataColumn column in @Model.CorrectResult.Columns)
+                                        {
+                                            <th>@column.ColumnName</th>
+                                        }
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (DataRow row in @Model.CorrectResult.Rows)
+                                    {
+                                        <tr>
+                                            @foreach (var item in row.ItemArray)
+                                            {
+                                                <td>@item</td>
+                                            }
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
                 </div>
 
-            </form>
+                
+                <div class="col-md-5">
+                    <div class="d-flex justify-content-center align-items-center h-100">
+                        <img src="~/images/{@Model.QueryRiddle.DBSchema.Name.ToLower()}.svg" class="img-fluid" style="max-width: 100%; max-height: 100%;" alt="Schema Image" />
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 
 @section Scripts {
-
 }

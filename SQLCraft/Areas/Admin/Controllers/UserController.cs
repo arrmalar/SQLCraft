@@ -10,9 +10,9 @@ namespace SQLCraft.Areas.Admin.Controllers
     [Authorize(Roles = $"{SD.Role_Admin}")]
     public class UserController : Controller
     {
-        private readonly IUnitOfWork _unitOfWork;
+        private readonly IUnitOfWorkApplication _unitOfWork;
 
-        public UserController(IUnitOfWork unitOfWork)
+        public UserController(IUnitOfWorkApplication unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }

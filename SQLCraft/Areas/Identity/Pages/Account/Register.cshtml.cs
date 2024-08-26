@@ -26,7 +26,7 @@ namespace SQLCraft.Areas.Identity.Pages.Account
         private readonly IUserEmailStore<IdentityUser> _emailStore;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
-        private readonly IUnitOfWork _unitOfWork;
+        private readonly IUnitOfWorkApplication _unitOfWork;
 
         public RegisterModel(
             UserManager<IdentityUser> userManager,
@@ -35,7 +35,7 @@ namespace SQLCraft.Areas.Identity.Pages.Account
             SignInManager<IdentityUser> signInManager,
             ILogger<RegisterModel> logger,
             IEmailSender emailSender,
-            IUnitOfWork unitOfWork)
+            IUnitOfWorkApplication unitOfWork)
         {
             _roleManager = roleManager;
             _userManager = userManager;

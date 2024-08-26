@@ -17,7 +17,7 @@ namespace SQLCraft.DataAccess.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.7")
+                .HasAnnotation("ProductVersion", "8.0.8")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -229,105 +229,126 @@ namespace SQLCraft.DataAccess.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("SQLCraft.Models.QueryRiddle", b =>
+            modelBuilder.Entity("SQLCraft.Models.DBSchema", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
-                    b.Property<string>("CorrectAnswer")
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("DBSchemaId")
+                    b.HasKey("ID");
+
+                    b.ToTable("DBSchemas");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            Name = "Warehouse"
+                        },
+                        new
+                        {
+                            ID = 2,
+                            Name = "Bank"
+                        },
+                        new
+                        {
+                            ID = 3,
+                            Name = "University"
+                        });
+                });
+
+            modelBuilder.Entity("SQLCraft.Models.QueryRiddle", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<int>("DBSchemaID")
                         .HasColumnType("int");
 
                     b.Property<string>("Question")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.Property<int>("QuestionCorrectAnswerID")
+                        .HasColumnType("int");
 
-                    b.HasIndex("DBSchemaId");
+                    b.Property<int>("QuestionLevelID")
+                        .HasColumnType("int");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("DBSchemaID");
+
+                    b.HasIndex("QuestionCorrectAnswerID");
+
+                    b.HasIndex("QuestionLevelID");
 
                     b.ToTable("QueryRiddles");
                 });
 
-            modelBuilder.Entity("SQLCraft.Models.Schema.Column", b =>
+            modelBuilder.Entity("SQLCraft.Models.QuestionCorrectAnswer", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
-                    b.Property<string>("DataType")
+                    b.Property<string>("CorrectAnswer")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("DefaultValue")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.HasKey("ID");
 
-                    b.Property<bool>("IsNullable")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("IsPrimaryKey")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("TableId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("TableId");
-
-                    b.ToTable("Column");
+                    b.ToTable("QuestionCorrectAnswers");
                 });
 
-            modelBuilder.Entity("SQLCraft.Models.Schema.DBSchema", b =>
+            modelBuilder.Entity("SQLCraft.Models.QuestionLevel", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("ID");
 
-                    b.ToTable("DBSchema");
-                });
+                    b.ToTable("QuestionLevels");
 
-            modelBuilder.Entity("SQLCraft.Models.Schema.Table", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("DBSchemaId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("DBSchemaId");
-
-                    b.ToTable("Table");
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            Name = "Easy"
+                        },
+                        new
+                        {
+                            ID = 2,
+                            Name = "Medium"
+                        },
+                        new
+                        {
+                            ID = 3,
+                            Name = "Hard"
+                        },
+                        new
+                        {
+                            ID = 4,
+                            Name = "Challenge"
+                        });
                 });
 
             modelBuilder.Entity("SQLCraft.Models.ApplicationUser", b =>
@@ -390,45 +411,29 @@ namespace SQLCraft.DataAccess.Migrations
 
             modelBuilder.Entity("SQLCraft.Models.QueryRiddle", b =>
                 {
-                    b.HasOne("SQLCraft.Models.Schema.DBSchema", "DBSchema")
+                    b.HasOne("SQLCraft.Models.DBSchema", "DBSchema")
                         .WithMany()
-                        .HasForeignKey("DBSchemaId")
+                        .HasForeignKey("DBSchemaID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SQLCraft.Models.QuestionCorrectAnswer", "QuestionCorrectAnswer")
+                        .WithMany()
+                        .HasForeignKey("QuestionCorrectAnswerID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SQLCraft.Models.QuestionLevel", "QuestionLevel")
+                        .WithMany()
+                        .HasForeignKey("QuestionLevelID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("DBSchema");
-                });
 
-            modelBuilder.Entity("SQLCraft.Models.Schema.Column", b =>
-                {
-                    b.HasOne("SQLCraft.Models.Schema.Table", "Table")
-                        .WithMany("Columns")
-                        .HasForeignKey("TableId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Navigation("QuestionCorrectAnswer");
 
-                    b.Navigation("Table");
-                });
-
-            modelBuilder.Entity("SQLCraft.Models.Schema.Table", b =>
-                {
-                    b.HasOne("SQLCraft.Models.Schema.DBSchema", "DBSchema")
-                        .WithMany("Tables")
-                        .HasForeignKey("DBSchemaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("DBSchema");
-                });
-
-            modelBuilder.Entity("SQLCraft.Models.Schema.DBSchema", b =>
-                {
-                    b.Navigation("Tables");
-                });
-
-            modelBuilder.Entity("SQLCraft.Models.Schema.Table", b =>
-                {
-                    b.Navigation("Columns");
+                    b.Navigation("QuestionLevel");
                 });
 #pragma warning restore 612, 618
         }

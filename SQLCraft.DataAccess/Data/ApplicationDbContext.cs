@@ -2,7 +2,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 using SQLCraft.Models;
-using SQLCraft.Models.Schema;
 
 namespace SQLCraft.DataAccess.Data
 {
@@ -19,119 +18,28 @@ namespace SQLCraft.DataAccess.Data
 
         public DbSet<DBSchema> DBSchemas { get; set; }
 
-        public DbSet<Column> Columns { get; set; }
+        public DbSet<QuestionLevel> QuestionLevels { get; set; }
 
-        public DbSet<Table> Tables { get; set; }
+        public DbSet<QuestionCorrectAnswer> QuestionCorrectAnswers { get; set; }
+
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<DBSchema>().HasData(
-                    new DBSchema
-                    {
-                        Id = 1,
-                        Name = "Warehouse",
-                        Tables = new List<Table>
-                        {
-                            new Table 
-                            { 
-                                Id = 1, 
-                                DBSchemaId = 1, 
-                                Name = "Product", 
-                                Columns = new List<Column> 
-                                { 
-                                    new Column
-                                    { 
-                                        Id=1,
-                                        Name = "Id",
-                                        DataType = "Int",
-                                        DefaultValue = "",
-                                        IsNullable = false,
-                                        IsPrimaryKey = false,
-                                        TableId = 1
-                                    },
-                                    new Column
-                                    {
-                                        Id=2,
-                                        Name = "",
-                                        DataType = "",
-                                        DefaultValue = "",
-                                        IsNullable = false,
-                                        IsPrimaryKey = false,
-                                        TableId = 1
-                                    },
-                                    new Column
-                                    {
-                                        Id=3,
-                                        Name = "",
-                                        DataType = "",
-                                        DefaultValue = "",
-                                        IsNullable = false,
-                                        IsPrimaryKey = false,
-                                        TableId = 1
-                                    }
-                                }
-                            },
-                            new Table
-                            {
-                                Id = 2,
-                                DBSchemaId = 1,
-                                Name = "",
-                                Columns = new List<Column>
-                                {
-                                    new Column
-                                    {
-                                        Id=4,
-                                        Name = "",
-                                        DataType = "",
-                                        DefaultValue = "",
-                                        IsNullable = false,
-                                        IsPrimaryKey = false,
-                                        TableId = 1
-                                    },
-                                    new Column
-                                    {
-                                        Id=5,
-                                        Name = "",
-                                        DataType = "",
-                                        DefaultValue = "",
-                                        IsNullable = false,
-                                        IsPrimaryKey = false,
-                                        TableId = 1
-                                    },
-                                    new Column
-                                    {
-                                        Id=6,
-                                        Name = "",
-                                        DataType = "",
-                                        DefaultValue = "",
-                                        IsNullable = false,
-                                        IsPrimaryKey = false,
-                                        TableId = 1
-                                    }
-                                }
-                            },
-                        }
-                    }
-                );
+                new DBSchema { ID = 1, Name = "Warehouse" },
+                new DBSchema { ID = 2, Name = "Bank" },
+                new DBSchema { ID = 3, Name = "University" }
+            );
 
-            modelBuilder
-           .Entity<QueryRiddle>()
-           .Property(e => e.QuestionLevel)
-           .HasConversion<int>();
-
-            modelBuilder.Entity<Table>()
-                .HasOne(t => t.DBSchema)
-                .WithMany(ds => ds.Tables)
-                .HasForeignKey(t => t.DBSchemaId)
-                .IsRequired();
-
-            modelBuilder.Entity<Column>()
-                .HasOne(c => c.Table)
-                .WithMany(t => t.Columns)
-                .HasForeignKey(c => c.TableId)
-                .IsRequired();
+            modelBuilder.Entity<QuestionLevel>().HasData(
+               new QuestionLevel { ID = 1, Name = "Easy" },
+               new QuestionLevel { ID = 2, Name = "Medium" },
+               new QuestionLevel { ID = 3, Name = "Hard" },
+               new QuestionLevel { ID = 4, Name = "Challenge" }
+           );
         }
     }
 }

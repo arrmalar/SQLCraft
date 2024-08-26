@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -7,17 +7,21 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="8.0.7" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.7" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.7" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.7">
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="8.0.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.8">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Riddle.Bank.DataAccess\Riddle.Bank.DataAccess.csproj" />
+    <ProjectReference Include="..\Riddle.Bank.TestCases.DataAccess\Riddle.Bank.TestCases.DataAccess.csproj" />
+    <ProjectReference Include="..\Riddle.University.DataAccess\Riddle.University.DataAccess.csproj" />
+    <ProjectReference Include="..\Riddle.University.TestCases.DataAccess\Riddle.University.TestCases.DataAccess.csproj" />
     <ProjectReference Include="..\Riddle.Warehouse.DataAccess\Riddle.Warehouse.DataAccess.csproj" />
+    <ProjectReference Include="..\Riddle.Warehouse.TestCases.DataAccess\Riddle.Warehouse.TestCases.DataAccess.csproj" />
     <ProjectReference Include="..\SQLCraft.DataAccess\SQLCraft.DataAccess.csproj" />
     <ProjectReference Include="..\SQLCraft.Services\SQLCraft.Services.csproj" />
     <ProjectReference Include="..\SQLCraft.Utility\SQLCraft.Utility.csproj" />

@@ -1,0 +1,127 @@
+digraph G {
+    // General graph settings
+    rankdir=LR;
+    node [shape=plaintext];
+
+    // Categories table
+    Categories [label=<
+        <table border="1" cellborder="1" cellspacing="0" cellpadding="4">
+            <tr><td colspan="2" bgcolor="lightgrey"><b>Categories</b></td></tr>
+            <tr><td align="left">CategoryID (PK)</td><td align="left">int, not null</td></tr>
+            <tr><td align="left">CategoryName</td><td align="left">nvarchar(100), not null</td></tr>
+        </table>
+    >];
+
+    // Products table
+    Products [label=<
+        <table border="1" cellborder="1" cellspacing="0" cellpadding="4">
+            <tr><td colspan="2" bgcolor="lightgrey"><b>Products</b></td></tr>
+            <tr><td align="left">ProductID (PK)</td><td align="left">int, not null</td></tr>
+            <tr><td align="left">ProductName</td><td align="left">nvarchar(100), not null</td></tr>
+            <tr><td align="left">SKU</td><td align="left">nvarchar(50), not null</td></tr>
+            <tr><td align="left">CategoryID (FK)</td><td align="left">int, not null</td></tr>
+            <tr><td align="left">QuantityInStock</td><td align="left">int, not null</td></tr>
+            <tr><td align="left">ReorderLevel</td><td align="left">int, not null</td></tr>
+            <tr><td align="left">UnitPrice</td><td align="left">decimal(18,2), not null</td></tr>
+            <tr><td align="left">DateAdded</td><td align="left">datetime2(7), not null</td></tr>
+        </table>
+    >];
+
+    // ProductStocks table
+    ProductStocks [label=<
+        <table border="1" cellborder="1" cellspacing="0" cellpadding="4">
+            <tr><td colspan="2" bgcolor="lightgrey"><b>ProductStocks</b></td></tr>
+            <tr><td align="left">ProductStockID (PK)</td><td align="left">int, not null</td></tr>
+            <tr><td align="left">ProductID (PK)</td><td align="left">int, not null</td></tr>
+            <tr><td align="left">LocationID (PK)</td><td align="left">int, not null</td></tr>
+            <tr><td align="left">Quantity</td><td align="left">int, not null</td></tr>
+        </table>
+    >];
+
+    // PurchaseOrderDetails table
+    PurchaseOrderDetails [label=<
+        <table border="1" cellborder="1" cellspacing="0" cellpadding="4">
+            <tr><td colspan="2" bgcolor="lightgrey"><b>PurchaseOrderDetails</b></td></tr>
+            <tr><td align="left">PurchaseOrderDetailID (PK)</td><td align="left">int, not null</td></tr>
+            <tr><td align="left">PurchaseOrderID (FK)</td><td align="left">int, not null</td></tr>
+            <tr><td align="left">ProductID (FK)</td><td align="left">int, not null</td></tr>
+            <tr><td align="left">Quantity</td><td align="left">int, not null</td></tr>
+            <tr><td align="left">UnitPrice</td><td align="left">decimal(18,2), not null</td></tr>
+            <tr><td align="left">Total</td><td align="left">decimal(18,2), not null</td></tr>
+        </table>
+    >];
+
+    // PurchaseOrders table
+    PurchaseOrders [label=<
+        <table border="1" cellborder="1" cellspacing="0" cellpadding="4">
+            <tr><td colspan="2" bgcolor="lightgrey"><b>PurchaseOrders</b></td></tr>
+            <tr><td align="left">PurchaseOrderID (PK)</td><td align="left">int, not null</td></tr>
+            <tr><td align="left">SupplierID (FK)</td><td align="left">int, not null</td></tr>
+            <tr><td align="left">OrderDate</td><td align="left">datetime2(7), not null</td></tr>
+            <tr><td align="left">TotalAmount</td><td align="left">decimal(18,2), not null</td></tr>
+            <tr><td align="left">Status</td><td align="left">nvarchar(50), not null</td></tr>
+            <tr><td align="left">ExpectedDeliveryDate</td><td align="left">datetime2(7), not null</td></tr>
+        </table>
+    >];
+
+    // ShipmentDetails table
+    ShipmentDetails [label=<
+        <table border="1" cellborder="1" cellspacing="0" cellpadding="4">
+            <tr><td colspan="2" bgcolor="lightgrey"><b>ShipmentDetails</b></td></tr>
+            <tr><td align="left">ShipmentDetailID (PK)</td><td align="left">int, not null</td></tr>
+            <tr><td align="left">ShipmentID (FK)</td><td align="left">int, not null</td></tr>
+            <tr><td align="left">ProductID (FK)</td><td align="left">int, not null</td></tr>
+            <tr><td align="left">Quantity</td><td align="left">int, not null</td></tr>
+            <tr><td align="left">UnitPrice</td><td align="left">decimal(18,2), not null</td></tr>
+            <tr><td align="left">Total</td><td align="left">decimal(18,2), not null</td></tr>
+        </table>
+    >];
+
+    // Shipments table
+    Shipments [label=<
+        <table border="1" cellborder="1" cellspacing="0" cellpadding="4">
+            <tr><td colspan="2" bgcolor="lightgrey"><b>Shipments</b></td></tr>
+            <tr><td align="left">ShipmentID (PK)</td><td align="left">int, not null</td></tr>
+            <tr><td align="left">ShipmentDate</td><td align="left">datetime2(7), not null</td></tr>
+            <tr><td align="left">Carrier</td><td align="left">nvarchar(100), not null</td></tr>
+            <tr><td align="left">TrackingNumber</td><td align="left">nvarchar(50), not null</td></tr>
+            <tr><td align="left">Status</td><td align="left">nvarchar(50), not null</td></tr>
+        </table>
+    >];
+
+    // StockLocations table
+    StockLocations [label=<
+        <table border="1" cellborder="1" cellspacing="0" cellpadding="4">
+            <tr><td colspan="2" bgcolor="lightgrey"><b>StockLocations</b></td></tr>
+            <tr><td align="left">LocationID (PK)</td><td align="left">int, not null</td></tr>
+            <tr><td align="left">LocationName</td><td align="left">nvarchar(100), not null</td></tr>
+            <tr><td align="left">Description</td><td align="left">nvarchar(200), not null</td></tr>
+        </table>
+    >];
+
+    // Suppliers table
+    Suppliers [label=<
+        <table border="1" cellborder="1" cellspacing="0" cellpadding="4">
+            <tr><td colspan="2" bgcolor="lightgrey"><b>Suppliers</b></td></tr>
+            <tr><td align="left">SupplierID (PK)</td><td align="left">int, not null</td></tr>
+            <tr><td align="left">SupplierName</td><td align="left">nvarchar(100), not null</td></tr>
+            <tr><td align="left">ContactName</td><td align="left">nvarchar(100), not null</td></tr>
+            <tr><td align="left">Address</td><td align="left">nvarchar(200), not null</td></tr>
+            <tr><td align="left">City</td><td align="left">nvarchar(100), not null</td></tr>
+            <tr><td align="left">PostalCode</td><td align="left">nvarchar(20), not null</td></tr>
+            <tr><td align="left">Country</td><td align="left">nvarchar(50), not null</td></tr>
+            <tr><td align="left">Phone</td><td align="left">nvarchar(20), not null</td></tr>
+            <tr><td align="left">Email</td><td align="left">nvarchar(100), not null</td></tr>
+        </table>
+    >];
+
+    // Defining relationships
+    Products -> Categories [label="FK"];
+    ProductStocks -> Products [label="FK"];
+    ProductStocks -> StockLocations [label="FK"];
+    PurchaseOrderDetails -> PurchaseOrders [label="FK"];
+    PurchaseOrderDetails -> Products [label="FK"];
+    PurchaseOrders -> Suppliers [label="FK"];
+    ShipmentDetails -> Shipments [label="FK"];
+    ShipmentDetails -> Products [label="FK"];
+}

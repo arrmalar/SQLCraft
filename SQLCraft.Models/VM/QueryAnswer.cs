@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using SQLCraft.Models.Schema;
 using System.ComponentModel.DataAnnotations;
+using System.Data;
 
 namespace SQLCraft.Models.VM
 {
@@ -10,6 +10,8 @@ namespace SQLCraft.Models.VM
 
         public string UserAnswer { get; set; }
 
-        public List<DBSchema> DBSchemas { get; set; } = new List<DBSchema>();
+        public DataTable UserResult { get; set; }
+
+        public DataTable CorrectResult { get; set; }
     }
 }

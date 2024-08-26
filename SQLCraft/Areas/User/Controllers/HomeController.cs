@@ -1,10 +1,12 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
 using Microsoft.IdentityModel.Tokens;
 using SQLCraft.DataAccess.Repository.IRepository;
 using SQLCraft.Models;
 using SQLCraft.Models.VM;
 using SQLCraft.Services;
+using SQLCraft.Services.Interfaces;
 using SQLCraft.Utility;
 
 namespace SQLCraft.Areas.Customer.Controllers
@@ -13,22 +15,35 @@ namespace SQLCraft.Areas.Customer.Controllers
     [Authorize(Roles = $"{SD.Role_User},{SD.Role_Admin}")]
     public class HomeController : Controller
     {
-        private readonly IUnitOfWork _unitOfWork;
+        private readonly IUnitOfWorkApplication _unitOfWorkApplication;
         private readonly ChatGPTService _chatGptService;
+        private readonly ISQLQueryValidatorService _sqlQueryValidatorService;
+        private readonly IConfiguration _configuration;
 
-        public HomeController(IUnitOfWork unitOfWork, ChatGPTService chatGptService)
+        private readonly string _warehouseConnectionString;
+        private readonly string _bankConnectionString;
+        private readonly string _universityConnectionString;
+
+        public HomeController(
+            IUnitOfWorkApplication unitOfWorkApplication, 
+            ChatGPTService chatGptService,
+            ISQLQueryValidatorService sqlQueryValidatorService,
+            IConfiguration configuration)
         {
-            _unitOfWork = unitOfWork;
+            _unitOfWorkApplication = unitOfWorkApplication;
             _chatGptService = chatGptService;
+            _sqlQueryValidatorService = sqlQueryValidatorService;
+            _configuration = configuration;
+            _warehouseConnectionString = _configuration["ConnectionStrings:RiddleWarehouseConnection"];
+            _bankConnectionString = _configuration["ConnectionStrings:RiddleWarehouseConnection"];
+            _universityConnectionString = _configuration["ConnectionStrings:RiddleWarehouseConnection"];
         }
 
         public IActionResult Index()
         {
-            var riddles = _unitOfWork.QueryRiddleRepository.GetAll().ToList();
-
-            Random r = new Random();
-            int rInt = r.Next(0, riddles.Count());
-
+            var riddles = _unitOfWorkApplication.QueryRiddleRepository.GetAll(includeProperties: "DBSchema").ToList();
+            var r = new Random();
+            var rInt = r.Next(0, riddles.Count());
             var queryAnswer = new QueryAnswer();
 
             if (riddles.IsNullOrEmpty())
@@ -41,30 +56,24 @@ namespace SQLCraft.Areas.Customer.Controllers
 
             queryAnswer.UserAnswer = "";
             queryAnswer.QueryRiddle = riddles[rInt];
-            //queryAnswer.DBSchemas = 
-
+            
             return View(queryAnswer);
         }
-
 
         [HttpPost]
         public async Task<IActionResult> Index(QueryAnswer queryAnswer)
         {
+            var queryCorrectAnswer = _unitOfWorkApplication.QuestionCorrectAnswerRepository.Get(qca => qca.ID == queryAnswer.QueryRiddle.QuestionCorrectAnswerID);
 
-            // przepuœciæ odpowiedŸ przez bazê danych i sprawdziæ wynik z wynikiem oczekiwanym
+            var userResult = _sqlQueryValidatorService.ExecuteQuery(queryAnswer.UserAnswer, _configuration["ConnectionStrings:RiddleWarehouseConnection"]);
+            var correctResult = _sqlQueryValidatorService.ExecuteQuery(queryCorrectAnswer.CorrectAnswer, _configuration["ConnectionStrings:RiddleWarehouseConnection"]);
 
+            queryAnswer.CorrectResult = correctResult;
+            queryAnswer.UserResult = userResult;
 
-            /*if (string.IsNullOrEmpty(queryAnswer.UserAnswer))
-            {
-                ModelState.AddModelError(string.Empty, "Question cannot be empty.");
-                return View();
-            }
-
-            string answer = await _chatGptService.GetAnswerAsync(queryAnswer.UserAnswer);
-            ViewBag.Answer = answer;*/
+            var output = _sqlQueryValidatorService.ValidateQuery(userResult, correctResult);
 
             return View(queryAnswer);
         }
-
     }
 }

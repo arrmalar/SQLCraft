@@ -25,7 +25,7 @@ namespace SQLCraft.Services
                 {
                     new { role = "user", content = question }
                 },
-                max_tokens = 50
+                max_tokens = 1000
             };
 
             var jsonRequest = JsonConvert.SerializeObject(request);

@@ -1,14 +1,14 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Riddle.Warehouse.Models;
+using System.ComponentModel.DataAnnotations;
 
-namespace Riddle.Warehouse.Models
+public class Category
 {
-    public class Category
-    {
-        [Key]
-        public int Id { get; set; }
-        
+    [Key]
+    public int CategoryID { get; set; }
 
-        [Required]
-        public string Name { get; set; }
-    }
+    [Required]
+    [MaxLength(100)]
+    public string CategoryName { get; set; }
+
+    public ICollection<Product> Products { get; set; }
 }
