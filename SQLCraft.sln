@@ -23,13 +23,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Riddle.Bank.Models", "Riddl
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Riddle.Warehouse.TestCases.DataAccess", "Riddle.Warehouse.TestCases.DataAccess\Riddle.Warehouse.TestCases.DataAccess.csproj", "{4C0405DB-C44E-4235-995B-5E23970EEBD5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Riddle.University.DataAccess", "Riddle.University.DataAccess\Riddle.University.DataAccess.csproj", "{32FBE897-0B1F-4976-9877-B9ECA5D9B8D9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Riddle.University.DataAccess", "Riddle.University.DataAccess\Riddle.University.DataAccess.csproj", "{32FBE897-0B1F-4976-9877-B9ECA5D9B8D9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Riddle.University.Models", "Riddle.University.Models\Riddle.University.Models.csproj", "{A77A540E-AE6E-4F0A-BB55-DCEDA7823A93}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Riddle.University.Models", "Riddle.University.Models\Riddle.University.Models.csproj", "{A77A540E-AE6E-4F0A-BB55-DCEDA7823A93}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Riddle.University.TestCases.DataAccess", "Riddle.University.TestCases.DataAccess\Riddle.University.TestCases.DataAccess.csproj", "{2999FE7D-7D6E-4C42-8882-25135557DE7B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Riddle.University.TestCases.DataAccess", "Riddle.University.TestCases.DataAccess\Riddle.University.TestCases.DataAccess.csproj", "{2999FE7D-7D6E-4C42-8882-25135557DE7B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Riddle.Bank.TestCases.DataAccess", "Riddle.Bank.TestCases.DataAccess\Riddle.Bank.TestCases.DataAccess.csproj", "{31991A45-4595-4B23-AF01-CDF17B609B62}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Riddle.Bank.TestCases.DataAccess", "Riddle.Bank.TestCases.DataAccess\Riddle.Bank.TestCases.DataAccess.csproj", "{31991A45-4595-4B23-AF01-CDF17B609B62}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SQLCraftFront", "SQLCraftFront\SQLCraftFront.csproj", "{3807B9A7-DCBE-4E24-916B-EFF0D1B7E23B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SQLCraft.API", "SQLCraft.API\SQLCraft.API.csproj", "{1D911217-EB62-4990-903D-FA0ADE8E188B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -93,6 +97,14 @@ Global
 		{31991A45-4595-4B23-AF01-CDF17B609B62}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{31991A45-4595-4B23-AF01-CDF17B609B62}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{31991A45-4595-4B23-AF01-CDF17B609B62}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3807B9A7-DCBE-4E24-916B-EFF0D1B7E23B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3807B9A7-DCBE-4E24-916B-EFF0D1B7E23B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3807B9A7-DCBE-4E24-916B-EFF0D1B7E23B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3807B9A7-DCBE-4E24-916B-EFF0D1B7E23B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D911217-EB62-4990-903D-FA0ADE8E188B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D911217-EB62-4990-903D-FA0ADE8E188B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D911217-EB62-4990-903D-FA0ADE8E188B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D911217-EB62-4990-903D-FA0ADE8E188B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

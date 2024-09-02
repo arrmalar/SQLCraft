@@ -1,0 +1,53 @@
+﻿@page "/currentTask/{ID:int?}"
+
+<div class="col mb-3">
+    <div>
+        <span>@QueryRiddle.Question</span>
+    </div>
+    <br />
+    <div>
+        <textarea class="form-control" rows="5" placeholder="Enter your answer here..." @bind="Answer"></textarea>
+    </div>
+</div>
+<div class="col mb-3">
+    
+</div>
+
+
+@code {
+    [Parameter]
+    public int ID { get; set; }
+
+    public QueryRiddle QueryRiddle { get; set; }
+
+    private List<QueryRiddle> QueryRiddles = new List<QueryRiddle>();
+
+    private string Answer { get; set; }
+
+
+
+    protected override void OnInitialized()
+    {
+        QueryRiddles = QueryRiddleRepository.GetAllQueryRiddles();
+    }
+
+    protected override void OnParametersSet()
+    {
+        if (ID == 0)
+        {
+            ID = QueryRiddleRepository.GetUsedQueryRiddleIndex();
+        }
+        else
+        {
+            QueryRiddleRepository.ChangeUsedQueryRiddleIndex(ID);
+        }
+
+        QueryRiddle ??= QueryRiddleRepository.GetById(ID);
+    }
+
+    private void Validate()
+    {
+        
+        
+    }
+}

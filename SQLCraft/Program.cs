@@ -19,6 +19,7 @@ builder.Configuration.AddUserSecrets<Program>();
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddHttpClient<ChatGPTService>();
+builder.Services.AddServerSideBlazor();
 
 builder.Services.AddDbContext<ApplicationDbContext>(options => {
     var connectionString = builder.Configuration.GetConnectionString("ApplicationConnection");
@@ -92,6 +93,7 @@ app.UseStaticFiles();
 app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
+app.MapBlazorHub();
 app.MapRazorPages();
 app.MapControllerRoute(
     name: "default",

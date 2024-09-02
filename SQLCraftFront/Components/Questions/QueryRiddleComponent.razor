@@ -1,0 +1,61 @@
+﻿@inject NavigationManager NavigationManager
+
+    <div class="row mb-3 p-2 rounded shadow-sm" style="background-color: #f8f9fa; border: 1px solid #ddd;">
+        <div class="col-4">
+            <span id="riddle-title" class="fw-bold text-primary">
+                @QueryRiddle.Title
+            </span>
+        </div>
+
+        <div class="col-1">
+        @if (QueryRiddle.Difficulty.Equals("Easy"))
+        {
+            <span id="riddle-difficulty" class="badge bg-info text-dark">
+                @QueryRiddle.Difficulty
+            </span>
+        }
+        else if (QueryRiddle.Difficulty.Equals("Medium"))
+        {
+            <span id="riddle-difficulty" class="badge bg-warning text-dark">
+                @QueryRiddle.Difficulty
+            </span>
+        } else
+        {
+            <span id="riddle-difficulty" class="badge bg-danger text-dark">
+                @QueryRiddle.Difficulty
+            </span>            
+        }
+        </div>
+
+        <div class="col-1">
+            <span class="d-flex align-items-center">
+                @if (QueryRiddle.IsCompleted)
+                {
+                    <img src="images/check.svg" class="ms-2 rounded-circle border border-success" style="height: 1.5rem; background-color: lightgreen;" alt="Completed" />
+                }
+                else
+                {
+                    <img src="images/question-circle.svg" class="ms-2 rounded-circle border border-secondary" style="height: 1.5rem; background-color: lightgray;" alt="Not Completed" />
+                }
+            </span>
+        </div>
+
+        <div class="col-1">
+            <span class="d-flex align-items-center">
+                @if (QueryRiddle.IsCompleted)
+                {
+                    <a href="/currentTask/@QueryRiddle.QueryRiddleID" class="btn btn-outline-success btn-sm ms-2">Edit</a>
+                }
+                else
+                {
+                    <a href="/currentTask/@QueryRiddle.QueryRiddleID" class="btn btn-outline-primary btn-sm ms-2">Solve</a>
+                }
+            </span>
+        </div>
+    </div>
+
+@code {
+    [Parameter]
+    public QueryRiddle QueryRiddle { get; set; }
+}
+

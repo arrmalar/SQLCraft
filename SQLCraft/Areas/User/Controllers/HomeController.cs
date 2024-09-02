@@ -1,9 +1,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Data.SqlClient;
 using Microsoft.IdentityModel.Tokens;
 using SQLCraft.DataAccess.Repository.IRepository;
-using SQLCraft.Models;
 using SQLCraft.Models.VM;
 using SQLCraft.Services;
 using SQLCraft.Services.Interfaces;
@@ -48,9 +46,6 @@ namespace SQLCraft.Areas.Customer.Controllers
 
             if (riddles.IsNullOrEmpty())
             {
-                var riddle = new QueryRiddle();
-                riddle.Question = "";
-                queryAnswer.QueryRiddle = riddle;
                 return View(queryAnswer);
             }
 

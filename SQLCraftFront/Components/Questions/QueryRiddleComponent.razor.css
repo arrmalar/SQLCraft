@@ -1,0 +1,12 @@
+﻿.icon-size {
+    height: 1.5rem;
+    width: 1.5rem;
+}
+
+.filter-green {
+    filter: invert(28%) sepia(84%) saturate(7467%) hue-rotate(75deg) brightness(97%) contrast(110%);
+}
+
+.filter-gray {
+    filter: grayscale(100%) brightness(70%);
+}
