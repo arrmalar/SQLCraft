@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.34928.147
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SQLCraft", "SQLCraft\SQLCraft.csproj", "{CD6C3490-ED98-463C-998C-D368DBBFFB3D}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SQLCraft.DataAccess", "SQLCraft.DataAccess\SQLCraft.DataAccess.csproj", "{E1B6C6FC-D01D-46CE-BD32-CFDD25530987}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SQLCraft.Models", "SQLCraft.Models\SQLCraft.Models.csproj", "{DDA8DFD1-B8C2-47CE-9B83-7F72B1C3FF28}"
@@ -33,7 +31,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Riddle.Bank.TestCases.DataA
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SQLCraftFront", "SQLCraftFront\SQLCraftFront.csproj", "{3807B9A7-DCBE-4E24-916B-EFF0D1B7E23B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SQLCraft.API", "SQLCraft.API\SQLCraft.API.csproj", "{1D911217-EB62-4990-903D-FA0ADE8E188B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SQLCraft.API", "SQLCraft.API\SQLCraft.API.csproj", "{1D911217-EB62-4990-903D-FA0ADE8E188B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SQLCraft.Tests", "SQLCraft.Tests\SQLCraft.Tests.csproj", "{B7EF5CB4-A6D0-46D4-A571-0BD9A3517C68}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,10 +41,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{CD6C3490-ED98-463C-998C-D368DBBFFB3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CD6C3490-ED98-463C-998C-D368DBBFFB3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CD6C3490-ED98-463C-998C-D368DBBFFB3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CD6C3490-ED98-463C-998C-D368DBBFFB3D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E1B6C6FC-D01D-46CE-BD32-CFDD25530987}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E1B6C6FC-D01D-46CE-BD32-CFDD25530987}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E1B6C6FC-D01D-46CE-BD32-CFDD25530987}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -105,6 +101,10 @@ Global
 		{1D911217-EB62-4990-903D-FA0ADE8E188B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1D911217-EB62-4990-903D-FA0ADE8E188B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1D911217-EB62-4990-903D-FA0ADE8E188B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7EF5CB4-A6D0-46D4-A571-0BD9A3517C68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7EF5CB4-A6D0-46D4-A571-0BD9A3517C68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7EF5CB4-A6D0-46D4-A571-0BD9A3517C68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7EF5CB4-A6D0-46D4-A571-0BD9A3517C68}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,120 @@
+digraph G {
+    // General graph settings
+    rankdir=LR;
+    node [shape=plaintext];
+
+    // Students table
+    Students [label=<
+        <table border="1" cellborder="1" cellspacing="0" cellpadding="4">
+            <tr><td colspan="2" bgcolor="lightgrey"><b>Students</b></td></tr>
+            <tr><td align="left">StudentID (PK)</td><td align="left">int, not null</td></tr>
+            <tr><td align="left">FirstName</td><td align="left">nvarchar(100), not null</td></tr>
+            <tr><td align="left">LastName</td><td align="left">nvarchar(100), not null</td></tr>
+            <tr><td align="left">DateOfBirth</td><td align="left">date, not null</td></tr>
+            <tr><td align="left">Email</td><td align="left">nvarchar(100), not null</td></tr>
+            <tr><td align="left">Phone</td><td align="left">nvarchar(20), not null</td></tr>
+            <tr><td align="left">Address</td><td align="left">nvarchar(200), not null</td></tr>
+            <tr><td align="left">City</td><td align="left">nvarchar(100), not null</td></tr>
+            <tr><td align="left">PostalCode</td><td align="left">nvarchar(20), not null</td></tr>
+            <tr><td align="left">Country</td><td align="left">nvarchar(50), not null</td></tr>
+            <tr><td align="left">EnrollmentDate</td><td align="left">date, not null</td></tr>
+        </table>
+    >];
+
+    // Courses table
+    Courses [label=<
+        <table border="1" cellborder="1" cellspacing="0" cellpadding="4">
+            <tr><td colspan="2" bgcolor="lightgrey"><b>Courses</b></td></tr>
+            <tr><td align="left">CourseID (PK)</td><td align="left">int, not null</td></tr>
+            <tr><td align="left">CourseName</td><td align="left">nvarchar(200), not null</td></tr>
+            <tr><td align="left">CourseCode</td><td align="left">nvarchar(20), not null</td></tr>
+            <tr><td align="left">Credits</td><td align="left">int, not null</td></tr>
+            <tr><td align="left">DepartmentID (FK)</td><td align="left">int, not null</td></tr>
+        </table>
+    >];
+
+    // Enrollments table
+    Enrollments [label=<
+        <table border="1" cellborder="1" cellspacing="0" cellpadding="4">
+            <tr><td colspan="2" bgcolor="lightgrey"><b>Enrollments</b></td></tr>
+            <tr><td align="left">EnrollmentID (PK)</td><td align="left">int, not null</td></tr>
+            <tr><td align="left">StudentID (FK)</td><td align="left">int, not null</td></tr>
+            <tr><td align="left">CourseID (FK)</td><td align="left">int, not null</td></tr>
+            <tr><td align="left">EnrollmentDate</td><td align="left">date, not null</td></tr>
+            <tr><td align="left">Grade</td><td align="left">nvarchar(2), null</td></tr>
+        </table>
+    >];
+
+    // Departments table
+    Departments [label=<
+        <table border="1" cellborder="1" cellspacing="0" cellpadding="4">
+            <tr><td colspan="2" bgcolor="lightgrey"><b>Departments</b></td></tr>
+            <tr><td align="left">DepartmentID (PK)</td><td align="left">int, not null</td></tr>
+            <tr><td align="left">DepartmentName</td><td align="left">nvarchar(200), not null</td></tr>
+            <tr><td align="left">FacultyID (FK)</td><td align="left">int, not null</td></tr>
+        </table>
+    >];
+
+    // Faculties table
+    Faculties [label=<
+        <table border="1" cellborder="1" cellspacing="0" cellpadding="4">
+            <tr><td colspan="2" bgcolor="lightgrey"><b>Faculties</b></td></tr>
+            <tr><td align="left">FacultyID (PK)</td><td align="left">int, not null</td></tr>
+            <tr><td align="left">FirstName</td><td align="left">nvarchar(100), not null</td></tr>
+            <tr><td align="left">LastName</td><td align="left">nvarchar(100), not null</td></tr>
+            <tr><td align="left">Email</td><td align="left">nvarchar(100), not null</td></tr>
+            <tr><td align="left">Phone</td><td align="left">nvarchar(20), not null</td></tr>
+            <tr><td align="left">HireDate</td><td align="left">date, not null</td></tr>
+            <tr><td align="left">DepartmentID (FK)</td><td align="left">int, not null</td></tr>
+        </table>
+    >];
+
+    // Classes table
+    Classes [label=<
+        <table border="1" cellborder="1" cellspacing="0" cellpadding="4">
+            <tr><td colspan="2" bgcolor="lightgrey"><b>Classes</b></td></tr>
+            <tr><td align="left">ClassID (PK)</td><td align="left">int, not null</td></tr>
+            <tr><td align="left">CourseID (FK)</td><td align="left">int, not null</td></tr>
+            <tr><td align="left">FacultyID (FK)</td><td align="left">int, not null</td></tr>
+            <tr><td align="left">Semester</td><td align="left">nvarchar(20), not null</td></tr>
+            <tr><td align="left">Year</td><td align="left">int, not null</td></tr>
+            <tr><td align="left">ClassRoom</td><td align="left">nvarchar(50), not null</td></tr>
+            <tr><td align="left">Schedule</td><td align="left">nvarchar(100), not null</td></tr>
+        </table>
+    >];
+
+    // Exams table
+    Exams [label=<
+        <table border="1" cellborder="1" cellspacing="0" cellpadding="4">
+            <tr><td colspan="2" bgcolor="lightgrey"><b>Exams</b></td></tr>
+            <tr><td align="left">ExamID (PK)</td><td align="left">int, not null</td></tr>
+            <tr><td align="left">ClassID (FK)</td><td align="left">int, not null</td></tr>
+            <tr><td align="left">ExamDate</td><td align="left">datetime2(7), not null</td></tr>
+            <tr><td align="left">ExamType</td><td align="left">nvarchar(50), not null</td></tr>
+            <tr><td align="left">TotalMarks</td><td align="left">int, not null</td></tr>
+        </table>
+    >];
+
+    // ExamResults table
+    ExamResults [label=<
+        <table border="1" cellborder="1" cellspacing="0" cellpadding="4">
+            <tr><td colspan="2" bgcolor="lightgrey"><b>ExamResults</b></td></tr>
+            <tr><td align="left">ResultID (PK)</td><td align="left">int, not null</td></tr>
+            <tr><td align="left">ExamID (FK)</td><td align="left">int, not null</td></tr>
+            <tr><td align="left">StudentID (FK)</td><td align="left">int, not null</td></tr>
+            <tr><td align="left">MarksObtained</td><td align="left">int, not null</td></tr>
+            <tr><td align="left">Grade</td><td align="left">nvarchar(2), not null</td></tr>
+        </table>
+    >];
+
+    // Defining relationships
+    Courses -> Departments [label="FK"];
+    Enrollments -> Students [label="FK"];
+    Enrollments -> Courses [label="FK"];
+    Faculties -> Departments [label="FK"];
+    Classes -> Courses [label="FK"];
+    Classes -> Faculties [label="FK"];
+    Exams -> Classes [label="FK"];
+    ExamResults -> Exams [label="FK"];
+    ExamResults -> Students [label="FK"];
+}

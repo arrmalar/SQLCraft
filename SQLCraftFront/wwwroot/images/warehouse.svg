@@ -1,0 +1,331 @@
+<?xml version="1.0" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1001pt" height="817pt" viewBox="0.00 0.00 1000.79 817.00">
+<g id="graph0" class="graph" transform="translate(4,813) scale(1)" data-name="G">
+
+<polygon fill="white" stroke="none" points="-4,4 -4,-813 996.79,-813 996.79,4 -4,4" style=""/>
+<!-- Categories -->
+<g id="node1" class="node" pointer-events="visible" data-name="Categories">
+
+<polygon fill="lightgrey" stroke="none" points="739.29,-319 739.29,-345 984.29,-345 984.29,-319 739.29,-319" style=""/>
+<polygon fill="none" stroke="black" points="739.29,-319 739.29,-345 984.29,-345 984.29,-319 739.29,-319" style=""/>
+<text text-anchor="start" x="829.92" y="-328.4" font-family="Times,serif" font-weight="bold" font-size="14.00" style="">Categories</text>
+<polygon fill="none" stroke="black" points="739.29,-293 739.29,-319 845.29,-319 845.29,-293 739.29,-293" style=""/>
+<text text-anchor="start" x="743.89" y="-301.4" font-family="Times,serif" font-size="14.00" style="">CategoryID (PK)</text>
+<polygon fill="none" stroke="black" points="845.29,-293 845.29,-319 984.29,-319 984.29,-293 845.29,-293" style=""/>
+<text text-anchor="start" x="850.29" y="-301.4" font-family="Times,serif" font-size="14.00" style="">int, not null</text>
+<polygon fill="none" stroke="black" points="739.29,-267 739.29,-293 845.29,-293 845.29,-267 739.29,-267" style=""/>
+<text text-anchor="start" x="744.29" y="-275.4" font-family="Times,serif" font-size="14.00" style="">CategoryName</text>
+<polygon fill="none" stroke="black" points="845.29,-267 845.29,-293 984.29,-293 984.29,-267 845.29,-267" style=""/>
+<text text-anchor="start" x="850.06" y="-275.4" font-family="Times,serif" font-size="14.00" style="">nvarchar(100), not null</text>
+<polygon fill="none" stroke="black" points="737.79,-266 737.79,-346 984.79,-346 984.79,-266 737.79,-266" style=""/>
+</g>
+<!-- Products -->
+<g id="node2" class="node" pointer-events="visible" data-name="Products">
+
+<polygon fill="lightgrey" stroke="none" points="406.9,-397 406.9,-423 651.9,-423 651.9,-397 406.9,-397" style=""/>
+<polygon fill="none" stroke="black" points="406.9,-397 406.9,-423 651.9,-423 651.9,-397 406.9,-397" style=""/>
+<text text-anchor="start" x="502.57" y="-406.4" font-family="Times,serif" font-weight="bold" font-size="14.00" style="">Products</text>
+<polygon fill="none" stroke="black" points="406.9,-371 406.9,-397 512.9,-397 512.9,-371 406.9,-371" style=""/>
+<text text-anchor="start" x="411.9" y="-379.4" font-family="Times,serif" font-size="14.00" style="">ProductID (PK)</text>
+<polygon fill="none" stroke="black" points="512.9,-371 512.9,-397 651.9,-397 651.9,-371 512.9,-371" style=""/>
+<text text-anchor="start" x="517.9" y="-379.4" font-family="Times,serif" font-size="14.00" style="">int, not null</text>
+<polygon fill="none" stroke="black" points="406.9,-345 406.9,-371 512.9,-371 512.9,-345 406.9,-345" style=""/>
+<text text-anchor="start" x="411.9" y="-353.4" font-family="Times,serif" font-size="14.00" style="">ProductName</text>
+<polygon fill="none" stroke="black" points="512.9,-345 512.9,-371 651.9,-371 651.9,-345 512.9,-345" style=""/>
+<text text-anchor="start" x="517.67" y="-353.4" font-family="Times,serif" font-size="14.00" style="">nvarchar(100), not null</text>
+<polygon fill="none" stroke="black" points="406.9,-319 406.9,-345 512.9,-345 512.9,-319 406.9,-319" style=""/>
+<text text-anchor="start" x="411.9" y="-327.4" font-family="Times,serif" font-size="14.00" style="">SKU</text>
+<polygon fill="none" stroke="black" points="512.9,-319 512.9,-345 651.9,-345 651.9,-319 512.9,-319" style=""/>
+<text text-anchor="start" x="517.9" y="-327.4" font-family="Times,serif" font-size="14.00" style="">nvarchar(50), not null</text>
+<polygon fill="none" stroke="black" points="406.9,-293 406.9,-319 512.9,-319 512.9,-293 406.9,-293" style=""/>
+<text text-anchor="start" x="411.49" y="-301.4" font-family="Times,serif" font-size="14.00" style="">CategoryID (FK)</text>
+<polygon fill="none" stroke="black" points="512.9,-293 512.9,-319 651.9,-319 651.9,-293 512.9,-293" style=""/>
+<text text-anchor="start" x="517.9" y="-301.4" font-family="Times,serif" font-size="14.00" style="">int, not null</text>
+<polygon fill="none" stroke="black" points="406.9,-267 406.9,-293 512.9,-293 512.9,-267 406.9,-267" style=""/>
+<text text-anchor="start" x="411.9" y="-275.4" font-family="Times,serif" font-size="14.00" style="">QuantityInStock</text>
+<polygon fill="none" stroke="black" points="512.9,-267 512.9,-293 651.9,-293 651.9,-267 512.9,-267" style=""/>
+<text text-anchor="start" x="517.9" y="-275.4" font-family="Times,serif" font-size="14.00" style="">int, not null</text>
+<polygon fill="none" stroke="black" points="406.9,-241 406.9,-267 512.9,-267 512.9,-241 406.9,-241" style=""/>
+<text text-anchor="start" x="411.9" y="-249.4" font-family="Times,serif" font-size="14.00" style="">ReorderLevel</text>
+<polygon fill="none" stroke="black" points="512.9,-241 512.9,-267 651.9,-267 651.9,-241 512.9,-241" style=""/>
+<text text-anchor="start" x="517.9" y="-249.4" font-family="Times,serif" font-size="14.00" style="">int, not null</text>
+<polygon fill="none" stroke="black" points="406.9,-215 406.9,-241 512.9,-241 512.9,-215 406.9,-215" style=""/>
+<text text-anchor="start" x="411.9" y="-223.4" font-family="Times,serif" font-size="14.00" style="">UnitPrice</text>
+<polygon fill="none" stroke="black" points="512.9,-215 512.9,-241 651.9,-241 651.9,-215 512.9,-215" style=""/>
+<text text-anchor="start" x="517.9" y="-223.4" font-family="Times,serif" font-size="14.00" style="">decimal(18,2), not null</text>
+<polygon fill="none" stroke="black" points="406.9,-189 406.9,-215 512.9,-215 512.9,-189 406.9,-189" style=""/>
+<text text-anchor="start" x="411.9" y="-197.4" font-family="Times,serif" font-size="14.00" style="">DateAdded</text>
+<polygon fill="none" stroke="black" points="512.9,-189 512.9,-215 651.9,-215 651.9,-189 512.9,-189" style=""/>
+<text text-anchor="start" x="517.9" y="-197.4" font-family="Times,serif" font-size="14.00" style="">datetime2(7), not null</text>
+<polygon fill="none" stroke="black" points="405.4,-188 405.4,-424 652.4,-424 652.4,-188 405.4,-188" style=""/>
+</g>
+<!-- Products&#45;&gt;Categories -->
+<g id="edge1" class="edge" data-name="Products-&gt;Categories">
+
+<path fill="none" stroke="black" d="M660,-306C679.25,-306 699.16,-306 718.63,-306" style=""/>
+<polygon fill="black" stroke="black" points="718.52,-309.5 728.52,-306 718.52,-302.5 718.52,-309.5" style=""/>
+<text text-anchor="middle" x="702.84" y="-310.2" font-family="Times,serif" font-size="14.00" style="">FK</text>
+</g>
+<!-- ProductStocks -->
+<g id="node3" class="node" pointer-events="visible" data-name="ProductStocks">
+
+<polygon fill="lightgrey" stroke="none" points="62,-446 62,-472 266,-472 266,-446 62,-446" style=""/>
+<polygon fill="none" stroke="black" points="62,-446 62,-472 266,-472 266,-446 62,-446" style=""/>
+<text text-anchor="start" x="120.44" y="-455.4" font-family="Times,serif" font-weight="bold" font-size="14.00" style="">ProductStocks</text>
+<polygon fill="none" stroke="black" points="62,-420 62,-446 192,-446 192,-420 62,-420" style=""/>
+<text text-anchor="start" x="66.53" y="-428.4" font-family="Times,serif" font-size="14.00" style="">ProductStockID (PK)</text>
+<polygon fill="none" stroke="black" points="192,-420 192,-446 266,-446 266,-420 192,-420" style=""/>
+<text text-anchor="start" x="196.53" y="-428.4" font-family="Times,serif" font-size="14.00" style="">int, not null</text>
+<polygon fill="none" stroke="black" points="62,-394 62,-420 192,-420 192,-394 62,-394" style=""/>
+<text text-anchor="start" x="67" y="-402.4" font-family="Times,serif" font-size="14.00" style="">ProductID (PK)</text>
+<polygon fill="none" stroke="black" points="192,-394 192,-420 266,-420 266,-394 192,-394" style=""/>
+<text text-anchor="start" x="196.53" y="-402.4" font-family="Times,serif" font-size="14.00" style="">int, not null</text>
+<polygon fill="none" stroke="black" points="62,-368 62,-394 192,-394 192,-368 62,-368" style=""/>
+<text text-anchor="start" x="67" y="-376.4" font-family="Times,serif" font-size="14.00" style="">LocationID (PK)</text>
+<polygon fill="none" stroke="black" points="192,-368 192,-394 266,-394 266,-368 192,-368" style=""/>
+<text text-anchor="start" x="196.53" y="-376.4" font-family="Times,serif" font-size="14.00" style="">int, not null</text>
+<polygon fill="none" stroke="black" points="62,-342 62,-368 192,-368 192,-342 62,-342" style=""/>
+<text text-anchor="start" x="67" y="-350.4" font-family="Times,serif" font-size="14.00" style="">Quantity</text>
+<polygon fill="none" stroke="black" points="192,-342 192,-368 266,-368 266,-342 192,-342" style=""/>
+<text text-anchor="start" x="196.53" y="-350.4" font-family="Times,serif" font-size="14.00" style="">int, not null</text>
+<polygon fill="none" stroke="black" points="61,-341 61,-473 267,-473 267,-341 61,-341" style=""/>
+</g>
+<!-- ProductStocks&#45;&gt;Products -->
+<g id="edge2" class="edge" data-name="ProductStocks-&gt;Products">
+
+<path fill="none" stroke="black" d="M274.87,-376.42C310.09,-366.62 349.59,-355.62 386.73,-345.29" style=""/>
+<polygon fill="black" stroke="black" points="387.5,-348.71 396.19,-342.66 385.62,-341.96 387.5,-348.71" style=""/>
+<text text-anchor="middle" x="354.95" y="-360.2" font-family="Times,serif" font-size="14.00" style="">FK</text>
+</g>
+<!-- StockLocations -->
+<g id="node8" class="node" pointer-events="visible" data-name="StockLocations">
+
+<polygon fill="lightgrey" stroke="none" points="406.9,-529 406.9,-555 650.9,-555 650.9,-529 406.9,-529" style=""/>
+<polygon fill="none" stroke="black" points="406.9,-529 406.9,-555 650.9,-555 650.9,-529 406.9,-529" style=""/>
+<text text-anchor="start" x="483" y="-538.4" font-family="Times,serif" font-weight="bold" font-size="14.00" style="">StockLocations</text>
+<polygon fill="none" stroke="black" points="406.9,-503 406.9,-529 511.9,-529 511.9,-503 406.9,-503" style=""/>
+<text text-anchor="start" x="411.77" y="-511.4" font-family="Times,serif" font-size="14.00" style="">LocationID (PK)</text>
+<polygon fill="none" stroke="black" points="511.9,-503 511.9,-529 650.9,-529 650.9,-503 511.9,-503" style=""/>
+<text text-anchor="start" x="516.9" y="-511.4" font-family="Times,serif" font-size="14.00" style="">int, not null</text>
+<polygon fill="none" stroke="black" points="406.9,-477 406.9,-503 511.9,-503 511.9,-477 406.9,-477" style=""/>
+<text text-anchor="start" x="411.9" y="-485.4" font-family="Times,serif" font-size="14.00" style="">LocationName</text>
+<polygon fill="none" stroke="black" points="511.9,-477 511.9,-503 650.9,-503 650.9,-477 511.9,-477" style=""/>
+<text text-anchor="start" x="516.67" y="-485.4" font-family="Times,serif" font-size="14.00" style="">nvarchar(100), not null</text>
+<polygon fill="none" stroke="black" points="406.9,-451 406.9,-477 511.9,-477 511.9,-451 406.9,-451" style=""/>
+<text text-anchor="start" x="411.9" y="-459.4" font-family="Times,serif" font-size="14.00" style="">Description</text>
+<polygon fill="none" stroke="black" points="511.9,-451 511.9,-477 650.9,-477 650.9,-451 511.9,-451" style=""/>
+<text text-anchor="start" x="516.67" y="-459.4" font-family="Times,serif" font-size="14.00" style="">nvarchar(200), not null</text>
+<polygon fill="none" stroke="black" points="405.9,-450 405.9,-556 651.9,-556 651.9,-450 405.9,-450" style=""/>
+</g>
+<!-- ProductStocks&#45;&gt;StockLocations -->
+<g id="edge3" class="edge" data-name="ProductStocks-&gt;StockLocations">
+
+<path fill="none" stroke="black" d="M274.87,-436.06C310.18,-445.41 349.81,-455.89 387.03,-465.74" style=""/>
+<polygon fill="black" stroke="black" points="385.95,-469.07 396.51,-468.24 387.74,-462.3 385.95,-469.07" style=""/>
+<text text-anchor="middle" x="354.95" y="-461.2" font-family="Times,serif" font-size="14.00" style="">FK</text>
+</g>
+<!-- PurchaseOrderDetails -->
+<g id="node4" class="node" pointer-events="visible" data-name="PurchaseOrderDetails">
+
+<polygon fill="lightgrey" stroke="none" points="9,-686 9,-712 319,-712 319,-686 9,-686" style=""/>
+<polygon fill="none" stroke="black" points="9,-686 9,-712 319,-712 319,-686 9,-686" style=""/>
+<text text-anchor="start" x="97.13" y="-695.4" font-family="Times,serif" font-weight="bold" font-size="14.00" style="">PurchaseOrderDetails</text>
+<polygon fill="none" stroke="black" points="9,-660 9,-686 181,-686 181,-660 9,-660" style=""/>
+<text text-anchor="start" x="13.56" y="-668.4" font-family="Times,serif" font-size="14.00" style="">PurchaseOrderDetailID (PK)</text>
+<polygon fill="none" stroke="black" points="181,-660 181,-686 319,-686 319,-660 181,-660" style=""/>
+<text text-anchor="start" x="186" y="-668.4" font-family="Times,serif" font-size="14.00" style="">int, not null</text>
+<polygon fill="none" stroke="black" points="9,-634 9,-660 181,-660 181,-634 9,-634" style=""/>
+<text text-anchor="start" x="14" y="-642.4" font-family="Times,serif" font-size="14.00" style="">PurchaseOrderID (FK)</text>
+<polygon fill="none" stroke="black" points="181,-634 181,-660 319,-660 319,-634 181,-634" style=""/>
+<text text-anchor="start" x="186" y="-642.4" font-family="Times,serif" font-size="14.00" style="">int, not null</text>
+<polygon fill="none" stroke="black" points="9,-608 9,-634 181,-634 181,-608 9,-608" style=""/>
+<text text-anchor="start" x="14" y="-616.4" font-family="Times,serif" font-size="14.00" style="">ProductID (FK)</text>
+<polygon fill="none" stroke="black" points="181,-608 181,-634 319,-634 319,-608 181,-608" style=""/>
+<text text-anchor="start" x="186" y="-616.4" font-family="Times,serif" font-size="14.00" style="">int, not null</text>
+<polygon fill="none" stroke="black" points="9,-582 9,-608 181,-608 181,-582 9,-582" style=""/>
+<text text-anchor="start" x="14" y="-590.4" font-family="Times,serif" font-size="14.00" style="">Quantity</text>
+<polygon fill="none" stroke="black" points="181,-582 181,-608 319,-608 319,-582 181,-582" style=""/>
+<text text-anchor="start" x="186" y="-590.4" font-family="Times,serif" font-size="14.00" style="">int, not null</text>
+<polygon fill="none" stroke="black" points="9,-556 9,-582 181,-582 181,-556 9,-556" style=""/>
+<text text-anchor="start" x="14" y="-564.4" font-family="Times,serif" font-size="14.00" style="">UnitPrice</text>
+<polygon fill="none" stroke="black" points="181,-556 181,-582 319,-582 319,-556 181,-556" style=""/>
+<text text-anchor="start" x="185.85" y="-564.4" font-family="Times,serif" font-size="14.00" style="">decimal(18,2), not null</text>
+<polygon fill="none" stroke="black" points="9,-530 9,-556 181,-556 181,-530 9,-530" style=""/>
+<text text-anchor="start" x="14" y="-538.4" font-family="Times,serif" font-size="14.00" style="">Total</text>
+<polygon fill="none" stroke="black" points="181,-530 181,-556 319,-556 319,-530 181,-530" style=""/>
+<text text-anchor="start" x="185.85" y="-538.4" font-family="Times,serif" font-size="14.00" style="">decimal(18,2), not null</text>
+<polygon fill="none" stroke="black" points="8,-529 8,-713 320,-713 320,-529 8,-529" style=""/>
+</g>
+<!-- PurchaseOrderDetails&#45;&gt;Products -->
+<g id="edge5" class="edge" data-name="PurchaseOrderDetails-&gt;Products">
+
+<path fill="none" stroke="black" d="M317.1,-525.19C334.14,-510.67 350.25,-494.86 363.9,-478 376.42,-462.53 370.23,-453.12 381.9,-437 384.65,-433.2 387.53,-429.43 390.51,-425.69" style=""/>
+<polygon fill="black" stroke="black" points="393.02,-428.15 396.69,-418.22 387.62,-423.69 393.02,-428.15" style=""/>
+<text text-anchor="middle" x="354.95" y="-501.2" font-family="Times,serif" font-size="14.00" style="">FK</text>
+</g>
+<!-- PurchaseOrders -->
+<g id="node5" class="node" pointer-events="visible" data-name="PurchaseOrders">
+
+<polygon fill="lightgrey" stroke="none" points="390.9,-739 390.9,-765 666.9,-765 666.9,-739 390.9,-739" style=""/>
+<polygon fill="none" stroke="black" points="390.9,-739 390.9,-765 666.9,-765 666.9,-739 390.9,-739" style=""/>
+<text text-anchor="start" x="479.91" y="-748.4" font-family="Times,serif" font-weight="bold" font-size="14.00" style="">PurchaseOrders</text>
+<polygon fill="none" stroke="black" points="390.9,-713 390.9,-739 528.9,-739 528.9,-713 390.9,-713" style=""/>
+<text text-anchor="start" x="395.56" y="-721.4" font-family="Times,serif" font-size="14.00" style="">PurchaseOrderID (PK)</text>
+<polygon fill="none" stroke="black" points="528.9,-713 528.9,-739 666.9,-739 666.9,-713 528.9,-713" style=""/>
+<text text-anchor="start" x="533.9" y="-721.4" font-family="Times,serif" font-size="14.00" style="">int, not null</text>
+<polygon fill="none" stroke="black" points="390.9,-687 390.9,-713 528.9,-713 528.9,-687 390.9,-687" style=""/>
+<text text-anchor="start" x="395.9" y="-695.4" font-family="Times,serif" font-size="14.00" style="">SupplierID (FK)</text>
+<polygon fill="none" stroke="black" points="528.9,-687 528.9,-713 666.9,-713 666.9,-687 528.9,-687" style=""/>
+<text text-anchor="start" x="533.9" y="-695.4" font-family="Times,serif" font-size="14.00" style="">int, not null</text>
+<polygon fill="none" stroke="black" points="390.9,-661 390.9,-687 528.9,-687 528.9,-661 390.9,-661" style=""/>
+<text text-anchor="start" x="395.9" y="-669.4" font-family="Times,serif" font-size="14.00" style="">OrderDate</text>
+<polygon fill="none" stroke="black" points="528.9,-661 528.9,-687 666.9,-687 666.9,-661 528.9,-661" style=""/>
+<text text-anchor="start" x="533.9" y="-669.4" font-family="Times,serif" font-size="14.00" style="">datetime2(7), not null</text>
+<polygon fill="none" stroke="black" points="390.9,-635 390.9,-661 528.9,-661 528.9,-635 390.9,-635" style=""/>
+<text text-anchor="start" x="395.9" y="-643.4" font-family="Times,serif" font-size="14.00" style="">TotalAmount</text>
+<polygon fill="none" stroke="black" points="528.9,-635 528.9,-661 666.9,-661 666.9,-635 528.9,-635" style=""/>
+<text text-anchor="start" x="533.74" y="-643.4" font-family="Times,serif" font-size="14.00" style="">decimal(18,2), not null</text>
+<polygon fill="none" stroke="black" points="390.9,-609 390.9,-635 528.9,-635 528.9,-609 390.9,-609" style=""/>
+<text text-anchor="start" x="395.9" y="-617.4" font-family="Times,serif" font-size="14.00" style="">Status</text>
+<polygon fill="none" stroke="black" points="528.9,-609 528.9,-635 666.9,-635 666.9,-609 528.9,-609" style=""/>
+<text text-anchor="start" x="533.9" y="-617.4" font-family="Times,serif" font-size="14.00" style="">nvarchar(50), not null</text>
+<polygon fill="none" stroke="black" points="390.9,-583 390.9,-609 528.9,-609 528.9,-583 390.9,-583" style=""/>
+<text text-anchor="start" x="395.9" y="-591.4" font-family="Times,serif" font-size="14.00" style="">ExpectedDeliveryDate</text>
+<polygon fill="none" stroke="black" points="528.9,-583 528.9,-609 666.9,-609 666.9,-583 528.9,-583" style=""/>
+<text text-anchor="start" x="533.9" y="-591.4" font-family="Times,serif" font-size="14.00" style="">datetime2(7), not null</text>
+<polygon fill="none" stroke="black" points="389.9,-582 389.9,-766 667.9,-766 667.9,-582 389.9,-582" style=""/>
+</g>
+<!-- PurchaseOrderDetails&#45;&gt;PurchaseOrders -->
+<g id="edge4" class="edge" data-name="PurchaseOrderDetails-&gt;PurchaseOrders">
+
+<path fill="none" stroke="black" d="M327.87,-644.79C342.14,-646.87 356.57,-648.98 370.8,-651.06" style=""/>
+<polygon fill="black" stroke="black" points="370.26,-654.51 380.66,-652.5 371.27,-647.59 370.26,-654.51" style=""/>
+<text text-anchor="middle" x="354.95" y="-653.2" font-family="Times,serif" font-size="14.00" style="">FK</text>
+</g>
+<!-- Suppliers -->
+<g id="node9" class="node" pointer-events="visible" data-name="Suppliers">
+
+<polygon fill="lightgrey" stroke="none" points="741.29,-778 741.29,-804 982.29,-804 982.29,-778 741.29,-778" style=""/>
+<polygon fill="none" stroke="black" points="741.29,-778 741.29,-804 982.29,-804 982.29,-778 741.29,-778" style=""/>
+<text text-anchor="start" x="833.39" y="-787.4" font-family="Times,serif" font-weight="bold" font-size="14.00" style="">Suppliers</text>
+<polygon fill="none" stroke="black" points="741.29,-752 741.29,-778 843.29,-778 843.29,-752 741.29,-752" style=""/>
+<text text-anchor="start" x="745.83" y="-760.4" font-family="Times,serif" font-size="14.00" style="">SupplierID (PK)</text>
+<polygon fill="none" stroke="black" points="843.29,-752 843.29,-778 982.29,-778 982.29,-752 843.29,-752" style=""/>
+<text text-anchor="start" x="848.29" y="-760.4" font-family="Times,serif" font-size="14.00" style="">int, not null</text>
+<polygon fill="none" stroke="black" points="741.29,-726 741.29,-752 843.29,-752 843.29,-726 741.29,-726" style=""/>
+<text text-anchor="start" x="746.29" y="-734.4" font-family="Times,serif" font-size="14.00" style="">SupplierName</text>
+<polygon fill="none" stroke="black" points="843.29,-726 843.29,-752 982.29,-752 982.29,-726 843.29,-726" style=""/>
+<text text-anchor="start" x="848.06" y="-734.4" font-family="Times,serif" font-size="14.00" style="">nvarchar(100), not null</text>
+<polygon fill="none" stroke="black" points="741.29,-700 741.29,-726 843.29,-726 843.29,-700 741.29,-700" style=""/>
+<text text-anchor="start" x="746.29" y="-708.4" font-family="Times,serif" font-size="14.00" style="">ContactName</text>
+<polygon fill="none" stroke="black" points="843.29,-700 843.29,-726 982.29,-726 982.29,-700 843.29,-700" style=""/>
+<text text-anchor="start" x="848.06" y="-708.4" font-family="Times,serif" font-size="14.00" style="">nvarchar(100), not null</text>
+<polygon fill="none" stroke="black" points="741.29,-674 741.29,-700 843.29,-700 843.29,-674 741.29,-674" style=""/>
+<text text-anchor="start" x="746.29" y="-682.4" font-family="Times,serif" font-size="14.00" style="">Address</text>
+<polygon fill="none" stroke="black" points="843.29,-674 843.29,-700 982.29,-700 982.29,-674 843.29,-674" style=""/>
+<text text-anchor="start" x="848.06" y="-682.4" font-family="Times,serif" font-size="14.00" style="">nvarchar(200), not null</text>
+<polygon fill="none" stroke="black" points="741.29,-648 741.29,-674 843.29,-674 843.29,-648 741.29,-648" style=""/>
+<text text-anchor="start" x="746.29" y="-656.4" font-family="Times,serif" font-size="14.00" style="">City</text>
+<polygon fill="none" stroke="black" points="843.29,-648 843.29,-674 982.29,-674 982.29,-648 843.29,-648" style=""/>
+<text text-anchor="start" x="848.06" y="-656.4" font-family="Times,serif" font-size="14.00" style="">nvarchar(100), not null</text>
+<polygon fill="none" stroke="black" points="741.29,-622 741.29,-648 843.29,-648 843.29,-622 741.29,-622" style=""/>
+<text text-anchor="start" x="746.29" y="-630.4" font-family="Times,serif" font-size="14.00" style="">PostalCode</text>
+<polygon fill="none" stroke="black" points="843.29,-622 843.29,-648 982.29,-648 982.29,-622 843.29,-622" style=""/>
+<text text-anchor="start" x="848.29" y="-630.4" font-family="Times,serif" font-size="14.00" style="">nvarchar(20), not null</text>
+<polygon fill="none" stroke="black" points="741.29,-596 741.29,-622 843.29,-622 843.29,-596 741.29,-596" style=""/>
+<text text-anchor="start" x="746.29" y="-604.4" font-family="Times,serif" font-size="14.00" style="">Country</text>
+<polygon fill="none" stroke="black" points="843.29,-596 843.29,-622 982.29,-622 982.29,-596 843.29,-596" style=""/>
+<text text-anchor="start" x="848.29" y="-604.4" font-family="Times,serif" font-size="14.00" style="">nvarchar(50), not null</text>
+<polygon fill="none" stroke="black" points="741.29,-570 741.29,-596 843.29,-596 843.29,-570 741.29,-570" style=""/>
+<text text-anchor="start" x="746.29" y="-578.4" font-family="Times,serif" font-size="14.00" style="">Phone</text>
+<polygon fill="none" stroke="black" points="843.29,-570 843.29,-596 982.29,-596 982.29,-570 843.29,-570" style=""/>
+<text text-anchor="start" x="848.29" y="-578.4" font-family="Times,serif" font-size="14.00" style="">nvarchar(20), not null</text>
+<polygon fill="none" stroke="black" points="741.29,-544 741.29,-570 843.29,-570 843.29,-544 741.29,-544" style=""/>
+<text text-anchor="start" x="746.29" y="-552.4" font-family="Times,serif" font-size="14.00" style="">Email</text>
+<polygon fill="none" stroke="black" points="843.29,-544 843.29,-570 982.29,-570 982.29,-544 843.29,-544" style=""/>
+<text text-anchor="start" x="848.06" y="-552.4" font-family="Times,serif" font-size="14.00" style="">nvarchar(100), not null</text>
+<polygon fill="none" stroke="black" points="739.79,-543 739.79,-805 982.79,-805 982.79,-543 739.79,-543" style=""/>
+</g>
+<!-- PurchaseOrders&#45;&gt;Suppliers -->
+<g id="edge6" class="edge" data-name="PurchaseOrders-&gt;Suppliers">
+
+<path fill="none" stroke="black" d="M675.77,-674C690.65,-674 705.74,-674 720.55,-674" style=""/>
+<polygon fill="black" stroke="black" points="720.3,-677.5 730.3,-674 720.3,-670.5 720.3,-677.5" style=""/>
+<text text-anchor="middle" x="702.84" y="-678.2" font-family="Times,serif" font-size="14.00" style="">FK</text>
+</g>
+<!-- ShipmentDetails -->
+<g id="node6" class="node" pointer-events="visible" data-name="ShipmentDetails">
+
+<polygon fill="lightgrey" stroke="none" points="24,-269 24,-295 305,-295 305,-269 24,-269" style=""/>
+<polygon fill="none" stroke="black" points="24,-269 24,-295 305,-295 305,-269 24,-269" style=""/>
+<text text-anchor="start" x="115.11" y="-278.4" font-family="Times,serif" font-weight="bold" font-size="14.00" style="">ShipmentDetails</text>
+<polygon fill="none" stroke="black" points="24,-243 24,-269 167,-269 167,-243 24,-243" style=""/>
+<text text-anchor="start" x="28.82" y="-251.4" font-family="Times,serif" font-size="14.00" style="">ShipmentDetailID (PK)</text>
+<polygon fill="none" stroke="black" points="167,-243 167,-269 305,-269 305,-243 167,-243" style=""/>
+<text text-anchor="start" x="172" y="-251.4" font-family="Times,serif" font-size="14.00" style="">int, not null</text>
+<polygon fill="none" stroke="black" points="24,-217 24,-243 167,-243 167,-217 24,-217" style=""/>
+<text text-anchor="start" x="29" y="-225.4" font-family="Times,serif" font-size="14.00" style="">ShipmentID (FK)</text>
+<polygon fill="none" stroke="black" points="167,-217 167,-243 305,-243 305,-217 167,-217" style=""/>
+<text text-anchor="start" x="172" y="-225.4" font-family="Times,serif" font-size="14.00" style="">int, not null</text>
+<polygon fill="none" stroke="black" points="24,-191 24,-217 167,-217 167,-191 24,-191" style=""/>
+<text text-anchor="start" x="29" y="-199.4" font-family="Times,serif" font-size="14.00" style="">ProductID (FK)</text>
+<polygon fill="none" stroke="black" points="167,-191 167,-217 305,-217 305,-191 167,-191" style=""/>
+<text text-anchor="start" x="172" y="-199.4" font-family="Times,serif" font-size="14.00" style="">int, not null</text>
+<polygon fill="none" stroke="black" points="24,-165 24,-191 167,-191 167,-165 24,-165" style=""/>
+<text text-anchor="start" x="29" y="-173.4" font-family="Times,serif" font-size="14.00" style="">Quantity</text>
+<polygon fill="none" stroke="black" points="167,-165 167,-191 305,-191 305,-165 167,-165" style=""/>
+<text text-anchor="start" x="172" y="-173.4" font-family="Times,serif" font-size="14.00" style="">int, not null</text>
+<polygon fill="none" stroke="black" points="24,-139 24,-165 167,-165 167,-139 24,-139" style=""/>
+<text text-anchor="start" x="29" y="-147.4" font-family="Times,serif" font-size="14.00" style="">UnitPrice</text>
+<polygon fill="none" stroke="black" points="167,-139 167,-165 305,-165 305,-139 167,-139" style=""/>
+<text text-anchor="start" x="171.85" y="-147.4" font-family="Times,serif" font-size="14.00" style="">decimal(18,2), not null</text>
+<polygon fill="none" stroke="black" points="24,-113 24,-139 167,-139 167,-113 24,-113" style=""/>
+<text text-anchor="start" x="29" y="-121.4" font-family="Times,serif" font-size="14.00" style="">Total</text>
+<polygon fill="none" stroke="black" points="167,-113 167,-139 305,-139 305,-113 167,-113" style=""/>
+<text text-anchor="start" x="171.85" y="-121.4" font-family="Times,serif" font-size="14.00" style="">decimal(18,2), not null</text>
+<polygon fill="none" stroke="black" points="22.5,-112 22.5,-296 305.5,-296 305.5,-112 22.5,-112" style=""/>
+</g>
+<!-- ShipmentDetails&#45;&gt;Products -->
+<g id="edge8" class="edge" data-name="ShipmentDetails-&gt;Products">
+
+<path fill="none" stroke="black" d="M313.39,-245.71C337.59,-252.51 362.61,-259.54 386.63,-266.3" style=""/>
+<polygon fill="black" stroke="black" points="385.57,-269.63 396.14,-268.97 387.46,-262.89 385.57,-269.63" style=""/>
+<text text-anchor="middle" x="354.95" y="-263.2" font-family="Times,serif" font-size="14.00" style="">FK</text>
+</g>
+<!-- Shipments -->
+<g id="node7" class="node" pointer-events="visible" data-name="Shipments">
+
+<polygon fill="lightgrey" stroke="none" points="404.9,-135 404.9,-161 652.9,-161 652.9,-135 404.9,-135" style=""/>
+<polygon fill="none" stroke="black" points="404.9,-135 404.9,-161 652.9,-161 652.9,-135 404.9,-135" style=""/>
+<text text-anchor="start" x="497.39" y="-144.4" font-family="Times,serif" font-weight="bold" font-size="14.00" style="">Shipments</text>
+<polygon fill="none" stroke="black" points="404.9,-109 404.9,-135 513.9,-135 513.9,-109 404.9,-109" style=""/>
+<text text-anchor="start" x="409.82" y="-117.4" font-family="Times,serif" font-size="14.00" style="">ShipmentID (PK)</text>
+<polygon fill="none" stroke="black" points="513.9,-109 513.9,-135 652.9,-135 652.9,-109 513.9,-109" style=""/>
+<text text-anchor="start" x="518.9" y="-117.4" font-family="Times,serif" font-size="14.00" style="">int, not null</text>
+<polygon fill="none" stroke="black" points="404.9,-83 404.9,-109 513.9,-109 513.9,-83 404.9,-83" style=""/>
+<text text-anchor="start" x="409.9" y="-91.4" font-family="Times,serif" font-size="14.00" style="">ShipmentDate</text>
+<polygon fill="none" stroke="black" points="513.9,-83 513.9,-109 652.9,-109 652.9,-83 513.9,-83" style=""/>
+<text text-anchor="start" x="518.9" y="-91.4" font-family="Times,serif" font-size="14.00" style="">datetime2(7), not null</text>
+<polygon fill="none" stroke="black" points="404.9,-57 404.9,-83 513.9,-83 513.9,-57 404.9,-57" style=""/>
+<text text-anchor="start" x="409.9" y="-65.4" font-family="Times,serif" font-size="14.00" style="">Carrier</text>
+<polygon fill="none" stroke="black" points="513.9,-57 513.9,-83 652.9,-83 652.9,-57 513.9,-57" style=""/>
+<text text-anchor="start" x="518.67" y="-65.4" font-family="Times,serif" font-size="14.00" style="">nvarchar(100), not null</text>
+<polygon fill="none" stroke="black" points="404.9,-31 404.9,-57 513.9,-57 513.9,-31 404.9,-31" style=""/>
+<text text-anchor="start" x="409.9" y="-39.4" font-family="Times,serif" font-size="14.00" style="">TrackingNumber</text>
+<polygon fill="none" stroke="black" points="513.9,-31 513.9,-57 652.9,-57 652.9,-31 513.9,-31" style=""/>
+<text text-anchor="start" x="518.9" y="-39.4" font-family="Times,serif" font-size="14.00" style="">nvarchar(50), not null</text>
+<polygon fill="none" stroke="black" points="404.9,-5 404.9,-31 513.9,-31 513.9,-5 404.9,-5" style=""/>
+<text text-anchor="start" x="409.9" y="-13.4" font-family="Times,serif" font-size="14.00" style="">Status</text>
+<polygon fill="none" stroke="black" points="513.9,-5 513.9,-31 652.9,-31 652.9,-5 513.9,-5" style=""/>
+<text text-anchor="start" x="518.9" y="-13.4" font-family="Times,serif" font-size="14.00" style="">nvarchar(50), not null</text>
+<polygon fill="none" stroke="black" points="403.9,-4 403.9,-162 653.9,-162 653.9,-4 403.9,-4" style=""/>
+</g>
+<!-- ShipmentDetails&#45;&gt;Shipments -->
+<g id="edge7" class="edge" data-name="ShipmentDetails-&gt;Shipments">
+
+<path fill="none" stroke="black" d="M313.39,-154.52C337.17,-146.59 361.73,-138.4 385.37,-130.52" style=""/>
+<polygon fill="black" stroke="black" points="386.34,-133.89 394.72,-127.4 384.13,-127.25 386.34,-133.89" style=""/>
+<text text-anchor="middle" x="354.95" y="-148.2" font-family="Times,serif" font-size="14.00" style="">FK</text>
+</g>
+</g>
+</svg>

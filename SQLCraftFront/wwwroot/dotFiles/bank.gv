@@ -1,0 +1,138 @@
+digraph G {
+    // General graph settings
+    rankdir=LR;
+    node [shape=plaintext];
+
+    // Customers table
+    Customers [label=<
+        <table border="1" cellborder="1" cellspacing="0" cellpadding="4">
+            <tr><td colspan="2" bgcolor="lightgrey"><b>Customers</b></td></tr>
+            <tr><td align="left">CustomerID (PK)</td><td align="left">int, not null</td></tr>
+            <tr><td align="left">FirstName</td><td align="left">nvarchar(100), not null</td></tr>
+            <tr><td align="left">LastName</td><td align="left">nvarchar(100), not null</td></tr>
+            <tr><td align="left">DateOfBirth</td><td align="left">date, not null</td></tr>
+            <tr><td align="left">Email</td><td align="left">nvarchar(100), not null</td></tr>
+            <tr><td align="left">Phone</td><td align="left">nvarchar(20), not null</td></tr>
+            <tr><td align="left">Address</td><td align="left">nvarchar(200), not null</td></tr>
+            <tr><td align="left">City</td><td align="left">nvarchar(100), not null</td></tr>
+            <tr><td align="left">PostalCode</td><td align="left">nvarchar(20), not null</td></tr>
+            <tr><td align="left">Country</td><td align="left">nvarchar(50), not null</td></tr>
+        </table>
+    >];
+
+    // Accounts table
+    Accounts [label=<
+        <table border="1" cellborder="1" cellspacing="0" cellpadding="4">
+            <tr><td colspan="2" bgcolor="lightgrey"><b>Accounts</b></td></tr>
+            <tr><td align="left">AccountID (PK)</td><td align="left">int, not null</td></tr>
+            <tr><td align="left">AccountNumber</td><td align="left">nvarchar(20), not null</td></tr>
+            <tr><td align="left">CustomerID (FK)</td><td align="left">int, not null</td></tr>
+            <tr><td align="left">AccountType</td><td align="left">nvarchar(50), not null</td></tr>
+            <tr><td align="left">Balance</td><td align="left">decimal(18,2), not null</td></tr>
+            <tr><td align="left">DateOpened</td><td align="left">datetime2(7), not null</td></tr>
+            <tr><td align="left">BranchID (FK)</td><td align="left">int, not null</td></tr>
+        </table>
+    >];
+
+    // Transactions table
+    Transactions [label=<
+        <table border="1" cellborder="1" cellspacing="0" cellpadding="4">
+            <tr><td colspan="2" bgcolor="lightgrey"><b>Transactions</b></td></tr>
+            <tr><td align="left">TransactionID (PK)</td><td align="left">int, not null</td></tr>
+            <tr><td align="left">AccountID (FK)</td><td align="left">int, not null</td></tr>
+            <tr><td align="left">TransactionDate</td><td align="left">datetime2(7), not null</td></tr>
+            <tr><td align="left">TransactionType</td><td align="left">nvarchar(50), not null</td></tr>
+            <tr><td align="left">Amount</td><td align="left">decimal(18,2), not null</td></tr>
+            <tr><td align="left">Description</td><td align="left">nvarchar(200), not null</td></tr>
+        </table>
+    >];
+
+    // Branches table
+    Branches [label=<
+        <table border="1" cellborder="1" cellspacing="0" cellpadding="4">
+            <tr><td colspan="2" bgcolor="lightgrey"><b>Branches</b></td></tr>
+            <tr><td align="left">BranchID (PK)</td><td align="left">int, not null</td></tr>
+            <tr><td align="left">BranchName</td><td align="left">nvarchar(100), not null</td></tr>
+            <tr><td align="left">Address</td><td align="left">nvarchar(200), not null</td></tr>
+            <tr><td align="left">City</td><td align="left">nvarchar(100), not null</td></tr>
+            <tr><td align="left">PostalCode</td><td align="left">nvarchar(20), not null</td></tr>
+            <tr><td align="left">Country</td><td align="left">nvarchar(50), not null</td></tr>
+        </table>
+    >];
+
+    // Loans table
+    Loans [label=<
+        <table border="1" cellborder="1" cellspacing="0" cellpadding="4">
+            <tr><td colspan="2" bgcolor="lightgrey"><b>Loans</b></td></tr>
+            <tr><td align="left">LoanID (PK)</td><td align="left">int, not null</td></tr>
+            <tr><td align="left">CustomerID (FK)</td><td align="left">int, not null</td></tr>
+            <tr><td align="left">LoanType</td><td align="left">nvarchar(50), not null</td></tr>
+            <tr><td align="left">Amount</td><td align="left">decimal(18,2), not null</td></tr>
+            <tr><td align="left">InterestRate</td><td align="left">decimal(5,2), not null</td></tr>
+            <tr><td align="left">StartDate</td><td align="left">datetime2(7), not null</td></tr>
+            <tr><td align="left">EndDate</td><td align="left">datetime2(7), not null</td></tr>
+        </table>
+    >];
+
+    // LoanPayments table
+    LoanPayments [label=<
+        <table border="1" cellborder="1" cellspacing="0" cellpadding="4">
+            <tr><td colspan="2" bgcolor="lightgrey"><b>LoanPayments</b></td></tr>
+            <tr><td align="left">PaymentID (PK)</td><td align="left">int, not null</td></tr>
+            <tr><td align="left">LoanID (FK)</td><td align="left">int, not null</td></tr>
+            <tr><td align="left">PaymentDate</td><td align="left">datetime2(7), not null</td></tr>
+            <tr><td align="left">Amount</td><td align="left">decimal(18,2), not null</td></tr>
+            <tr><td align="left">InterestPaid</td><td align="left">decimal(18,2), not null</td></tr>
+            <tr><td align="left">PrincipalPaid</td><td align="left">decimal(18,2), not null</td></tr>
+        </table>
+    >];
+
+    // Employees table
+    Employees [label=<
+        <table border="1" cellborder="1" cellspacing="0" cellpadding="4">
+            <tr><td colspan="2" bgcolor="lightgrey"><b>Employees</b></td></tr>
+            <tr><td align="left">EmployeeID (PK)</td><td align="left">int, not null</td></tr>
+            <tr><td align="left">FirstName</td><td align="left">nvarchar(100), not null</td></tr>
+            <tr><td align="left">LastName</td><td align="left">nvarchar(100), not null</td></tr>
+            <tr><td align="left">Position</td><td align="left">nvarchar(50), not null</td></tr>
+            <tr><td align="left">Salary</td><td align="left">decimal(18,2), not null</td></tr>
+            <tr><td align="left">HireDate</td><td align="left">datetime2(7), not null</td></tr>
+            <tr><td align="left">BranchID (FK)</td><td align="left">int, not null</td></tr>
+        </table>
+    >];
+
+    // Cards table
+    Cards [label=<
+        <table border="1" cellborder="1" cellspacing="0" cellpadding="4">
+            <tr><td colspan="2" bgcolor="lightgrey"><b>Cards</b></td></tr>
+            <tr><td align="left">CardID (PK)</td><td align="left">int, not null</td></tr>
+            <tr><td align="left">AccountID (FK)</td><td align="left">int, not null</td></tr>
+            <tr><td align="left">CardNumber</td><td align="left">nvarchar(20), not null</td></tr>
+            <tr><td align="left">CardType</td><td align="left">nvarchar(50), not null</td></tr>
+            <tr><td align="left">ExpirationDate</td><td align="left">date, not null</td></tr>
+            <tr><td align="left">CVV</td><td align="left">nvarchar(4), not null</td></tr>
+        </table>
+    >];
+
+    // CreditScores table
+    CreditScores [label=<
+        <table border="1" cellborder="1" cellspacing="0" cellpadding="4">
+            <tr><td colspan="2" bgcolor="lightgrey"><b>CreditScores</b></td></tr>
+            <tr><td align="left">CreditScoreID (PK)</td><td align="left">int, not null</td></tr>
+            <tr><td align="left">CustomerID (FK)</td><td align="left">int, not null</td></tr>
+            <tr><td align="left">Score</td><td align="left">int, not null</td></tr>
+            <tr><td align="left">DateChecked</td><td align="left">datetime2(7), not null</td></tr>
+        </table>
+    >];
+
+    // Defining relationships
+    Accounts -> Customers [label="FK"];
+    Accounts -> Branches [label="FK"];
+    Transactions -> Accounts [label="FK"];
+    Loans -> Customers [label="FK"];
+    LoanPayments -> Loans [label="FK"];
+    Employees -> Branches [label="FK"];
+    Cards -> Accounts [label="FK"];
+    CreditScores -> Customers [label="FK"];
+}
+

@@ -1,0 +1,371 @@
+<?xml version="1.0" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="931pt" height="856pt" viewBox="0.00 0.00 930.79 856.00">
+<g id="graph0" class="graph" transform="translate(4,852) scale(1)" data-name="G">
+
+<polygon fill="white" stroke="none" points="-4,4 -4,-852 926.79,-852 926.79,4 -4,4" style=""/>
+<!-- Customers -->
+<g id="node1" class="node" pointer-events="visible" data-name="Customers">
+
+<polygon fill="lightgrey" stroke="none" points="665.79,-384 665.79,-410 913.79,-410 913.79,-384 665.79,-384" style=""/>
+<polygon fill="none" stroke="black" points="665.79,-384 665.79,-410 913.79,-410 913.79,-384 665.79,-384" style=""/>
+<text text-anchor="start" x="757.52" y="-393.4" font-family="Times,serif" font-weight="bold" font-size="14.00" style="">Customers</text>
+<polygon fill="none" stroke="black" points="665.79,-358 665.79,-384 774.79,-384 774.79,-358 665.79,-358" style=""/>
+<text text-anchor="start" x="670.33" y="-366.4" font-family="Times,serif" font-size="14.00" style="">CustomerID (PK)</text>
+<polygon fill="none" stroke="black" points="774.79,-358 774.79,-384 913.79,-384 913.79,-358 774.79,-358" style=""/>
+<text text-anchor="start" x="779.79" y="-366.4" font-family="Times,serif" font-size="14.00" style="">int, not null</text>
+<polygon fill="none" stroke="black" points="665.79,-332 665.79,-358 774.79,-358 774.79,-332 665.79,-332" style=""/>
+<text text-anchor="start" x="670.79" y="-340.4" font-family="Times,serif" font-size="14.00" style="">FirstName</text>
+<polygon fill="none" stroke="black" points="774.79,-332 774.79,-358 913.79,-358 913.79,-332 774.79,-332" style=""/>
+<text text-anchor="start" x="779.56" y="-340.4" font-family="Times,serif" font-size="14.00" style="">nvarchar(100), not null</text>
+<polygon fill="none" stroke="black" points="665.79,-306 665.79,-332 774.79,-332 774.79,-306 665.79,-306" style=""/>
+<text text-anchor="start" x="670.79" y="-314.4" font-family="Times,serif" font-size="14.00" style="">LastName</text>
+<polygon fill="none" stroke="black" points="774.79,-306 774.79,-332 913.79,-332 913.79,-306 774.79,-306" style=""/>
+<text text-anchor="start" x="779.56" y="-314.4" font-family="Times,serif" font-size="14.00" style="">nvarchar(100), not null</text>
+<polygon fill="none" stroke="black" points="665.79,-280 665.79,-306 774.79,-306 774.79,-280 665.79,-280" style=""/>
+<text text-anchor="start" x="670.79" y="-288.4" font-family="Times,serif" font-size="14.00" style="">DateOfBirth</text>
+<polygon fill="none" stroke="black" points="774.79,-280 774.79,-306 913.79,-306 913.79,-280 774.79,-280" style=""/>
+<text text-anchor="start" x="779.79" y="-288.4" font-family="Times,serif" font-size="14.00" style="">date, not null</text>
+<polygon fill="none" stroke="black" points="665.79,-254 665.79,-280 774.79,-280 774.79,-254 665.79,-254" style=""/>
+<text text-anchor="start" x="670.79" y="-262.4" font-family="Times,serif" font-size="14.00" style="">Email</text>
+<polygon fill="none" stroke="black" points="774.79,-254 774.79,-280 913.79,-280 913.79,-254 774.79,-254" style=""/>
+<text text-anchor="start" x="779.56" y="-262.4" font-family="Times,serif" font-size="14.00" style="">nvarchar(100), not null</text>
+<polygon fill="none" stroke="black" points="665.79,-228 665.79,-254 774.79,-254 774.79,-228 665.79,-228" style=""/>
+<text text-anchor="start" x="670.79" y="-236.4" font-family="Times,serif" font-size="14.00" style="">Phone</text>
+<polygon fill="none" stroke="black" points="774.79,-228 774.79,-254 913.79,-254 913.79,-228 774.79,-228" style=""/>
+<text text-anchor="start" x="779.79" y="-236.4" font-family="Times,serif" font-size="14.00" style="">nvarchar(20), not null</text>
+<polygon fill="none" stroke="black" points="665.79,-202 665.79,-228 774.79,-228 774.79,-202 665.79,-202" style=""/>
+<text text-anchor="start" x="670.79" y="-210.4" font-family="Times,serif" font-size="14.00" style="">Address</text>
+<polygon fill="none" stroke="black" points="774.79,-202 774.79,-228 913.79,-228 913.79,-202 774.79,-202" style=""/>
+<text text-anchor="start" x="779.56" y="-210.4" font-family="Times,serif" font-size="14.00" style="">nvarchar(200), not null</text>
+<polygon fill="none" stroke="black" points="665.79,-176 665.79,-202 774.79,-202 774.79,-176 665.79,-176" style=""/>
+<text text-anchor="start" x="670.79" y="-184.4" font-family="Times,serif" font-size="14.00" style="">City</text>
+<polygon fill="none" stroke="black" points="774.79,-176 774.79,-202 913.79,-202 913.79,-176 774.79,-176" style=""/>
+<text text-anchor="start" x="779.56" y="-184.4" font-family="Times,serif" font-size="14.00" style="">nvarchar(100), not null</text>
+<polygon fill="none" stroke="black" points="665.79,-150 665.79,-176 774.79,-176 774.79,-150 665.79,-150" style=""/>
+<text text-anchor="start" x="670.79" y="-158.4" font-family="Times,serif" font-size="14.00" style="">PostalCode</text>
+<polygon fill="none" stroke="black" points="774.79,-150 774.79,-176 913.79,-176 913.79,-150 774.79,-150" style=""/>
+<text text-anchor="start" x="779.79" y="-158.4" font-family="Times,serif" font-size="14.00" style="">nvarchar(20), not null</text>
+<polygon fill="none" stroke="black" points="665.79,-124 665.79,-150 774.79,-150 774.79,-124 665.79,-124" style=""/>
+<text text-anchor="start" x="670.79" y="-132.4" font-family="Times,serif" font-size="14.00" style="">Country</text>
+<polygon fill="none" stroke="black" points="774.79,-124 774.79,-150 913.79,-150 913.79,-124 774.79,-124" style=""/>
+<text text-anchor="start" x="779.79" y="-132.4" font-family="Times,serif" font-size="14.00" style="">nvarchar(50), not null</text>
+<polygon fill="none" stroke="black" points="664.79,-123 664.79,-411 914.79,-411 914.79,-123 664.79,-123" style=""/>
+</g>
+<!-- Accounts -->
+<g id="node2" class="node" pointer-events="visible" data-name="Accounts">
+
+<polygon fill="lightgrey" stroke="none" points="344.4,-581 344.4,-607 591.4,-607 591.4,-581 344.4,-581" style=""/>
+<polygon fill="none" stroke="black" points="344.4,-581 344.4,-607 591.4,-607 591.4,-581 344.4,-581" style=""/>
+<text text-anchor="start" x="440.29" y="-590.4" font-family="Times,serif" font-weight="bold" font-size="14.00" style="">Accounts</text>
+<polygon fill="none" stroke="black" points="344.4,-555 344.4,-581 453.4,-581 453.4,-555 344.4,-555" style=""/>
+<text text-anchor="start" x="349.4" y="-563.4" font-family="Times,serif" font-size="14.00" style="">AccountID (PK)</text>
+<polygon fill="none" stroke="black" points="453.4,-555 453.4,-581 591.4,-581 591.4,-555 453.4,-555" style=""/>
+<text text-anchor="start" x="458.4" y="-563.4" font-family="Times,serif" font-size="14.00" style="">int, not null</text>
+<polygon fill="none" stroke="black" points="344.4,-529 344.4,-555 453.4,-555 453.4,-529 344.4,-529" style=""/>
+<text text-anchor="start" x="349.4" y="-537.4" font-family="Times,serif" font-size="14.00" style="">AccountNumber</text>
+<polygon fill="none" stroke="black" points="453.4,-529 453.4,-555 591.4,-555 591.4,-529 453.4,-529" style=""/>
+<text text-anchor="start" x="458.4" y="-537.4" font-family="Times,serif" font-size="14.00" style="">nvarchar(20), not null</text>
+<polygon fill="none" stroke="black" points="344.4,-503 344.4,-529 453.4,-529 453.4,-503 344.4,-503" style=""/>
+<text text-anchor="start" x="348.93" y="-511.4" font-family="Times,serif" font-size="14.00" style="">CustomerID (FK)</text>
+<polygon fill="none" stroke="black" points="453.4,-503 453.4,-529 591.4,-529 591.4,-503 453.4,-503" style=""/>
+<text text-anchor="start" x="458.4" y="-511.4" font-family="Times,serif" font-size="14.00" style="">int, not null</text>
+<polygon fill="none" stroke="black" points="344.4,-477 344.4,-503 453.4,-503 453.4,-477 344.4,-477" style=""/>
+<text text-anchor="start" x="349.4" y="-485.4" font-family="Times,serif" font-size="14.00" style="">AccountType</text>
+<polygon fill="none" stroke="black" points="453.4,-477 453.4,-503 591.4,-503 591.4,-477 453.4,-477" style=""/>
+<text text-anchor="start" x="458.4" y="-485.4" font-family="Times,serif" font-size="14.00" style="">nvarchar(50), not null</text>
+<polygon fill="none" stroke="black" points="344.4,-451 344.4,-477 453.4,-477 453.4,-451 344.4,-451" style=""/>
+<text text-anchor="start" x="349.4" y="-459.4" font-family="Times,serif" font-size="14.00" style="">Balance</text>
+<polygon fill="none" stroke="black" points="453.4,-451 453.4,-477 591.4,-477 591.4,-451 453.4,-451" style=""/>
+<text text-anchor="start" x="458.24" y="-459.4" font-family="Times,serif" font-size="14.00" style="">decimal(18,2), not null</text>
+<polygon fill="none" stroke="black" points="344.4,-425 344.4,-451 453.4,-451 453.4,-425 344.4,-425" style=""/>
+<text text-anchor="start" x="349.4" y="-433.4" font-family="Times,serif" font-size="14.00" style="">DateOpened</text>
+<polygon fill="none" stroke="black" points="453.4,-425 453.4,-451 591.4,-451 591.4,-425 453.4,-425" style=""/>
+<text text-anchor="start" x="458.4" y="-433.4" font-family="Times,serif" font-size="14.00" style="">datetime2(7), not null</text>
+<polygon fill="none" stroke="black" points="344.4,-399 344.4,-425 453.4,-425 453.4,-399 344.4,-399" style=""/>
+<text text-anchor="start" x="349.4" y="-407.4" font-family="Times,serif" font-size="14.00" style="">BranchID (FK)</text>
+<polygon fill="none" stroke="black" points="453.4,-399 453.4,-425 591.4,-425 591.4,-399 453.4,-399" style=""/>
+<text text-anchor="start" x="458.4" y="-407.4" font-family="Times,serif" font-size="14.00" style="">int, not null</text>
+<polygon fill="none" stroke="black" points="342.9,-398 342.9,-608 591.9,-608 591.9,-398 342.9,-398" style=""/>
+</g>
+<!-- Accounts&#45;&gt;Customers -->
+<g id="edge1" class="edge" data-name="Accounts-&gt;Customers">
+
+<path fill="none" stroke="black" d="M599.64,-406.33C615.61,-394.57 631.97,-382.51 648.07,-370.66" style=""/>
+<polygon fill="black" stroke="black" points="649.78,-373.74 655.76,-364.99 645.63,-368.1 649.78,-373.74" style=""/>
+<text text-anchor="middle" x="629.84" y="-389.2" font-family="Times,serif" font-size="14.00" style="">FK</text>
+</g>
+<!-- Branches -->
+<g id="node4" class="node" pointer-events="visible" data-name="Branches">
+
+<polygon fill="lightgrey" stroke="none" points="672.79,-716 672.79,-742 906.79,-742 906.79,-716 672.79,-716" style=""/>
+<polygon fill="none" stroke="black" points="672.79,-716 672.79,-742 906.79,-742 906.79,-716 672.79,-716" style=""/>
+<text text-anchor="start" x="761.79" y="-725.4" font-family="Times,serif" font-weight="bold" font-size="14.00" style="">Branches</text>
+<polygon fill="none" stroke="black" points="672.79,-690 672.79,-716 767.79,-716 767.79,-690 672.79,-690" style=""/>
+<text text-anchor="start" x="677.33" y="-698.4" font-family="Times,serif" font-size="14.00" style="">BranchID (PK)</text>
+<polygon fill="none" stroke="black" points="767.79,-690 767.79,-716 906.79,-716 906.79,-690 767.79,-690" style=""/>
+<text text-anchor="start" x="772.79" y="-698.4" font-family="Times,serif" font-size="14.00" style="">int, not null</text>
+<polygon fill="none" stroke="black" points="672.79,-664 672.79,-690 767.79,-690 767.79,-664 672.79,-664" style=""/>
+<text text-anchor="start" x="677.79" y="-672.4" font-family="Times,serif" font-size="14.00" style="">BranchName</text>
+<polygon fill="none" stroke="black" points="767.79,-664 767.79,-690 906.79,-690 906.79,-664 767.79,-664" style=""/>
+<text text-anchor="start" x="772.56" y="-672.4" font-family="Times,serif" font-size="14.00" style="">nvarchar(100), not null</text>
+<polygon fill="none" stroke="black" points="672.79,-638 672.79,-664 767.79,-664 767.79,-638 672.79,-638" style=""/>
+<text text-anchor="start" x="677.79" y="-646.4" font-family="Times,serif" font-size="14.00" style="">Address</text>
+<polygon fill="none" stroke="black" points="767.79,-638 767.79,-664 906.79,-664 906.79,-638 767.79,-638" style=""/>
+<text text-anchor="start" x="772.56" y="-646.4" font-family="Times,serif" font-size="14.00" style="">nvarchar(200), not null</text>
+<polygon fill="none" stroke="black" points="672.79,-612 672.79,-638 767.79,-638 767.79,-612 672.79,-612" style=""/>
+<text text-anchor="start" x="677.79" y="-620.4" font-family="Times,serif" font-size="14.00" style="">City</text>
+<polygon fill="none" stroke="black" points="767.79,-612 767.79,-638 906.79,-638 906.79,-612 767.79,-612" style=""/>
+<text text-anchor="start" x="772.56" y="-620.4" font-family="Times,serif" font-size="14.00" style="">nvarchar(100), not null</text>
+<polygon fill="none" stroke="black" points="672.79,-586 672.79,-612 767.79,-612 767.79,-586 672.79,-586" style=""/>
+<text text-anchor="start" x="677.79" y="-594.4" font-family="Times,serif" font-size="14.00" style="">PostalCode</text>
+<polygon fill="none" stroke="black" points="767.79,-586 767.79,-612 906.79,-612 906.79,-586 767.79,-586" style=""/>
+<text text-anchor="start" x="772.79" y="-594.4" font-family="Times,serif" font-size="14.00" style="">nvarchar(20), not null</text>
+<polygon fill="none" stroke="black" points="672.79,-560 672.79,-586 767.79,-586 767.79,-560 672.79,-560" style=""/>
+<text text-anchor="start" x="677.79" y="-568.4" font-family="Times,serif" font-size="14.00" style="">Country</text>
+<polygon fill="none" stroke="black" points="767.79,-560 767.79,-586 906.79,-586 906.79,-560 767.79,-560" style=""/>
+<text text-anchor="start" x="772.79" y="-568.4" font-family="Times,serif" font-size="14.00" style="">nvarchar(50), not null</text>
+<polygon fill="none" stroke="black" points="671.79,-559 671.79,-743 907.79,-743 907.79,-559 671.79,-559" style=""/>
+</g>
+<!-- Accounts&#45;&gt;Branches -->
+<g id="edge2" class="edge" data-name="Accounts-&gt;Branches">
+
+<path fill="none" stroke="black" d="M599.64,-563.62C617.41,-571.83 635.67,-580.27 653.51,-588.51" style=""/>
+<polygon fill="black" stroke="black" points="652.03,-591.68 662.58,-592.7 654.97,-585.33 652.03,-591.68" style=""/>
+<text text-anchor="middle" x="629.84" y="-585.2" font-family="Times,serif" font-size="14.00" style="">FK</text>
+</g>
+<!-- Transactions -->
+<g id="node3" class="node" pointer-events="visible" data-name="Transactions">
+
+<polygon fill="lightgrey" stroke="none" points="9,-765 9,-791 269,-791 269,-765 9,-765" style=""/>
+<polygon fill="none" stroke="black" points="9,-765 9,-791 269,-791 269,-765 9,-765" style=""/>
+<text text-anchor="start" x="100.11" y="-774.4" font-family="Times,serif" font-weight="bold" font-size="14.00" style="">Transactions</text>
+<polygon fill="none" stroke="black" points="9,-739 9,-765 130,-765 130,-739 9,-739" style=""/>
+<text text-anchor="start" x="13.71" y="-747.4" font-family="Times,serif" font-size="14.00" style="">TransactionID (PK)</text>
+<polygon fill="none" stroke="black" points="130,-739 130,-765 269,-765 269,-739 130,-739" style=""/>
+<text text-anchor="start" x="135" y="-747.4" font-family="Times,serif" font-size="14.00" style="">int, not null</text>
+<polygon fill="none" stroke="black" points="9,-713 9,-739 130,-739 130,-713 9,-713" style=""/>
+<text text-anchor="start" x="14" y="-721.4" font-family="Times,serif" font-size="14.00" style="">AccountID (FK)</text>
+<polygon fill="none" stroke="black" points="130,-713 130,-739 269,-739 269,-713 130,-713" style=""/>
+<text text-anchor="start" x="135" y="-721.4" font-family="Times,serif" font-size="14.00" style="">int, not null</text>
+<polygon fill="none" stroke="black" points="9,-687 9,-713 130,-713 130,-687 9,-687" style=""/>
+<text text-anchor="start" x="14" y="-695.4" font-family="Times,serif" font-size="14.00" style="">TransactionDate</text>
+<polygon fill="none" stroke="black" points="130,-687 130,-713 269,-713 269,-687 130,-687" style=""/>
+<text text-anchor="start" x="135" y="-695.4" font-family="Times,serif" font-size="14.00" style="">datetime2(7), not null</text>
+<polygon fill="none" stroke="black" points="9,-661 9,-687 130,-687 130,-661 9,-661" style=""/>
+<text text-anchor="start" x="14" y="-669.4" font-family="Times,serif" font-size="14.00" style="">TransactionType</text>
+<polygon fill="none" stroke="black" points="130,-661 130,-687 269,-687 269,-661 130,-661" style=""/>
+<text text-anchor="start" x="135" y="-669.4" font-family="Times,serif" font-size="14.00" style="">nvarchar(50), not null</text>
+<polygon fill="none" stroke="black" points="9,-635 9,-661 130,-661 130,-635 9,-635" style=""/>
+<text text-anchor="start" x="14" y="-643.4" font-family="Times,serif" font-size="14.00" style="">Amount</text>
+<polygon fill="none" stroke="black" points="130,-635 130,-661 269,-661 269,-635 130,-635" style=""/>
+<text text-anchor="start" x="135" y="-643.4" font-family="Times,serif" font-size="14.00" style="">decimal(18,2), not null</text>
+<polygon fill="none" stroke="black" points="9,-609 9,-635 130,-635 130,-609 9,-609" style=""/>
+<text text-anchor="start" x="14" y="-617.4" font-family="Times,serif" font-size="14.00" style="">Description</text>
+<polygon fill="none" stroke="black" points="130,-609 130,-635 269,-635 269,-609 130,-609" style=""/>
+<text text-anchor="start" x="134.77" y="-617.4" font-family="Times,serif" font-size="14.00" style="">nvarchar(200), not null</text>
+<polygon fill="none" stroke="black" points="8,-608 8,-792 270,-792 270,-608 8,-608" style=""/>
+</g>
+<!-- Transactions&#45;&gt;Accounts -->
+<g id="edge3" class="edge" data-name="Transactions-&gt;Accounts">
+
+<path fill="none" stroke="black" d="M277.95,-616.74C293.58,-607.3 309.53,-597.68 325.2,-588.22" style=""/>
+<polygon fill="black" stroke="black" points="326.87,-591.3 333.63,-583.13 323.26,-585.31 326.87,-591.3" style=""/>
+<text text-anchor="middle" x="304.95" y="-605.2" font-family="Times,serif" font-size="14.00" style="">FK</text>
+</g>
+<!-- Loans -->
+<g id="node5" class="node" pointer-events="visible" data-name="Loans">
+
+<polygon fill="lightgrey" stroke="none" points="344.4,-345 344.4,-371 591.4,-371 591.4,-345 344.4,-345" style=""/>
+<polygon fill="none" stroke="black" points="344.4,-345 344.4,-371 591.4,-371 591.4,-345 344.4,-345" style=""/>
+<text text-anchor="start" x="449.61" y="-354.4" font-family="Times,serif" font-weight="bold" font-size="14.00" style="">Loans</text>
+<polygon fill="none" stroke="black" points="344.4,-319 344.4,-345 453.4,-345 453.4,-319 344.4,-319" style=""/>
+<text text-anchor="start" x="349.4" y="-327.4" font-family="Times,serif" font-size="14.00" style="">LoanID (PK)</text>
+<polygon fill="none" stroke="black" points="453.4,-319 453.4,-345 591.4,-345 591.4,-319 453.4,-319" style=""/>
+<text text-anchor="start" x="458.4" y="-327.4" font-family="Times,serif" font-size="14.00" style="">int, not null</text>
+<polygon fill="none" stroke="black" points="344.4,-293 344.4,-319 453.4,-319 453.4,-293 344.4,-293" style=""/>
+<text text-anchor="start" x="348.93" y="-301.4" font-family="Times,serif" font-size="14.00" style="">CustomerID (FK)</text>
+<polygon fill="none" stroke="black" points="453.4,-293 453.4,-319 591.4,-319 591.4,-293 453.4,-293" style=""/>
+<text text-anchor="start" x="458.4" y="-301.4" font-family="Times,serif" font-size="14.00" style="">int, not null</text>
+<polygon fill="none" stroke="black" points="344.4,-267 344.4,-293 453.4,-293 453.4,-267 344.4,-267" style=""/>
+<text text-anchor="start" x="349.4" y="-275.4" font-family="Times,serif" font-size="14.00" style="">LoanType</text>
+<polygon fill="none" stroke="black" points="453.4,-267 453.4,-293 591.4,-293 591.4,-267 453.4,-267" style=""/>
+<text text-anchor="start" x="458.4" y="-275.4" font-family="Times,serif" font-size="14.00" style="">nvarchar(50), not null</text>
+<polygon fill="none" stroke="black" points="344.4,-241 344.4,-267 453.4,-267 453.4,-241 344.4,-241" style=""/>
+<text text-anchor="start" x="349.4" y="-249.4" font-family="Times,serif" font-size="14.00" style="">Amount</text>
+<polygon fill="none" stroke="black" points="453.4,-241 453.4,-267 591.4,-267 591.4,-241 453.4,-241" style=""/>
+<text text-anchor="start" x="458.24" y="-249.4" font-family="Times,serif" font-size="14.00" style="">decimal(18,2), not null</text>
+<polygon fill="none" stroke="black" points="344.4,-215 344.4,-241 453.4,-241 453.4,-215 344.4,-215" style=""/>
+<text text-anchor="start" x="349.4" y="-223.4" font-family="Times,serif" font-size="14.00" style="">InterestRate</text>
+<polygon fill="none" stroke="black" points="453.4,-215 453.4,-241 591.4,-241 591.4,-215 453.4,-215" style=""/>
+<text text-anchor="start" x="458.4" y="-223.4" font-family="Times,serif" font-size="14.00" style="">decimal(5,2), not null</text>
+<polygon fill="none" stroke="black" points="344.4,-189 344.4,-215 453.4,-215 453.4,-189 344.4,-189" style=""/>
+<text text-anchor="start" x="349.4" y="-197.4" font-family="Times,serif" font-size="14.00" style="">StartDate</text>
+<polygon fill="none" stroke="black" points="453.4,-189 453.4,-215 591.4,-215 591.4,-189 453.4,-189" style=""/>
+<text text-anchor="start" x="458.4" y="-197.4" font-family="Times,serif" font-size="14.00" style="">datetime2(7), not null</text>
+<polygon fill="none" stroke="black" points="344.4,-163 344.4,-189 453.4,-189 453.4,-163 344.4,-163" style=""/>
+<text text-anchor="start" x="349.4" y="-171.4" font-family="Times,serif" font-size="14.00" style="">EndDate</text>
+<polygon fill="none" stroke="black" points="453.4,-163 453.4,-189 591.4,-189 591.4,-163 453.4,-163" style=""/>
+<text text-anchor="start" x="458.4" y="-171.4" font-family="Times,serif" font-size="14.00" style="">datetime2(7), not null</text>
+<polygon fill="none" stroke="black" points="342.9,-162 342.9,-372 591.9,-372 591.9,-162 342.9,-162" style=""/>
+</g>
+<!-- Loans&#45;&gt;Customers -->
+<g id="edge4" class="edge" data-name="Loans-&gt;Customers">
+
+<path fill="none" stroke="black" d="M599.64,-267C614.87,-267 630.45,-267 645.83,-267" style=""/>
+<polygon fill="black" stroke="black" points="645.46,-270.5 655.46,-267 645.46,-263.5 645.46,-270.5" style=""/>
+<text text-anchor="middle" x="629.84" y="-271.2" font-family="Times,serif" font-size="14.00" style="">FK</text>
+</g>
+<!-- LoanPayments -->
+<g id="node6" class="node" pointer-events="visible" data-name="LoanPayments">
+
+<polygon fill="lightgrey" stroke="none" points="18,-332 18,-358 260,-358 260,-332 18,-332" style=""/>
+<polygon fill="none" stroke="black" points="18,-332 18,-358 260,-358 260,-332 18,-332" style=""/>
+<text text-anchor="start" x="94.28" y="-341.4" font-family="Times,serif" font-weight="bold" font-size="14.00" style="">LoanPayments</text>
+<polygon fill="none" stroke="black" points="18,-306 18,-332 122,-332 122,-306 18,-306" style=""/>
+<text text-anchor="start" x="22.76" y="-314.4" font-family="Times,serif" font-size="14.00" style="">PaymentID (PK)</text>
+<polygon fill="none" stroke="black" points="122,-306 122,-332 260,-332 260,-306 122,-306" style=""/>
+<text text-anchor="start" x="127" y="-314.4" font-family="Times,serif" font-size="14.00" style="">int, not null</text>
+<polygon fill="none" stroke="black" points="18,-280 18,-306 122,-306 122,-280 18,-280" style=""/>
+<text text-anchor="start" x="23" y="-288.4" font-family="Times,serif" font-size="14.00" style="">LoanID (FK)</text>
+<polygon fill="none" stroke="black" points="122,-280 122,-306 260,-306 260,-280 122,-280" style=""/>
+<text text-anchor="start" x="127" y="-288.4" font-family="Times,serif" font-size="14.00" style="">int, not null</text>
+<polygon fill="none" stroke="black" points="18,-254 18,-280 122,-280 122,-254 18,-254" style=""/>
+<text text-anchor="start" x="23" y="-262.4" font-family="Times,serif" font-size="14.00" style="">PaymentDate</text>
+<polygon fill="none" stroke="black" points="122,-254 122,-280 260,-280 260,-254 122,-254" style=""/>
+<text text-anchor="start" x="127" y="-262.4" font-family="Times,serif" font-size="14.00" style="">datetime2(7), not null</text>
+<polygon fill="none" stroke="black" points="18,-228 18,-254 122,-254 122,-228 18,-228" style=""/>
+<text text-anchor="start" x="23" y="-236.4" font-family="Times,serif" font-size="14.00" style="">Amount</text>
+<polygon fill="none" stroke="black" points="122,-228 122,-254 260,-254 260,-228 122,-228" style=""/>
+<text text-anchor="start" x="126.85" y="-236.4" font-family="Times,serif" font-size="14.00" style="">decimal(18,2), not null</text>
+<polygon fill="none" stroke="black" points="18,-202 18,-228 122,-228 122,-202 18,-202" style=""/>
+<text text-anchor="start" x="23" y="-210.4" font-family="Times,serif" font-size="14.00" style="">InterestPaid</text>
+<polygon fill="none" stroke="black" points="122,-202 122,-228 260,-228 260,-202 122,-202" style=""/>
+<text text-anchor="start" x="126.85" y="-210.4" font-family="Times,serif" font-size="14.00" style="">decimal(18,2), not null</text>
+<polygon fill="none" stroke="black" points="18,-176 18,-202 122,-202 122,-176 18,-176" style=""/>
+<text text-anchor="start" x="23" y="-184.4" font-family="Times,serif" font-size="14.00" style="">PrincipalPaid</text>
+<polygon fill="none" stroke="black" points="122,-176 122,-202 260,-202 260,-176 122,-176" style=""/>
+<text text-anchor="start" x="126.85" y="-184.4" font-family="Times,serif" font-size="14.00" style="">decimal(18,2), not null</text>
+<polygon fill="none" stroke="black" points="17,-175 17,-359 261,-359 261,-175 17,-175" style=""/>
+</g>
+<!-- LoanPayments&#45;&gt;Loans -->
+<g id="edge5" class="edge" data-name="LoanPayments-&gt;Loans">
+
+<path fill="none" stroke="black" d="M268.53,-267C286.63,-267 305.32,-267 323.67,-267" style=""/>
+<polygon fill="black" stroke="black" points="323.52,-270.5 333.52,-267 323.52,-263.5 323.52,-270.5" style=""/>
+<text text-anchor="middle" x="304.95" y="-271.2" font-family="Times,serif" font-size="14.00" style="">FK</text>
+</g>
+<!-- Employees -->
+<g id="node7" class="node" pointer-events="visible" data-name="Employees">
+
+<polygon fill="lightgrey" stroke="none" points="342.4,-817 342.4,-843 593.4,-843 593.4,-817 342.4,-817" style=""/>
+<polygon fill="none" stroke="black" points="342.4,-817 342.4,-843 593.4,-843 593.4,-817 342.4,-817" style=""/>
+<text text-anchor="start" x="435.62" y="-826.4" font-family="Times,serif" font-weight="bold" font-size="14.00" style="">Employees</text>
+<polygon fill="none" stroke="black" points="342.4,-791 342.4,-817 454.4,-817 454.4,-791 342.4,-791" style=""/>
+<text text-anchor="start" x="347.27" y="-799.4" font-family="Times,serif" font-size="14.00" style="">EmployeeID (PK)</text>
+<polygon fill="none" stroke="black" points="454.4,-791 454.4,-817 593.4,-817 593.4,-791 454.4,-791" style=""/>
+<text text-anchor="start" x="459.4" y="-799.4" font-family="Times,serif" font-size="14.00" style="">int, not null</text>
+<polygon fill="none" stroke="black" points="342.4,-765 342.4,-791 454.4,-791 454.4,-765 342.4,-765" style=""/>
+<text text-anchor="start" x="347.4" y="-773.4" font-family="Times,serif" font-size="14.00" style="">FirstName</text>
+<polygon fill="none" stroke="black" points="454.4,-765 454.4,-791 593.4,-791 593.4,-765 454.4,-765" style=""/>
+<text text-anchor="start" x="459.17" y="-773.4" font-family="Times,serif" font-size="14.00" style="">nvarchar(100), not null</text>
+<polygon fill="none" stroke="black" points="342.4,-739 342.4,-765 454.4,-765 454.4,-739 342.4,-739" style=""/>
+<text text-anchor="start" x="347.4" y="-747.4" font-family="Times,serif" font-size="14.00" style="">LastName</text>
+<polygon fill="none" stroke="black" points="454.4,-739 454.4,-765 593.4,-765 593.4,-739 454.4,-739" style=""/>
+<text text-anchor="start" x="459.17" y="-747.4" font-family="Times,serif" font-size="14.00" style="">nvarchar(100), not null</text>
+<polygon fill="none" stroke="black" points="342.4,-713 342.4,-739 454.4,-739 454.4,-713 342.4,-713" style=""/>
+<text text-anchor="start" x="347.4" y="-721.4" font-family="Times,serif" font-size="14.00" style="">Position</text>
+<polygon fill="none" stroke="black" points="454.4,-713 454.4,-739 593.4,-739 593.4,-713 454.4,-713" style=""/>
+<text text-anchor="start" x="459.4" y="-721.4" font-family="Times,serif" font-size="14.00" style="">nvarchar(50), not null</text>
+<polygon fill="none" stroke="black" points="342.4,-687 342.4,-713 454.4,-713 454.4,-687 342.4,-687" style=""/>
+<text text-anchor="start" x="347.4" y="-695.4" font-family="Times,serif" font-size="14.00" style="">Salary</text>
+<polygon fill="none" stroke="black" points="454.4,-687 454.4,-713 593.4,-713 593.4,-687 454.4,-687" style=""/>
+<text text-anchor="start" x="459.4" y="-695.4" font-family="Times,serif" font-size="14.00" style="">decimal(18,2), not null</text>
+<polygon fill="none" stroke="black" points="342.4,-661 342.4,-687 454.4,-687 454.4,-661 342.4,-661" style=""/>
+<text text-anchor="start" x="347.4" y="-669.4" font-family="Times,serif" font-size="14.00" style="">HireDate</text>
+<polygon fill="none" stroke="black" points="454.4,-661 454.4,-687 593.4,-687 593.4,-661 454.4,-661" style=""/>
+<text text-anchor="start" x="459.4" y="-669.4" font-family="Times,serif" font-size="14.00" style="">datetime2(7), not null</text>
+<polygon fill="none" stroke="black" points="342.4,-635 342.4,-661 454.4,-661 454.4,-635 342.4,-635" style=""/>
+<text text-anchor="start" x="347.4" y="-643.4" font-family="Times,serif" font-size="14.00" style="">BranchID (FK)</text>
+<polygon fill="none" stroke="black" points="454.4,-635 454.4,-661 593.4,-661 593.4,-635 454.4,-635" style=""/>
+<text text-anchor="start" x="459.4" y="-643.4" font-family="Times,serif" font-size="14.00" style="">int, not null</text>
+<polygon fill="none" stroke="black" points="340.9,-634 340.9,-844 593.9,-844 593.9,-634 340.9,-634" style=""/>
+</g>
+<!-- Employees&#45;&gt;Branches -->
+<g id="edge6" class="edge" data-name="Employees-&gt;Branches">
+
+<path fill="none" stroke="black" d="M601.49,-702.44C618.41,-697.8 635.75,-693.03 652.72,-688.37" style=""/>
+<polygon fill="black" stroke="black" points="653.64,-691.75 662.36,-685.73 651.79,-685 653.64,-691.75" style=""/>
+<text text-anchor="middle" x="629.84" y="-699.2" font-family="Times,serif" font-size="14.00" style="">FK</text>
+</g>
+<!-- Cards -->
+<g id="node8" class="node" pointer-events="visible" data-name="Cards">
+
+<polygon fill="lightgrey" stroke="none" points="22,-555 22,-581 256,-581 256,-555 22,-555" style=""/>
+<polygon fill="none" stroke="black" points="22,-555 22,-581 256,-581 256,-555 22,-555" style=""/>
+<text text-anchor="start" x="120.72" y="-564.4" font-family="Times,serif" font-weight="bold" font-size="14.00" style="">Cards</text>
+<polygon fill="none" stroke="black" points="22,-529 22,-555 124,-555 124,-529 22,-529" style=""/>
+<text text-anchor="start" x="27" y="-537.4" font-family="Times,serif" font-size="14.00" style="">CardID (PK)</text>
+<polygon fill="none" stroke="black" points="124,-529 124,-555 256,-555 256,-529 124,-529" style=""/>
+<text text-anchor="start" x="129" y="-537.4" font-family="Times,serif" font-size="14.00" style="">int, not null</text>
+<polygon fill="none" stroke="black" points="22,-503 22,-529 124,-529 124,-503 22,-503" style=""/>
+<text text-anchor="start" x="26.54" y="-511.4" font-family="Times,serif" font-size="14.00" style="">AccountID (FK)</text>
+<polygon fill="none" stroke="black" points="124,-503 124,-529 256,-529 256,-503 124,-503" style=""/>
+<text text-anchor="start" x="129" y="-511.4" font-family="Times,serif" font-size="14.00" style="">int, not null</text>
+<polygon fill="none" stroke="black" points="22,-477 22,-503 124,-503 124,-477 22,-477" style=""/>
+<text text-anchor="start" x="27" y="-485.4" font-family="Times,serif" font-size="14.00" style="">CardNumber</text>
+<polygon fill="none" stroke="black" points="124,-477 124,-503 256,-503 256,-477 124,-477" style=""/>
+<text text-anchor="start" x="128.77" y="-485.4" font-family="Times,serif" font-size="14.00" style="">nvarchar(20), not null</text>
+<polygon fill="none" stroke="black" points="22,-451 22,-477 124,-477 124,-451 22,-451" style=""/>
+<text text-anchor="start" x="27" y="-459.4" font-family="Times,serif" font-size="14.00" style="">CardType</text>
+<polygon fill="none" stroke="black" points="124,-451 124,-477 256,-477 256,-451 124,-451" style=""/>
+<text text-anchor="start" x="128.77" y="-459.4" font-family="Times,serif" font-size="14.00" style="">nvarchar(50), not null</text>
+<polygon fill="none" stroke="black" points="22,-425 22,-451 124,-451 124,-425 22,-425" style=""/>
+<text text-anchor="start" x="27" y="-433.4" font-family="Times,serif" font-size="14.00" style="">ExpirationDate</text>
+<polygon fill="none" stroke="black" points="124,-425 124,-451 256,-451 256,-425 124,-425" style=""/>
+<text text-anchor="start" x="129" y="-433.4" font-family="Times,serif" font-size="14.00" style="">date, not null</text>
+<polygon fill="none" stroke="black" points="22,-399 22,-425 124,-425 124,-399 22,-399" style=""/>
+<text text-anchor="start" x="27" y="-407.4" font-family="Times,serif" font-size="14.00" style="">CVV</text>
+<polygon fill="none" stroke="black" points="124,-399 124,-425 256,-425 256,-399 124,-399" style=""/>
+<text text-anchor="start" x="129" y="-407.4" font-family="Times,serif" font-size="14.00" style="">nvarchar(4), not null</text>
+<polygon fill="none" stroke="black" points="21,-398 21,-582 257,-582 257,-398 21,-398" style=""/>
+</g>
+<!-- Cards&#45;&gt;Accounts -->
+<g id="edge7" class="edge" data-name="Cards-&gt;Accounts">
+
+<path fill="none" stroke="black" d="M264.79,-494.97C284.05,-495.74 304.06,-496.53 323.67,-497.32" style=""/>
+<polygon fill="black" stroke="black" points="323.52,-500.81 333.65,-497.71 323.8,-493.82 323.52,-500.81" style=""/>
+<text text-anchor="middle" x="304.95" y="-500.2" font-family="Times,serif" font-size="14.00" style="">FK</text>
+</g>
+<!-- CreditScores -->
+<g id="node9" class="node" pointer-events="visible" data-name="CreditScores">
+
+<polygon fill="lightgrey" stroke="none" points="341.4,-109 341.4,-135 594.4,-135 594.4,-109 341.4,-109" style=""/>
+<polygon fill="none" stroke="black" points="341.4,-109 341.4,-135 594.4,-135 594.4,-109 341.4,-109" style=""/>
+<text text-anchor="start" x="429.02" y="-118.4" font-family="Times,serif" font-weight="bold" font-size="14.00" style="">CreditScores</text>
+<polygon fill="none" stroke="black" points="341.4,-83 341.4,-109 463.4,-109 463.4,-83 341.4,-83" style=""/>
+<text text-anchor="start" x="346.22" y="-91.4" font-family="Times,serif" font-size="14.00" style="">CreditScoreID (PK)</text>
+<polygon fill="none" stroke="black" points="463.4,-83 463.4,-109 594.4,-109 594.4,-83 463.4,-83" style=""/>
+<text text-anchor="start" x="468.4" y="-91.4" font-family="Times,serif" font-size="14.00" style="">int, not null</text>
+<polygon fill="none" stroke="black" points="341.4,-57 341.4,-83 463.4,-83 463.4,-57 341.4,-57" style=""/>
+<text text-anchor="start" x="346.4" y="-65.4" font-family="Times,serif" font-size="14.00" style="">CustomerID (FK)</text>
+<polygon fill="none" stroke="black" points="463.4,-57 463.4,-83 594.4,-83 594.4,-57 463.4,-57" style=""/>
+<text text-anchor="start" x="468.4" y="-65.4" font-family="Times,serif" font-size="14.00" style="">int, not null</text>
+<polygon fill="none" stroke="black" points="341.4,-31 341.4,-57 463.4,-57 463.4,-31 341.4,-31" style=""/>
+<text text-anchor="start" x="346.4" y="-39.4" font-family="Times,serif" font-size="14.00" style="">Score</text>
+<polygon fill="none" stroke="black" points="463.4,-31 463.4,-57 594.4,-57 594.4,-31 463.4,-31" style=""/>
+<text text-anchor="start" x="468.4" y="-39.4" font-family="Times,serif" font-size="14.00" style="">int, not null</text>
+<polygon fill="none" stroke="black" points="341.4,-5 341.4,-31 463.4,-31 463.4,-5 341.4,-5" style=""/>
+<text text-anchor="start" x="346.4" y="-13.4" font-family="Times,serif" font-size="14.00" style="">DateChecked</text>
+<polygon fill="none" stroke="black" points="463.4,-5 463.4,-31 594.4,-31 594.4,-5 463.4,-5" style=""/>
+<text text-anchor="start" x="468.05" y="-13.4" font-family="Times,serif" font-size="14.00" style="">datetime2(7), not null</text>
+<polygon fill="none" stroke="black" points="339.9,-4 339.9,-136 594.9,-136 594.9,-4 339.9,-4" style=""/>
+</g>
+<!-- CreditScores&#45;&gt;Customers -->
+<g id="edge8" class="edge" data-name="CreditScores-&gt;Customers">
+
+<path fill="none" stroke="black" d="M588.06,-140C593.08,-143.03 598.04,-146.04 602.9,-149 617.42,-157.87 632.51,-167.22 647.53,-176.62" style=""/>
+<polygon fill="black" stroke="black" points="645.26,-179.33 655.59,-181.67 648.98,-173.4 645.26,-179.33" style=""/>
+<text text-anchor="middle" x="629.84" y="-176.2" font-family="Times,serif" font-size="14.00" style="">FK</text>
+</g>
+</g>
+</svg>

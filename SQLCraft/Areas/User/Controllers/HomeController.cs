@@ -55,7 +55,7 @@ namespace SQLCraft.Areas.Customer.Controllers
             return View(queryAnswer);
         }
 
-        [HttpPost]
+        /*[HttpPost]
         public async Task<IActionResult> Index(QueryAnswer queryAnswer)
         {
             var queryCorrectAnswer = _unitOfWorkApplication.QuestionCorrectAnswerRepository.Get(qca => qca.ID == queryAnswer.QueryRiddle.QuestionCorrectAnswerID);
@@ -69,6 +69,6 @@ namespace SQLCraft.Areas.Customer.Controllers
             var output = _sqlQueryValidatorService.ValidateQuery(userResult, correctResult);
 
             return View(queryAnswer);
-        }
+        }*/
     }
 }

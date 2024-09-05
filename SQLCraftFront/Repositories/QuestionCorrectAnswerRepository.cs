@@ -1,22 +1,20 @@
-﻿using Microsoft.AspNetCore.Authentication.OAuth.Claims;
+﻿using SQLCraft.Models;
 using SQLCraftFront.Models;
 using SQLCraftFront.Repositories.IRepositories;
-using System.Data;
-using System.Xml.Linq;
 
 namespace SQLCraftFront.Repositories
 {
-    public class QueryRiddleRepository : IQueryRiddleRepository
+    public class QuestionCorrectAnswerRepository : IQuestionCorrectAnswerRepository
     {
         private readonly HttpClient _httpClient;
 
-        public QueryRiddleRepository(HttpClient httpClient) {
+        public QuestionCorrectAnswerRepository(HttpClient httpClient) {
             _httpClient = httpClient;
         }  
 
-        public async Task<QueryRiddleDTO> Get(int ID)
+        public async Task<QuestionCorrectAnswer> Get(int ID)
         {
-            string url = $"https://localhost:7048/api/queryRiddle/get/{ID}";
+            string url = $"https://localhost:7048/api/questionCorrectAnswer/get/{ID}";
 
             try
             {
@@ -24,25 +22,25 @@ namespace SQLCraftFront.Repositories
 
                 if (response.IsSuccessStatusCode)
                 {
-                    var queryRiddleDTO = await response.Content.ReadFromJsonAsync<QueryRiddleDTO>();
-                    return queryRiddleDTO;
+                    var questionCorrectAnswer = await response.Content.ReadFromJsonAsync<QuestionCorrectAnswer>();
+                    return questionCorrectAnswer;
                 }
                 else
                 {
                     Console.WriteLine($"Failed to fetch data: {response.ReasonPhrase}");
-                    return new QueryRiddleDTO();
+                    return null;
                 }
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"An error occurred: {ex.Message}");
-                return new QueryRiddleDTO();
+                return null;
             }
         }
 
-        public async Task<List<QueryRiddleDTO>> GetAll()
+        public async Task<List<QuestionCorrectAnswer>> GetAll()
         {
-            string url = "https://localhost:7048/api/queryRiddle/getAll";
+            string url = "https://localhost:7048/api/questionCorrectAnswer/getAll";
 
             try
             {
@@ -50,30 +48,30 @@ namespace SQLCraftFront.Repositories
 
                 if (response.IsSuccessStatusCode)
                 {
-                    var queryRiddleDTOs = await response.Content.ReadFromJsonAsync<List<QueryRiddleDTO>>();
-                    return queryRiddleDTOs;
+                    var questionCorrectAnswers = await response.Content.ReadFromJsonAsync<List<QuestionCorrectAnswer>>();
+                    return questionCorrectAnswers;
                 }
                 else
                 {
                     Console.WriteLine($"Failed to fetch data: {response.ReasonPhrase}");
-                    return new List<QueryRiddleDTO>();
+                    return new List<QuestionCorrectAnswer>();
                 }
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"An error occurred: {ex.Message}");
-                return new List<QueryRiddleDTO>();
+                return new List<QuestionCorrectAnswer>();
             }
         }
 
-        public async Task Update(QueryRiddleDTO queryRiddleDTO)
+        public async Task Update(QuestionCorrectAnswer questionCorrectAnswer)
         {
-            string url = "https://localhost:7048/api/queryRiddle/update";
+            string url = "https://localhost:7048/api/questionCorrectAnswer/update";
 
             try
             {
                 var jsonContent = new StringContent(
-                    System.Text.Json.JsonSerializer.Serialize(queryRiddleDTO),
+                    System.Text.Json.JsonSerializer.Serialize(questionCorrectAnswer),
                     System.Text.Encoding.UTF8,
                     "application/json"
                 );
@@ -93,7 +91,7 @@ namespace SQLCraftFront.Repositories
 
         public async Task Delete(int ID)
         {
-            string url = $"https://localhost:7048/api/queryRiddle/delete/{ID}";
+            string url = $"https://localhost:7048/api/questionCorrectAnswer/delete/{ID}";
 
             try
             {
@@ -110,14 +108,14 @@ namespace SQLCraftFront.Repositories
             }
         }
 
-        public async Task Save(QueryRiddleDTO queryRiddleDTO)
+        public async Task Save(QuestionCorrectAnswer questionCorrectAnswer)
         {
-            string url = "https://localhost:7048/api/queryRiddle/save";
+            string url = "https://localhost:7048/api/questionCorrectAnswer/save";
 
             try
             {
                 var jsonContent = new StringContent(
-                    System.Text.Json.JsonSerializer.Serialize(queryRiddleDTO),
+                    System.Text.Json.JsonSerializer.Serialize(questionCorrectAnswer),
                     System.Text.Encoding.UTF8,
                     "application/json"
                 );

@@ -17,6 +17,8 @@ namespace SQLCraft.DataAccess.Repository
 
         public IQuestionCorrectAnswerRepository QuestionCorrectAnswerRepository { get; private set; }
 
+        public IQuestionUserAnswerRepository QuestionUserAnswerRepository { get; private set; }
+
         public UnitOfWorkApplication(ApplicationDbContext db)
         {
             _db = db;
@@ -25,6 +27,7 @@ namespace SQLCraft.DataAccess.Repository
             DBSchemaRepository = new DBSchemaRepository(_db);
             QuestionCorrectAnswerRepository = new QuestionCorrectAnswerRepository(_db);
             QuestionLevelRepository = new QuestionLevelRepository(_db);
+            QuestionUserAnswerRepository = new QuestionUserAnswerRepository(_db);
         }
 
         public void Save()

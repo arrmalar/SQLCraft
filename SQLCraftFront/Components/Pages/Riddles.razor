@@ -1,18 +1,15 @@
-﻿@page "/riddles"
-
+﻿@* @page "/riddles"
 @rendermode InteractiveServer
+@inject HttpClient HttpClient
 
-<!-- Filter Input -->
 <div class="mb-3">
     <input type="text" class="form-control" placeholder="Filter by title or difficulty..." @bind-value="FilterText" @bind-value:event="oninput" />
 </div>
 
-<!-- Table Container with Max Height and Scroll -->
 <div class="table-responsive" style="max-height: 500px; overflow-y: auto;">
     <table class="table">
         <thead>
             <tr>
-                <!-- Title Header with Sort Buttons -->
                 <th style="position: sticky; top: 0; background-color: white; z-index: 1;">
                     Title
                     <button class="btn btn-link btn-sm p-0" @onclick="@(() => { SortByColumn("Title", true); })" title="Sort Ascending">
@@ -23,7 +20,6 @@
                     </button>
                 </th>
 
-                <!-- Difficulty Header with Sort Buttons -->
                 <th style="position: sticky; top: 0; background-color: white; z-index: 1;">
                     Difficulty
                     <button class="btn btn-link btn-sm p-0" @onclick="@(() => SortByColumn("Difficulty", true) )" title="Sort Ascending">
@@ -34,10 +30,7 @@
                     </button>
                 </th>
 
-                <!-- Status Header (No Sorting Needed) -->
                 <th style="position: sticky; top: 0; background-color: white; z-index: 1;">Status</th>
-
-                <!-- Action Header (No Sorting Needed) -->
                 <th style="position: sticky; top: 0; background-color: white; z-index: 1;">Action</th>
             </tr>
         </thead>
@@ -150,5 +143,30 @@
             };
         }
     }
+
+    private async Task GetData()
+    {
+        string url = "https://localhost:7048/api/admin/Query/18";
+
+        try
+        {
+            HttpResponseMessage response = await HttpClient.GetAsync(url);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var product = await response.Content.ReadFromJsonAsync<QueryRiddleDTO>();
+                Console.WriteLine(product);
+            }
+            else
+            {
+                Console.WriteLine($"Failed to fetch data: {response.ReasonPhrase}");
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"An error occurred: {ex.Message}");
+        }
+    }
 }
 
+ *@

@@ -12,6 +12,8 @@
 
         IQuestionCorrectAnswerRepository QuestionCorrectAnswerRepository { get; }
 
+        IQuestionUserAnswerRepository QuestionUserAnswerRepository { get; }
+
         void Save();
     }
 }

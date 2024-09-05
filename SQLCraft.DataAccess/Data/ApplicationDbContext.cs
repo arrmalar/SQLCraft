@@ -22,11 +22,14 @@ namespace SQLCraft.DataAccess.Data
 
         public DbSet<QuestionCorrectAnswer> QuestionCorrectAnswers { get; set; }
 
-
+        public DbSet<QuestionUserAnswer> QuestionUserAnswers { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<QuestionUserAnswer>()
+                .HasKey(q => new { q.QuestionID, q.UserID });
 
             modelBuilder.Entity<DBSchema>().HasData(
                 new DBSchema { ID = 1, Name = "Warehouse" },

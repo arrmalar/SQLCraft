@@ -1,9 +1,14 @@
 using SQLCraftFront.Components;
+using SQLCraftFront.Providers;
+using SQLCraftFront.Providers.IProviders;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorComponents().AddInteractiveServerComponents();
+builder.Services.AddHttpClient();
+
+builder.Services.AddScoped<IRepositoryProvider, RepositoryProvider>();
 
 var app = builder.Build();
 
