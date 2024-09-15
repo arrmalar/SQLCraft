@@ -33,7 +33,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SQLCraftFront", "SQLCraftFr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SQLCraft.API", "SQLCraft.API\SQLCraft.API.csproj", "{1D911217-EB62-4990-903D-FA0ADE8E188B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SQLCraft.Tests", "SQLCraft.Tests\SQLCraft.Tests.csproj", "{B7EF5CB4-A6D0-46D4-A571-0BD9A3517C68}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SQLCraft.Tests", "SQLCraft.Tests\SQLCraft.Tests.csproj", "{B7EF5CB4-A6D0-46D4-A571-0BD9A3517C68}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

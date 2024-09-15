@@ -1,5 +1,4 @@
 ﻿using SQLCraft.Models;
-using SQLCraftFront.Models;
 
 namespace SQLCraftFront.Repositories.IRepositories
 {
@@ -9,10 +8,10 @@ namespace SQLCraftFront.Repositories.IRepositories
 
         Task<QuestionCorrectAnswer> Get(int ID);
 
-        Task Update(QuestionCorrectAnswer queryRiddleDTO);
+        Task Update(QuestionCorrectAnswer questionCorrectAnswer);
 
         Task Delete(int ID);
 
-        Task Save(QuestionCorrectAnswer queryRiddleDTO);
+        Task Save(QuestionCorrectAnswer queryRquestionCorrectAnsweriddleDTO);
     }
 }

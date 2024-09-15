@@ -1,0 +1,34 @@
+﻿@page "/adminPanel"
+
+<Tabs EnableFadeEffect="true">
+    <Tab Title="User" Active="true">
+        <Content>
+            <AdminUserGrid></AdminUserGrid>
+        </Content>
+    </Tab>
+    <Tab Title="Query Levels">
+        <Content>
+            <AdminQuestionLevelGrid></AdminQuestionLevelGrid>
+        </Content>
+    </Tab>
+    <Tab Title="DB Schemas">
+        <Content>
+            <AdminDBSchemaGrid></AdminDBSchemaGrid>
+        </Content>
+    </Tab>
+    <Tab Title="Questions">
+        <Content>
+            <AdminQuestionGrid></AdminQuestionGrid>
+        </Content>
+    </Tab>
+    <Tab Title="Test grid">
+        <Content>
+            <TestGrid></TestGrid>
+        </Content>
+    </Tab>
+</Tabs>
+
+@code {
+
+}
+

@@ -4,7 +4,7 @@
     {
         IApplicationUserRepository ApplicationUserRepository { get; }
 
-        IQueryRiddleRepository QueryRiddleRepository { get; }
+        IQuestionRepository QuestionRepository { get; }
 
         IDBSchemaRepository DBSchemaRepository { get; }
 

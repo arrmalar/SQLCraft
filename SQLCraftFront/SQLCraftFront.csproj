@@ -7,21 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Components\Pages\ApiTest.razor.css" />
-    <None Remove="Components\Questions\QueryRiddleComponent.razor.css" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="Components\Pages\ApiTest.razor.css" />
-    <Content Include="Components\Questions\QueryRiddleComponent.razor.css" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <PackageReference Include="Blazor.Bootstrap" Version="3.0.0" />
+    <PackageReference Include="Blazored.FluentValidation" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Components.QuickGrid" Version="8.0.8" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\SQLCraft.Models\SQLCraft.Models.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Models\" />
   </ItemGroup>
 
 </Project>

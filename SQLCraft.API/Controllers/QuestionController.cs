@@ -6,19 +6,19 @@ namespace SQLCraft.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class QueryRiddleController : ControllerBase
+    public class QuestionController : ControllerBase
     {
         private readonly IUnitOfWorkApplication _unitOfWork;
 
-        public QueryRiddleController(IUnitOfWorkApplication unitOfWork)
+        public QuestionController(IUnitOfWorkApplication unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
 
         [HttpGet("get/{id}")]
-        public ActionResult<QueryRiddle> Get(int id)
+        public ActionResult<Question> Get(int id)
         {
-            var query = _unitOfWork.QueryRiddleRepository.Get(qr => qr.ID == id, includeProperties: "DBSchema,QuestionLevel,QuestionCorrectAnswer");
+            var query = _unitOfWork.QuestionRepository.Get(qr => qr.ID == id, includeProperties: "DBSchema,QuestionLevel,QuestionCorrectAnswer");
 
             if (query == null)
             {
@@ -29,9 +29,9 @@ namespace SQLCraft.API.Controllers
         }
 
         [HttpGet("getAll")]
-        public ActionResult<IEnumerable<QueryRiddle>> GetAll()
+        public ActionResult<IEnumerable<Question>> GetAll()
         {
-            var queries = _unitOfWork.QueryRiddleRepository.GetAll(includeProperties: "DBSchema,QuestionLevel,QuestionCorrectAnswer");
+            var queries = _unitOfWork.QuestionRepository.GetAll(includeProperties: "DBSchema,QuestionLevel,QuestionCorrectAnswer");
 
             if (queries == null || !queries.Any())
             {
@@ -42,11 +42,11 @@ namespace SQLCraft.API.Controllers
         }
 
         [HttpPost("save")]
-        public ActionResult Save([FromBody] QueryRiddle queryRiddle)
+        public ActionResult Save([FromBody] Question queryRiddle)
         {
             try
             {
-                _unitOfWork.QueryRiddleRepository.Add(queryRiddle);
+                _unitOfWork.QuestionRepository.Add(queryRiddle);
                 _unitOfWork.Save();
                 return CreatedAtAction(nameof(Get), new { id = queryRiddle.ID }, queryRiddle);
             }
@@ -61,13 +61,13 @@ namespace SQLCraft.API.Controllers
         {
             try
             {
-                var query = _unitOfWork.QueryRiddleRepository.Get(qr => qr.ID == id);
+                var query = _unitOfWork.QuestionRepository.Get(qr => qr.ID == id);
                 if (query == null)
                 {
                     return NotFound();
                 }
 
-                _unitOfWork.QueryRiddleRepository.Remove(query);
+                _unitOfWork.QuestionRepository.Remove(query);
                 _unitOfWork.Save();
                 return NoContent();
             }
@@ -78,17 +78,17 @@ namespace SQLCraft.API.Controllers
         }
 
         [HttpPut("update")]
-        public ActionResult Update([FromBody] QueryRiddle queryRiddle)
+        public ActionResult Update([FromBody] Question queryRiddle)
         {
             try
             {
-                var existingQuery = _unitOfWork.QueryRiddleRepository.Get(qr => qr.ID == queryRiddle.ID);
+                var existingQuery = _unitOfWork.QuestionRepository.Get(qr => qr.ID == queryRiddle.ID);
                 if (existingQuery == null)
                 {
                     return NotFound();
                 }
 
-                _unitOfWork.QueryRiddleRepository.Update(queryRiddle);
+                _unitOfWork.QuestionRepository.Update(queryRiddle);
                 _unitOfWork.Save();
                 return NoContent();
             }

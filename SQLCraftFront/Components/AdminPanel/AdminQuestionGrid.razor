@@ -1,0 +1,241 @@
+﻿@inject IRepositoryProvider RepositoryProvider
+
+@if (isLoading)
+{
+    <div class="spinner"></div>
+}
+else
+{
+    <QuickGrid TGridItem="Question" Items="@Questions.AsQueryable()" Pagination="@pagination">
+        <PropertyColumn Property="p => p.ID" title="ID" Sortable="true"></PropertyColumn>
+
+        <TemplateColumn title="QuestionText">
+            <div>
+                @if (CheckIfInEditMode(context.ID))
+                {
+                    <span>
+                        <input type="text" @bind-value="context.QuestionText" @bind-value:event="onchange" />
+                    </span>
+                }
+                else
+                {
+                    <span>
+                        @context.QuestionText
+                    </span>
+                }
+            </div>
+        </TemplateColumn>
+
+        <TemplateColumn title="CorrectAnswer">
+            <div>
+                @if (CheckIfInEditMode(context.ID))
+                {
+                    <span>
+                        <input type="text" @bind-value="context.QuestionCorrectAnswer.CorrectAnswer" @bind-value:event="onchange" />
+                    </span>
+                }
+                else
+                {
+                    <span>
+                        @context.QuestionCorrectAnswer.CorrectAnswer
+                    </span>
+                }
+            </div>
+        </TemplateColumn>
+
+        <TemplateColumn title="DBSchema">
+            <div>
+                @if (CheckIfInEditMode(context.ID))
+                {
+                    <select class="form-control" @bind="@context.DBSchemaID">
+
+                        @foreach (var dbSchema in DBSchemas)
+                        {
+                            <option value="@dbSchema.ID"> @dbSchema.Name </option>
+                        }
+
+                    </select>
+                }
+                else
+                {
+                    <span>
+                        @context.DBSchema.Name
+                    </span>
+                }
+            </div>
+        </TemplateColumn>
+
+        <TemplateColumn title="Question Level">
+            <div>
+                @if (CheckIfInEditMode(context.ID))
+                {
+                    <select class="form-control" @bind="@context.QuestionLevelID">
+
+                        @foreach (var questionLevel in QuestionLevels)
+                        {
+                            <option value="@questionLevel.ID"> @questionLevel.Name </option>
+                        }
+
+                    </select>
+                }
+                else
+                {
+                    @if (context.QuestionLevel.Name.Equals("Easy"))
+                    {
+                        <span id="riddle-difficulty" class="badge bg-info text-dark">
+                            @context.QuestionLevel.Name
+                        </span>
+                    }
+                    else if (context.QuestionLevel.Name.Equals("Medium"))
+                    {
+                        <span id="riddle-difficulty" class="badge bg-warning text-dark">
+                            @context.QuestionLevel.Name
+                        </span>
+                    }
+                    else
+                    {
+                        <span id="riddle-difficulty" class="badge bg-danger text-dark">
+                            @context.QuestionLevel.Name
+                        </span>
+                    }
+                }
+            </div>
+        </TemplateColumn>
+
+        <TemplateColumn>
+            <div>
+                <span class="d-flex align-items-center">
+                    @if (CheckIfInEditMode(context.ID))
+                    {
+                        <button class="btn btn-success btn-sm ms-2" @onclick="@EditEndWithConfirmation" title="Save">
+                            Save
+                        </button>
+
+                        <button class="btn btn-danger btn-sm ms-2" @onclick="@EditEndWithCancel" title="Cancel">
+                            Cancel
+                        </button>
+                    }
+                    else
+                    {
+                        <button class="btn btn-primary btn-sm ms-2" @onclick="@(() => EditStart(context))" title="Edit">
+                            Edit
+                        </button>
+
+                        <button class="btn btn-danger btn-sm ms-2" @onclick="@(() => Delete(context))" title="Delete">
+                            Delete
+                        </button>
+                    }
+                </span>
+            </div>
+        </TemplateColumn>
+
+    </QuickGrid>
+    <Paginator State="pagination"></Paginator>
+}
+
+@code {
+    private List<Question> Questions { get; set; } = new List<Question>();
+    private List<QuestionLevel> QuestionLevels { get; set; } = new List<QuestionLevel>();
+    private List<DBSchema> DBSchemas { get; set; } = new List<DBSchema>();
+
+    private PaginationState pagination = new PaginationState { ItemsPerPage = 10 };
+    private bool isLoading { get; set; } = true;
+    private int currentEditedQuestionID = -1;
+
+    private Question tempQuestion;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            try
+            {
+                await LoadDataAsync();
+            }
+            finally
+            {
+                isLoading = false;
+                StateHasChanged();
+            }
+        }
+    }
+
+    private bool CheckIfInEditMode(int ID)
+    {
+        return this.currentEditedQuestionID == ID;
+    }
+
+    private async Task LoadDataAsync()
+    {
+        Questions = await RepositoryProvider.QuestionRepository.GetAll();
+        DBSchemas = await RepositoryProvider.DBSchemaRepository.GetAll();
+        QuestionLevels = await RepositoryProvider.QuestionLevelRepository.GetAll();
+    }
+
+    private void EditStart(Question question)
+    {
+        this.tempQuestion = new Question()
+        {
+            ID = question.ID,
+            QuestionText = question.QuestionText,
+            QuestionCorrectAnswerID = question.QuestionCorrectAnswerID,
+            QuestionCorrectAnswer = question.QuestionCorrectAnswer,
+            QuestionLevel = question.QuestionLevel,
+            QuestionLevelID = question.QuestionLevelID,
+            DBSchema = question.DBSchema,
+            DBSchemaID = question.DBSchemaID
+        };
+
+        this.currentEditedQuestionID = question.ID;
+    }
+
+    private async void EditEndWithConfirmation()
+    {
+        var question = Questions.FirstOrDefault(db => db.ID == this.currentEditedQuestionID);
+
+        if (question != null)
+        {
+            if (this.currentEditedQuestionID != 0)
+            {
+                await RepositoryProvider.QuestionRepository.Update(question);
+            }
+            else
+            {
+                await RepositoryProvider.QuestionRepository.Save(question);
+            }
+
+            await LoadDataAsync();
+        }
+
+        this.currentEditedQuestionID = -1;
+        StateHasChanged();
+    }
+
+    private void EditEndWithCancel()
+    {
+        var questionToDelete = Questions.FirstOrDefault(q => q.ID == 0);
+
+        if (questionToDelete != null)
+        {
+            Questions.Remove(questionToDelete);
+        }
+
+        this.currentEditedQuestionID = -1;
+    }
+
+    private void Delete(Question question)
+    {
+        Questions.Remove(question);
+        RepositoryProvider.QuestionRepository.Delete(question.ID);
+    }
+
+    private void Add()
+    {
+        var question = new Question();
+        
+        EditEndWithCancel();
+        Questions.Add(question);
+        EditStart(question);
+    }
+}
+

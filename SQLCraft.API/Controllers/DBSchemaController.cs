@@ -17,8 +17,7 @@ namespace SQLCraft.API.Controllers
             _unitOfWork = unitOfWork;
         }
 
-        // GET api/admin/query/{id}
-        [HttpGet("{id}")]
+        [HttpGet("get/{id}")]
         public ActionResult<DBSchema> Get(int id)
         {
             var dbSchema = _unitOfWork.DBSchemaRepository.Get(db => db.ID == id);
@@ -31,8 +30,7 @@ namespace SQLCraft.API.Controllers
             return Ok(dbSchema);
         }
 
-        // GET api/admin/query
-        [HttpGet]
+        [HttpGet("getAll")]
         public ActionResult<IEnumerable<DBSchema>> GetAll()
         {
             var dbSchemas = _unitOfWork.DBSchemaRepository.GetAll();
@@ -45,8 +43,7 @@ namespace SQLCraft.API.Controllers
             return Ok(dbSchemas);
         }
 
-        // POST api/admin/query
-        [HttpPost]
+        [HttpPost("save")]
         public ActionResult Save([FromBody] DBSchema dbSchema)
         {
             try
@@ -61,8 +58,7 @@ namespace SQLCraft.API.Controllers
             }
         }
 
-        // DELETE api/admin/query/{id}
-        [HttpDelete("{id}")]
+        [HttpDelete("delete/{id}")]
         public ActionResult Delete(int id)
         {
             try
@@ -83,8 +79,7 @@ namespace SQLCraft.API.Controllers
             }
         }
 
-        // PUT api/admin/query
-        [HttpPut]
+        [HttpPut("update")]
         public ActionResult Update([FromBody] DBSchema dbSchema)
         {
             try
@@ -95,7 +90,7 @@ namespace SQLCraft.API.Controllers
                     return NotFound();
                 }
 
-                _unitOfWork.DBSchemaRepository.Update(existingDBSchema);
+                _unitOfWork.DBSchemaRepository.Update(dbSchema);
                 _unitOfWork.Save();
                 return NoContent();
             }

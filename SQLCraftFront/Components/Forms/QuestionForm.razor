@@ -1,0 +1,130 @@
+﻿@inject IRepositoryProvider RepositoryProvider
+
+@if(Question != null)
+{
+
+    <EditForm Model="Question" FormName="formQuestion" OnValidSubmit="Submit">
+        <FluentValidationValidator></FluentValidationValidator>
+
+        <FieldComponent Label="Question">
+            <Control>
+                <InputText @bind-Value="Question.QuestionText" class="form-control"></InputText>
+            </Control>
+            <ValidationControl>
+                <ValidationMessage For="() => Question.QuestionText"></ValidationMessage>
+            </ValidationControl>
+        </FieldComponent>
+
+        <FieldComponent Label="Answer">
+            <Control>
+                <InputText @bind-Value="Question.QuestionCorrectAnswer.CorrectAnswer" class="form-control"></InputText>
+            </Control>
+            <ValidationControl>
+                <ValidationMessage For="() => Question.QuestionCorrectAnswer.CorrectAnswer"></ValidationMessage>
+            </ValidationControl>
+        </FieldComponent>
+
+        <FieldComponent Label="Question Level">
+            <Control>
+                <InputSelect @bind-Value="Question.QuestionLevelID" class="form-control">
+                    @foreach (var level in QuestionLevels)
+                    {
+                        <option value="@level.ID">@level.Name</option>
+                    }
+                </InputSelect>
+            </Control>
+            <ValidationControl>
+                <ValidationMessage For="() => Question.QuestionLevelID"></ValidationMessage>
+            </ValidationControl>
+        </FieldComponent>
+
+        <FieldComponent Label="DB Schema">
+            <Control>
+                <InputSelect @bind-Value="Question.DBSchemaID" class="form-control">
+                    @foreach (var db in DBSchemas)
+                    {
+                        <option value="@db.ID">@db.Name</option>
+                    }
+                </InputSelect>
+            </Control>
+            <ValidationControl>
+                <ValidationMessage For="() => Question.DBSchemaID"></ValidationMessage>
+            </ValidationControl>
+        </FieldComponent>
+
+        <button class="btn btn-primary btn-sm ms-2" type="submit">
+            Save
+        </button>
+
+        <button class="btn btn-danger btn-sm ms-2" @onclick="@(() => Cancel())">
+            Cancel
+        </button>
+    </EditForm>
+
+}
+
+@code {
+    [Parameter]
+    public int ID { get; set; }
+
+    [Parameter]
+    public EventCallback EditFinished { get; set; }
+
+    [Parameter]
+    public EventCallback EditCanceled { get; set; }
+
+    [SupplyParameterFromForm(FormName = "formQuestion")]
+    private Question? Question { get; set; }
+
+    private List<QuestionLevel> QuestionLevels { get; set; } = new List<QuestionLevel>();
+
+    private List<DBSchema> DBSchemas { get; set; } = new List<DBSchema>();
+
+    protected override async Task OnParametersSetAsync()
+    {
+        Question = await RepositoryProvider.QuestionRepository.Get(ID);
+        DBSchemas = await RepositoryProvider.DBSchemaRepository.GetAll();
+        QuestionLevels = await RepositoryProvider.QuestionLevelRepository.GetAll();
+
+        if (Question.ID == 0)
+        {
+            Question = new Question();
+            Question.QuestionCorrectAnswer = new QuestionCorrectAnswer();
+
+            if (DBSchemas.Count > 0)
+            {
+                Question.DBSchemaID = DBSchemas.First().ID;
+            }
+
+            if (QuestionLevels.Count > 0)
+            {
+                Question.QuestionLevelID = QuestionLevels.First().ID;
+            }
+        }
+    }
+
+    private async Task Submit()
+    {
+        if(Question != null)
+        {
+            Question.DBSchema = null;
+            Question.QuestionLevel = null;
+
+            if (Question.ID != 0)
+            {
+                await RepositoryProvider.QuestionRepository.Update(Question);
+            }
+            else
+            {
+                await RepositoryProvider.QuestionRepository.Save(Question);
+            }
+
+            await EditFinished.InvokeAsync();
+        }
+    }
+
+    private async Task Cancel()
+    {
+        await EditCanceled.InvokeAsync();
+    }
+}

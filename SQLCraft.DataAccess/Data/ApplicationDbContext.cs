@@ -14,7 +14,7 @@ namespace SQLCraft.DataAccess.Data
 
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
 
-        public DbSet<QueryRiddle> QueryRiddles { get; set; }
+        public DbSet<Question> Questions { get; set; }
 
         public DbSet<DBSchema> DBSchemas { get; set; }
 

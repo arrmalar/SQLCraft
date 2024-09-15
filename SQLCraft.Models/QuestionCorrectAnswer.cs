@@ -9,7 +9,7 @@ namespace SQLCraft.Models
         [Key]
         public int ID { get; set; }
 
-        [Required]
-        public string CorrectAnswer { get; set; }
+        [Required(ErrorMessage = "The Answer field is required.")]
+        public string? CorrectAnswer { get; set; }
     }
 }

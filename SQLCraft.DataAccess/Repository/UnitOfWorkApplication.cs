@@ -9,7 +9,7 @@ namespace SQLCraft.DataAccess.Repository
 
         public IApplicationUserRepository ApplicationUserRepository { get; private set; }
 
-        public IQueryRiddleRepository QueryRiddleRepository { get; private set; }
+        public IQuestionRepository QuestionRepository { get; private set; }
 
         public IDBSchemaRepository DBSchemaRepository {  get; private set; }
 
@@ -23,7 +23,7 @@ namespace SQLCraft.DataAccess.Repository
         {
             _db = db;
             ApplicationUserRepository = new ApplicationUserRepository(_db);
-            QueryRiddleRepository = new QueryRiddleRepository(_db);
+            QuestionRepository = new QuestionRepository(_db);
             DBSchemaRepository = new DBSchemaRepository(_db);
             QuestionCorrectAnswerRepository = new QuestionCorrectAnswerRepository(_db);
             QuestionLevelRepository = new QuestionLevelRepository(_db);

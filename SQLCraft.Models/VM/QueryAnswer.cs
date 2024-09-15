@@ -6,7 +6,7 @@ namespace SQLCraft.Models.VM
 {
     public class QueryAnswer
     {
-        public QueryRiddle QueryRiddle { get; set; }
+        public Question QueryRiddle { get; set; }
 
         public string UserAnswer { get; set; }
 

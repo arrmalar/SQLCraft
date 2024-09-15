@@ -58,13 +58,13 @@ namespace SQLCraft.API.Controllers.User
 
                 var answer = await _chatGptService.GetAnswerAsync(question);
 
-                manageQueryRiddle.QueryRiddle.Question = answer;
+                manageQueryRiddle.QueryRiddle.QuestionText = answer;
                 manageQueryRiddle.QueryRiddle.QuestionCorrectAnswer.CorrectAnswer = answer;
 
                 return Ok(new
                 {
                     success = true,
-                    question = manageQueryRiddle.QueryRiddle.Question,
+                    question = manageQueryRiddle.QueryRiddle.QuestionText,
                     correctAnswer = manageQueryRiddle.QueryRiddle.QuestionCorrectAnswer.CorrectAnswer
                 });
             }

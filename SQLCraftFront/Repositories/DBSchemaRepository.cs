@@ -1,22 +1,19 @@
-﻿using Microsoft.AspNetCore.Authentication.OAuth.Claims;
-using SQLCraftFront.Models;
+﻿using SQLCraft.Models;
 using SQLCraftFront.Repositories.IRepositories;
-using System.Data;
-using System.Xml.Linq;
 
 namespace SQLCraftFront.Repositories
 {
-    public class QueryRiddleRepository : IQueryRiddleRepository
+    public class DBSchemaRepository : IDBSchemaRepository
     {
         private readonly HttpClient _httpClient;
 
-        public QueryRiddleRepository(HttpClient httpClient) {
+        public DBSchemaRepository(HttpClient httpClient) {
             _httpClient = httpClient;
         }  
 
-        public async Task<QueryRiddleDTO> Get(int ID)
+        public async Task<DBSchema> Get(int ID)
         {
-            string url = $"https://localhost:7048/api/queryRiddle/get/{ID}";
+            string url = $"https://localhost:7048/api/dbSchema/get/{ID}";
 
             try
             {
@@ -24,25 +21,25 @@ namespace SQLCraftFront.Repositories
 
                 if (response.IsSuccessStatusCode)
                 {
-                    var queryRiddleDTO = await response.Content.ReadFromJsonAsync<QueryRiddleDTO>();
-                    return queryRiddleDTO;
+                    var dbSchema = await response.Content.ReadFromJsonAsync<DBSchema>();
+                    return dbSchema ?? new DBSchema();
                 }
                 else
                 {
                     Console.WriteLine($"Failed to fetch data: {response.ReasonPhrase}");
-                    return new QueryRiddleDTO();
+                    return new DBSchema();
                 }
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"An error occurred: {ex.Message}");
-                return new QueryRiddleDTO();
+                return new DBSchema();
             }
         }
 
-        public async Task<List<QueryRiddleDTO>> GetAll()
+        public async Task<List<DBSchema>> GetAll()
         {
-            string url = "https://localhost:7048/api/queryRiddle/getAll";
+            string url = "https://localhost:7048/api/dbSchema/getAll";
 
             try
             {
@@ -50,30 +47,30 @@ namespace SQLCraftFront.Repositories
 
                 if (response.IsSuccessStatusCode)
                 {
-                    var queryRiddleDTOs = await response.Content.ReadFromJsonAsync<List<QueryRiddleDTO>>();
-                    return queryRiddleDTOs;
+                    var dbSchemas = await response.Content.ReadFromJsonAsync<List<DBSchema>>();
+                    return dbSchemas ?? new List<DBSchema>();
                 }
                 else
                 {
                     Console.WriteLine($"Failed to fetch data: {response.ReasonPhrase}");
-                    return new List<QueryRiddleDTO>();
+                    return new List<DBSchema>();
                 }
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"An error occurred: {ex.Message}");
-                return new List<QueryRiddleDTO>();
+                return new List<DBSchema>();
             }
         }
 
-        public async Task Update(QueryRiddleDTO queryRiddleDTO)
+        public async Task Update(DBSchema dbSchema)
         {
-            string url = "https://localhost:7048/api/queryRiddle/update";
+            string url = "https://localhost:7048/api/dbSchema/update";
 
             try
             {
                 var jsonContent = new StringContent(
-                    System.Text.Json.JsonSerializer.Serialize(queryRiddleDTO),
+                    System.Text.Json.JsonSerializer.Serialize(dbSchema),
                     System.Text.Encoding.UTF8,
                     "application/json"
                 );
@@ -93,7 +90,7 @@ namespace SQLCraftFront.Repositories
 
         public async Task Delete(int ID)
         {
-            string url = $"https://localhost:7048/api/queryRiddle/delete/{ID}";
+            string url = $"https://localhost:7048/api/dbSchema/delete/{ID}";
 
             try
             {
@@ -110,14 +107,14 @@ namespace SQLCraftFront.Repositories
             }
         }
 
-        public async Task Save(QueryRiddleDTO queryRiddleDTO)
+        public async Task Save(DBSchema dbSchema)
         {
-            string url = "https://localhost:7048/api/queryRiddle/save";
+            string url = "https://localhost:7048/api/dbSchema/save";
 
             try
             {
                 var jsonContent = new StringContent(
-                    System.Text.Json.JsonSerializer.Serialize(queryRiddleDTO),
+                    System.Text.Json.JsonSerializer.Serialize(dbSchema),
                     System.Text.Encoding.UTF8,
                     "application/json"
                 );

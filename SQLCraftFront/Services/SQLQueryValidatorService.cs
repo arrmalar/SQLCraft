@@ -1,5 +1,4 @@
-﻿using SQLCraftFront.Models;
-using SQLCraftFront.Repositories.IRepositories;
+﻿using SQLCraftFront.Repositories.IRepositories;
 
 namespace SQLCraftFront.Repositories
 {

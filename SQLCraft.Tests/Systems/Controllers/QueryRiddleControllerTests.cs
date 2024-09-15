@@ -1,6 +1,5 @@
 using Moq;
 using Moq.Protected;
-using SQLCraftFront.Models;
 using SQLCraftFront.Repositories;
 using System.Net;
 using System.Text.Json;

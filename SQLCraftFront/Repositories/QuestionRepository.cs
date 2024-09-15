@@ -3,17 +3,17 @@ using SQLCraftFront.Repositories.IRepositories;
 
 namespace SQLCraftFront.Repositories
 {
-    public class QuestionCorrectAnswerRepository : IQuestionCorrectAnswerRepository
+    public class QuestionRepository : IQuestionRepository
     {
         private readonly HttpClient _httpClient;
 
-        public QuestionCorrectAnswerRepository(HttpClient httpClient) {
+        public QuestionRepository(HttpClient httpClient) {
             _httpClient = httpClient;
         }  
 
-        public async Task<QuestionCorrectAnswer> Get(int ID)
+        public async Task<Question> Get(int ID)
         {
-            string url = $"https://localhost:7048/api/questionCorrectAnswer/get/{ID}";
+            string url = $"https://localhost:7048/api/question/get/{ID}";
 
             try
             {
@@ -21,25 +21,25 @@ namespace SQLCraftFront.Repositories
 
                 if (response.IsSuccessStatusCode)
                 {
-                    var questionCorrectAnswer = await response.Content.ReadFromJsonAsync<QuestionCorrectAnswer>();
-                    return questionCorrectAnswer;
+                    var questions = await response.Content.ReadFromJsonAsync<Question>();
+                    return questions;
                 }
                 else
                 {
                     Console.WriteLine($"Failed to fetch data: {response.ReasonPhrase}");
-                    return null;
+                    return new Question();
                 }
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"An error occurred: {ex.Message}");
-                return null;
+                return new Question();
             }
         }
 
-        public async Task<List<QuestionCorrectAnswer>> GetAll()
+        public async Task<List<Question>> GetAll()
         {
-            string url = "https://localhost:7048/api/questionCorrectAnswer/getAll";
+            string url = "https://localhost:7048/api/question/getAll";
 
             try
             {
@@ -47,30 +47,30 @@ namespace SQLCraftFront.Repositories
 
                 if (response.IsSuccessStatusCode)
                 {
-                    var questionCorrectAnswers = await response.Content.ReadFromJsonAsync<List<QuestionCorrectAnswer>>();
-                    return questionCorrectAnswers;
+                    var questions = await response.Content.ReadFromJsonAsync<List<Question>>();
+                    return questions;
                 }
                 else
                 {
                     Console.WriteLine($"Failed to fetch data: {response.ReasonPhrase}");
-                    return new List<QuestionCorrectAnswer>();
+                    return new List<Question>();
                 }
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"An error occurred: {ex.Message}");
-                return new List<QuestionCorrectAnswer>();
+                return new List<Question>();
             }
         }
 
-        public async Task Update(QuestionCorrectAnswer questionCorrectAnswer)
+        public async Task Update(Question question)
         {
-            string url = "https://localhost:7048/api/questionCorrectAnswer/update";
+            string url = "https://localhost:7048/api/question/update";
 
             try
             {
                 var jsonContent = new StringContent(
-                    System.Text.Json.JsonSerializer.Serialize(questionCorrectAnswer),
+                    System.Text.Json.JsonSerializer.Serialize(question),
                     System.Text.Encoding.UTF8,
                     "application/json"
                 );
@@ -90,7 +90,7 @@ namespace SQLCraftFront.Repositories
 
         public async Task Delete(int ID)
         {
-            string url = $"https://localhost:7048/api/questionCorrectAnswer/delete/{ID}";
+            string url = $"https://localhost:7048/api/question/delete/{ID}";
 
             try
             {
@@ -107,14 +107,14 @@ namespace SQLCraftFront.Repositories
             }
         }
 
-        public async Task Save(QuestionCorrectAnswer questionCorrectAnswer)
+        public async Task Save(Question question)
         {
-            string url = "https://localhost:7048/api/questionCorrectAnswer/save";
+            string url = "https://localhost:7048/api/question/save";
 
             try
             {
                 var jsonContent = new StringContent(
-                    System.Text.Json.JsonSerializer.Serialize(questionCorrectAnswer),
+                    System.Text.Json.JsonSerializer.Serialize(question),
                     System.Text.Encoding.UTF8,
                     "application/json"
                 );

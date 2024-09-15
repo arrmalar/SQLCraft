@@ -5,7 +5,7 @@ namespace SQLCraft.Models.VM
 {
     public class ManageQueryRiddle
     {
-        public QueryRiddle QueryRiddle { get; set; }
+        public Question QueryRiddle { get; set; }
 
         [ValidateNever]
         public IEnumerable<SelectListItem> DBSchemas { get; set; }

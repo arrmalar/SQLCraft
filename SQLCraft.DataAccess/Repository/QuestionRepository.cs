@@ -4,18 +4,18 @@ using SQLCraft.Models;
 
 namespace SQLCraft.DataAccess.Repository
 {
-    public class QueryRiddleRepository : Repository<QueryRiddle>, IQueryRiddleRepository
+    public class QuestionRepository : Repository<Question>, IQuestionRepository
     {
         private ApplicationDbContext _db;
 
-        public QueryRiddleRepository(ApplicationDbContext db) : base(db)
+        public QuestionRepository(ApplicationDbContext db) : base(db)
         {
             _db = db;
         }
 
-        public void Update(QueryRiddle obj)
+        public void Update(Question obj)
         {
-            _db.QueryRiddles.Update(obj);
+            _db.Questions.Update(obj);
         }
     }
 }

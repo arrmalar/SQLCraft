@@ -4,6 +4,12 @@ namespace SQLCraftFront.Providers.IProviders
 {
     public interface IRepositoryProvider
     {
-        IQueryRiddleRepository QueryRiddleRepository { get; }
+        IQuestionRepository QuestionRepository { get; }
+
+        IQuestionCorrectAnswerRepository QuestionCorrectAnswerRepository { get; }
+
+        IDBSchemaRepository DBSchemaRepository { get; }
+
+        IQuestionLevelRepository QuestionLevelRepository { get; }
     }
 }

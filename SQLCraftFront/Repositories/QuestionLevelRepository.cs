@@ -3,17 +3,17 @@ using SQLCraftFront.Repositories.IRepositories;
 
 namespace SQLCraftFront.Repositories
 {
-    public class QuestionCorrectAnswerRepository : IQuestionCorrectAnswerRepository
+    public class QuestionLevelRepository : IQuestionLevelRepository
     {
         private readonly HttpClient _httpClient;
 
-        public QuestionCorrectAnswerRepository(HttpClient httpClient) {
+        public QuestionLevelRepository(HttpClient httpClient) {
             _httpClient = httpClient;
         }  
 
-        public async Task<QuestionCorrectAnswer> Get(int ID)
+        public async Task<QuestionLevel> Get(int ID)
         {
-            string url = $"https://localhost:7048/api/questionCorrectAnswer/get/{ID}";
+            string url = $"https://localhost:7048/api/questionLevel/get/{ID}";
 
             try
             {
@@ -21,25 +21,25 @@ namespace SQLCraftFront.Repositories
 
                 if (response.IsSuccessStatusCode)
                 {
-                    var questionCorrectAnswer = await response.Content.ReadFromJsonAsync<QuestionCorrectAnswer>();
-                    return questionCorrectAnswer;
+                    var questionLevel = await response.Content.ReadFromJsonAsync<QuestionLevel>();
+                    return questionLevel ?? new QuestionLevel();
                 }
                 else
                 {
                     Console.WriteLine($"Failed to fetch data: {response.ReasonPhrase}");
-                    return null;
+                    return new QuestionLevel();
                 }
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"An error occurred: {ex.Message}");
-                return null;
+                return new QuestionLevel();
             }
         }
 
-        public async Task<List<QuestionCorrectAnswer>> GetAll()
+        public async Task<List<QuestionLevel>> GetAll()
         {
-            string url = "https://localhost:7048/api/questionCorrectAnswer/getAll";
+            string url = "https://localhost:7048/api/questionLevel/getAll";
 
             try
             {
@@ -47,30 +47,30 @@ namespace SQLCraftFront.Repositories
 
                 if (response.IsSuccessStatusCode)
                 {
-                    var questionCorrectAnswers = await response.Content.ReadFromJsonAsync<List<QuestionCorrectAnswer>>();
-                    return questionCorrectAnswers;
+                    var questionLevels = await response.Content.ReadFromJsonAsync<List<QuestionLevel>>();
+                    return questionLevels ?? new List<QuestionLevel>();
                 }
                 else
                 {
                     Console.WriteLine($"Failed to fetch data: {response.ReasonPhrase}");
-                    return new List<QuestionCorrectAnswer>();
+                    return new List<QuestionLevel>();
                 }
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"An error occurred: {ex.Message}");
-                return new List<QuestionCorrectAnswer>();
+                return new List<QuestionLevel>();
             }
         }
 
-        public async Task Update(QuestionCorrectAnswer questionCorrectAnswer)
+        public async Task Update(QuestionLevel questionLevel)
         {
-            string url = "https://localhost:7048/api/questionCorrectAnswer/update";
+            string url = "https://localhost:7048/api/questionLevel/update";
 
             try
             {
                 var jsonContent = new StringContent(
-                    System.Text.Json.JsonSerializer.Serialize(questionCorrectAnswer),
+                    System.Text.Json.JsonSerializer.Serialize(questionLevel),
                     System.Text.Encoding.UTF8,
                     "application/json"
                 );
@@ -90,7 +90,7 @@ namespace SQLCraftFront.Repositories
 
         public async Task Delete(int ID)
         {
-            string url = $"https://localhost:7048/api/questionCorrectAnswer/delete/{ID}";
+            string url = $"https://localhost:7048/api/questionLevel/delete/{ID}";
 
             try
             {
@@ -107,14 +107,14 @@ namespace SQLCraftFront.Repositories
             }
         }
 
-        public async Task Save(QuestionCorrectAnswer questionCorrectAnswer)
+        public async Task Save(QuestionLevel questionLevel)
         {
-            string url = "https://localhost:7048/api/questionCorrectAnswer/save";
+            string url = "https://localhost:7048/api/questionLevel/save";
 
             try
             {
                 var jsonContent = new StringContent(
-                    System.Text.Json.JsonSerializer.Serialize(questionCorrectAnswer),
+                    System.Text.Json.JsonSerializer.Serialize(questionLevel),
                     System.Text.Encoding.UTF8,
                     "application/json"
                 );

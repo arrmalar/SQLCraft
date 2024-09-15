@@ -1,0 +1,138 @@
+﻿@inject IRepositoryProvider RepositoryProvider
+@rendermode InteractiveServer
+
+@if (isLoading)
+{
+    <div class="spinner"></div>
+}
+else
+{
+
+
+    @if (EditedQuestionID == -1)
+    {
+        <button class="btn btn-success btn-sm ms-2" @onclick="@(() => Add())">
+            +
+        </button>
+
+        <QuickGrid TGridItem="Question" Items="@Questions.AsQueryable()" Pagination="@pagination">
+            <PropertyColumn Property="p => p.QuestionText" title="Question" Sortable="true"></PropertyColumn>
+            <PropertyColumn Property="p => p.QuestionCorrectAnswer.CorrectAnswer" title="Answer" Sortable="true"></PropertyColumn>
+            <PropertyColumn Property="p => p.DBSchema.Name" title="DBSchema" Sortable="true"></PropertyColumn>
+            <TemplateColumn title="Difficulty">
+                <div>
+                    @if (context.QuestionLevel.Name.Equals("Easy"))
+                    {
+                        <span id="riddle-difficulty" class="badge bg-info text-dark">
+                            @context.QuestionLevel.Name
+                        </span>
+                    }
+                    else if (context.QuestionLevel.Name.Equals("Medium"))
+                    {
+                        <span id="riddle-difficulty" class="badge bg-warning text-dark">
+                            @context.QuestionLevel.Name
+                        </span>
+                    }
+                    else
+                    {
+                        <span id="riddle-difficulty" class="badge bg-danger text-dark">
+                            @context.QuestionLevel.Name
+                        </span>
+                    }
+                </div>
+            </TemplateColumn>
+
+            <TemplateColumn>
+                <div>
+                    <span class="d-flex align-items-center">
+                        <button 
+                                class="btn btn-primary btn-sm ms-2" 
+                                @onclick="@(() => EditStart(context))" 
+                                title="Edit">
+                            Edit
+                        </button>
+
+                        <button 
+                                class="btn btn-danger btn-sm ms-2" 
+                                @onclick="@(() => Delete(context))" 
+                                title="Delete">
+                            Delete
+                        </button> 
+                    </span>
+                </div>
+            </TemplateColumn>
+
+        </QuickGrid>
+        <Paginator State="pagination"></Paginator>
+    }
+    else
+    {
+        <QuestionForm 
+            EditFinished="EditSave"
+            EditCanceled="EditCanceled"
+            ID="@EditedQuestionID">
+        </QuestionForm>
+    }
+}
+
+@code {
+    private List<Question> Questions { get; set; } = new List<Question>();
+    private PaginationState pagination = new PaginationState { ItemsPerPage = 10 };
+    private bool isLoading { get; set; } = true;
+    private int EditedQuestionID { get; set; } = -1;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            try
+            {
+                await LoadDataAsync();
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                isLoading = false;
+                StateHasChanged();
+            }
+        }
+    }
+
+    private async Task LoadDataAsync()
+    {
+        Questions = await RepositoryProvider.QuestionRepository.GetAll();
+    }
+
+    private void EditStart(Question question)
+    {
+        EditedQuestionID = question.ID;
+    }
+
+    private async Task EditSave()
+    {
+        EditedQuestionID = -1;
+        await LoadDataAsync();
+    }
+
+    private void EditCanceled()
+    {
+        EditedQuestionID = -1;
+    }
+
+    private async Task Delete(Question question)
+    {
+        await RepositoryProvider.QuestionRepository.Delete(question.ID);
+        await RepositoryProvider.QuestionCorrectAnswerRepository.Delete(question.QuestionCorrectAnswerID);
+        await LoadDataAsync();
+    }
+
+    private void Add()
+    {
+        EditedQuestionID = 0;
+    }
+}
+
+
