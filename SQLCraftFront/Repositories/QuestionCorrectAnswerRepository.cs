@@ -1,4 +1,5 @@
 ﻿using SQLCraft.Models;
+using SQLCraft.Utility;
 using SQLCraftFront.Repositories.IRepositories;
 
 namespace SQLCraftFront.Repositories
@@ -13,7 +14,7 @@ namespace SQLCraftFront.Repositories
 
         public async Task<QuestionCorrectAnswer> Get(int ID)
         {
-            string url = $"https://localhost:7048/api/questionCorrectAnswer/get/{ID}";
+            string url = $"{URLs.QuestionCorrectAnswer.GET_QUESTION_CORRECT_ANSWER}/{ID}";
 
             try
             {
@@ -39,7 +40,7 @@ namespace SQLCraftFront.Repositories
 
         public async Task<List<QuestionCorrectAnswer>> GetAll()
         {
-            string url = "https://localhost:7048/api/questionCorrectAnswer/getAll";
+            string url = $"{URLs.QuestionCorrectAnswer.GET_ALL_QUESTION_CORRECT_ANSWER}";
 
             try
             {
@@ -65,7 +66,7 @@ namespace SQLCraftFront.Repositories
 
         public async Task Update(QuestionCorrectAnswer questionCorrectAnswer)
         {
-            string url = "https://localhost:7048/api/questionCorrectAnswer/update";
+            string url = $"{URLs.QuestionCorrectAnswer.UPDATE_QUESTION_CORRECT_ANSWER}";
 
             try
             {
@@ -90,7 +91,7 @@ namespace SQLCraftFront.Repositories
 
         public async Task Delete(int ID)
         {
-            string url = $"https://localhost:7048/api/questionCorrectAnswer/delete/{ID}";
+            string url = $"{URLs.QuestionCorrectAnswer.DELETE_QUESTION_CORRECT_ANSWER}/{ID}";
 
             try
             {
@@ -109,7 +110,7 @@ namespace SQLCraftFront.Repositories
 
         public async Task Save(QuestionCorrectAnswer questionCorrectAnswer)
         {
-            string url = "https://localhost:7048/api/questionCorrectAnswer/save";
+            string url = $"{URLs.QuestionCorrectAnswer.SAVE_QUESTION_CORRECT_ANSWER}";
 
             try
             {

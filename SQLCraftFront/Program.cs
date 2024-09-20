@@ -5,11 +5,12 @@ using SQLCraftFront.Providers.IProviders;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddBlazorBootstrap();
-// Add services to the container.
 builder.Services.AddRazorComponents().AddInteractiveServerComponents();
 builder.Services.AddHttpClient();
 
 builder.Services.AddScoped<IRepositoryProvider, RepositoryProvider>();
+builder.Services.AddScoped<IServicesProvider, ServicesProvider>();
+
 
 var app = builder.Build();
 

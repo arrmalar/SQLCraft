@@ -14,10 +14,11 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SQLCraft.Models\SQLCraft.Models.csproj" />
+    <ProjectReference Include="..\SQLCraft.Utility\SQLCraft.Utility.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\" />
+    <Folder Include="Components\Commons\" />
   </ItemGroup>
 
 </Project>

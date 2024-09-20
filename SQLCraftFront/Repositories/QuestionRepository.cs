@@ -1,4 +1,5 @@
 ﻿using SQLCraft.Models;
+using SQLCraft.Utility;
 using SQLCraftFront.Repositories.IRepositories;
 
 namespace SQLCraftFront.Repositories
@@ -13,7 +14,7 @@ namespace SQLCraftFront.Repositories
 
         public async Task<Question> Get(int ID)
         {
-            string url = $"https://localhost:7048/api/question/get/{ID}";
+            string url = $"{URLs.Question.GET_QUESTION}/{ID}";
 
             try
             {
@@ -39,7 +40,7 @@ namespace SQLCraftFront.Repositories
 
         public async Task<List<Question>> GetAll()
         {
-            string url = "https://localhost:7048/api/question/getAll";
+            string url = $"{URLs.Question.GET_ALL_QUESTION}";
 
             try
             {
@@ -65,7 +66,7 @@ namespace SQLCraftFront.Repositories
 
         public async Task Update(Question question)
         {
-            string url = "https://localhost:7048/api/question/update";
+            string url = $"{URLs.Question.UPDATE_QUESTION}";
 
             try
             {
@@ -90,7 +91,7 @@ namespace SQLCraftFront.Repositories
 
         public async Task Delete(int ID)
         {
-            string url = $"https://localhost:7048/api/question/delete/{ID}";
+            string url = $"{URLs.Question.DELETE_QUESTION}/{ID}";
 
             try
             {
@@ -109,7 +110,7 @@ namespace SQLCraftFront.Repositories
 
         public async Task Save(Question question)
         {
-            string url = "https://localhost:7048/api/question/save";
+            string url = $"{URLs.Question.SAVE_QUESTION}";
 
             try
             {

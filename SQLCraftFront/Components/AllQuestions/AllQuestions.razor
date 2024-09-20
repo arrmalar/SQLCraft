@@ -1,0 +1,54 @@
+﻿@page "/allQuestions"
+@inject IRepositoryProvider RepositoryProvider
+
+<h1>Lista Zagadek SQL</h1>
+
+@if (questions == null)
+{
+    <div class="spinner"></div>
+}
+else if (!questions.Any())
+{
+    <p><em>Brak dostępnych zagadek</em></p>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Tytuł</th>
+                <th>Opis</th>
+                <th>Poziom trudności</th>
+                <th>Akcje</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var question  in questions)
+            {
+                <tr>
+                    <td>@question.QuestionText</td>
+                    <td>@question.DBSchemaID</td>
+                    <td>@question.QuestionLevelID</td>
+                    <td>
+                        <button class="btn btn-primary" @onclick="() => SolvePuzzle()">Rozwiąż</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private List<Question> questions;
+
+    protected override async Task OnInitializedAsync()
+    {
+        questions = await RepositoryProvider.QuestionRepository.GetAll();
+    }
+
+    private void SolvePuzzle()
+    {
+        // Przekierowanie do szczegółów zagadki lub strony do jej rozwiązania
+        //NavigationManager.NavigateTo($"/puzzle/{puzzleId}");
+    }
+}

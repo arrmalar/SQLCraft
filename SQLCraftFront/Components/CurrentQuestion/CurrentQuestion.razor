@@ -1,54 +1,127 @@
-﻿@*  @page "/currentTask/{ID:int?}"
+﻿@page "/currentQuestion/{ID?}"
+@using System.Data
+@inject IRepositoryProvider RepositoryProvider
+@inject IServicesProvider ServicesProvider
+@rendermode InteractiveServer
 
- <div class="col mb-3">
-     <div>
-         <span>@QueryRiddle.Question</span>
-     </div>
-     <br />
-     <div>
-         <textarea class="form-control" rows="5" placeholder="Enter your answer here..." @bind="Answer"></textarea>
-     </div>
- </div>
- <div class="col mb-3">
-    
- </div>
+<div class="col mb-3">
+    <div>
+        @if (Question != null)
+        {
+            <span>@Question.QuestionText</span>
+        }
+    </div>
+    <br />
+    <div>
+        <textarea class="form-control" rows="5" placeholder="Enter your answer here..." @bind="Answer"></textarea>
+    </div>
+    <br />
+    <button class="btn btn-success btn-sm ms-2" @onclick="@(() => Validate())" title="Validate">Validate</button>
 
+    <!-- Display User's DataTable -->
+    <div>
+        <h3>User's Result</h3>
+        @if (dataTableUser != null)
+        {
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        @foreach (DataColumn column in dataTableUser.Columns)
+                        {
+                            <th>@column.ColumnName</th>
+                        }
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (DataRow row in dataTableUser.Rows)
+                    {
+                        <tr>
+                            @foreach (var cell in row.ItemArray)
+                            {
+                                <td>@cell</td>
+                            }
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </div>
+    <br />
 
- @code {
-     [Parameter]
-     public int ID { get; set; }
+    <!-- Display Correct Answer DataTable -->
+    <div>
+        <h3>Correct Answer</h3>
+        @if (dataTableCorrect != null)
+        {
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        @foreach (DataColumn column in dataTableCorrect.Columns)
+                        {
+                            <th>@column.ColumnName</th>
+                        }
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (DataRow row in dataTableCorrect.Rows)
+                    {
+                        <tr>
+                            @foreach (var cell in row.ItemArray)
+                            {
+                                <td>@cell</td>
+                            }
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </div>
+</div>
 
-     public QueryRiddle QueryRiddle { get; set; }
+<div class="col mb-3">
+</div>
 
-     private List<QueryRiddle> QueryRiddles = new List<QueryRiddle>();
+@code {
+    [Parameter]
+    public int ID { get; set; }
 
-     private string Answer { get; set; }
+    private Question Question { get; set; }
 
+    private string Answer { get; set; } = "";
 
+    private DataTable dataTableUser;
 
-     protected override void OnInitialized()
-     {
-         QueryRiddles = QueryRiddleRepository.GetAllQueryRiddles();
-     }
+    private DataTable dataTableCorrect;
 
-     protected override void OnParametersSet()
-     {
-         if (ID == 0)
-         {
-             ID = QueryRiddleRepository.GetUsedQueryRiddleIndex();
-         }
-         else
-         {
-             QueryRiddleRepository.ChangeUsedQueryRiddleIndex(ID);
-         }
+    protected override async Task OnParametersSetAsync()
+    {
+        Question = await RepositoryProvider.QuestionRepository.Get(24);
+    }
 
-         QueryRiddle ??= QueryRiddleRepository.GetById(ID);
-     }
+    private async Task Validate()
+    {
+        if (!String.IsNullOrWhiteSpace(this.Answer))
+        {
+            var executeQueryUser = new ExecuteQuery()
+                {
+                    AdditionalTests = false,
+                    DBSchema = Question.DBSchema,
+                    Query = this.Answer
+                };
 
-     private void Validate()
-     {
-        
-        
-     }
- }
- *@
+            var executeQueryCorrect = new ExecuteQuery()
+                {
+                    AdditionalTests = false,
+                    DBSchema = Question.DBSchema,
+                    Query = Question?.QuestionCorrectAnswer?.CorrectAnswer ?? ""
+                };
+
+            dataTableUser = await ServicesProvider.SQLQueryService.ExecuteQuery(executeQueryUser);
+            dataTableCorrect = await ServicesProvider.SQLQueryService.ExecuteQuery(executeQueryCorrect);
+
+            var rows = dataTableUser.Rows;
+
+            var output = ServicesProvider.SQLQueryService.ValidateQuery(dataTableUser, dataTableCorrect);
+        }
+    }
+}

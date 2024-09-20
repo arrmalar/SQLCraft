@@ -1,0 +1,73 @@
+﻿@inject IRepositoryProvider RepositoryProvider
+
+@if(DBSchema != null)
+{
+
+    <EditForm Model="DBSchema" OnValidSubmit="Submit">
+        <FluentValidationValidator></FluentValidationValidator>
+
+        <FieldComponent Label="Name">
+            <Control>
+                <InputText @bind-Value="DBSchema.Name" class="form-control"></InputText>
+            </Control>
+            <ValidationControl>
+                <ValidationMessage For="() => DBSchema.Name"></ValidationMessage>
+            </ValidationControl>
+        </FieldComponent>
+
+        <button class="btn btn-primary btn-sm ms-2" type="submit">
+            Save
+        </button>
+
+        <button class="btn btn-danger btn-sm ms-2" @onclick="@(() => Cancel())">
+            Cancel
+        </button>
+    </EditForm>
+
+}
+
+@code {
+    [Parameter]
+    public int ID { get; set; }
+
+    [Parameter]
+    public EventCallback EditFinished { get; set; }
+
+    [Parameter]
+    public EventCallback EditCanceled { get; set; }
+
+    [SupplyParameterFromForm]
+    private DBSchema DBSchema { get; set; }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        DBSchema = await RepositoryProvider.DBSchemaRepository.Get(ID);
+
+        if (DBSchema.ID == 0)
+        {
+            DBSchema = new DBSchema();
+        }
+    }
+
+    private async Task Submit()
+    {
+        if (DBSchema != null)
+        {
+            if (DBSchema.ID != 0)
+            {
+                await RepositoryProvider.DBSchemaRepository.Update(DBSchema);
+            }
+            else
+            {
+                await RepositoryProvider.DBSchemaRepository.Save(DBSchema);
+            }
+
+            await EditFinished.InvokeAsync();
+        }
+    }
+
+    private async Task Cancel()
+    {
+        await EditCanceled.InvokeAsync();
+    }
+}

@@ -1,0 +1,124 @@
+﻿/* Hero Section */
+.hero {
+    background-image: url('/images/sql_background.jpg');
+    background-size: cover;
+    background-position: top;
+    padding: 100px 20px;
+    text-align: center;
+    color: white;
+}
+
+.hero-text h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.hero-text p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.cta-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+    .cta-button:hover {
+        background-color: #45a049;
+    }
+
+/* Features Section */
+.features {
+    padding: 60px 20px;
+    background-color: #f9f9f9;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.feature {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Example Puzzle Section */
+.example-puzzle {
+    padding: 60px 20px;
+    text-align: center;
+    background-color: #fff;
+}
+
+code {
+    display: block;
+    background-color: #f1f1f1;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+/* Reviews Section */
+.reviews {
+    background-color: #f9f9f9;
+    padding: 60px 20px;
+}
+
+.reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.review {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Join Now Section */
+.join-now {
+    padding: 60px 20px;
+    text-align: center;
+    background-color: #fff;
+}
+
+    .join-now p {
+        font-size: 1.2rem;
+        margin-bottom: 20px;
+    }
+
+/* Footer */
+footer {
+    padding: 40px 20px;
+    background-color: #333;
+    color: white;
+    text-align: center;
+}
+
+    footer ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    footer li {
+        display: inline;
+        margin: 0 10px;
+    }
+
+    footer a {
+        color: white;
+        text-decoration: none;
+    }
+
+        footer a:hover {
+            text-decoration: underline;
+        }

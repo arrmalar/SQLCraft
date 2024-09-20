@@ -1,4 +1,6 @@
 ﻿@inject IRepositoryProvider RepositoryProvider
+@inject IServicesProvider ServicesProvider
+@inject IConfiguration Configuration
 
 @if(Question != null)
 {
@@ -8,7 +10,7 @@
 
         <FieldComponent Label="Question">
             <Control>
-                <InputText @bind-Value="Question.QuestionText" class="form-control"></InputText>
+                <InputTextArea @bind-Value="Question.QuestionText" class="form-control"></InputTextArea>
             </Control>
             <ValidationControl>
                 <ValidationMessage For="() => Question.QuestionText"></ValidationMessage>
@@ -17,7 +19,7 @@
 
         <FieldComponent Label="Answer">
             <Control>
-                <InputText @bind-Value="Question.QuestionCorrectAnswer.CorrectAnswer" class="form-control"></InputText>
+                <InputTextArea @bind-Value="Question.QuestionCorrectAnswer.CorrectAnswer" class="form-control"></InputTextArea>
             </Control>
             <ValidationControl>
                 <ValidationMessage For="() => Question.QuestionCorrectAnswer.CorrectAnswer"></ValidationMessage>
@@ -52,11 +54,15 @@
             </ValidationControl>
         </FieldComponent>
 
-        <button class="btn btn-primary btn-sm ms-2" type="submit">
+        <button class="btn btn-success btn-sm ms-2" type="submit">
             Save
         </button>
 
-        <button class="btn btn-danger btn-sm ms-2" @onclick="@(() => Cancel())">
+        <button class="btn btn-primary btn-sm ms-2" type="button" @onclick="@(() => GenerateByAI())">
+            Generate by AI
+        </button>
+
+        <button class="btn btn-danger btn-sm ms-2" type="button" @onclick="@(() => Cancel())">
             Cancel
         </button>
     </EditForm>
@@ -120,6 +126,34 @@
             }
 
             await EditFinished.InvokeAsync();
+        }
+    }
+
+    private async Task GenerateByAI()
+    {
+        var _queryQuestionPart1 = Configuration["OpenAIRequests:QueryQuestionPart1"] ?? "";
+        var _queryQuestionPart2 = Configuration["OpenAIRequests:QueryQuestionPart2"] ?? "";
+
+        var dbSchema = await RepositoryProvider.DBSchemaRepository.Get(Question?.DBSchemaID ?? 0);
+        var questionLevel = await RepositoryProvider.QuestionLevelRepository.Get(Question?.QuestionLevelID ?? 0);
+
+        if (dbSchema != null && questionLevel != null)
+        {
+            try
+            {
+                var question = System.IO.File.ReadAllText($"wwwroot/dotFiles/{dbSchema.Name}.gv") + " \n " + _queryQuestionPart1 + questionLevel.Name + _queryQuestionPart2;
+
+                if (!string.IsNullOrEmpty(question))
+                {
+                    var answer = await ServicesProvider.ChatGPTService.GetAnswerAsync(question);
+                    Question.QuestionText = answer;
+                    Question.QuestionCorrectAnswer = new QuestionCorrectAnswer() { CorrectAnswer = answer };
+                }          
+            }
+            catch (Exception ex)
+            {
+                // something went wrong
+            }
         }
     }
 

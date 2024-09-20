@@ -1,0 +1,73 @@
+﻿@inject IRepositoryProvider RepositoryProvider
+
+@if(QuestionLevel != null)
+{
+
+    <EditForm Model="QuestionLevel" OnValidSubmit="Submit">
+        <FluentValidationValidator></FluentValidationValidator>
+
+        <FieldComponent Label="Name">
+            <Control>
+                <InputText @bind-Value="QuestionLevel.Name" class="form-control"></InputText>
+            </Control>
+            <ValidationControl>
+                <ValidationMessage For="() => QuestionLevel.Name"></ValidationMessage>
+            </ValidationControl>
+        </FieldComponent>
+
+        <button class="btn btn-primary btn-sm ms-2" type="submit">
+            Save
+        </button>
+
+        <button class="btn btn-danger btn-sm ms-2" @onclick="@(() => Cancel())">
+            Cancel
+        </button>
+    </EditForm>
+
+}
+
+@code {
+    [Parameter]
+    public int ID { get; set; }
+
+    [Parameter]
+    public EventCallback EditFinished { get; set; }
+
+    [Parameter]
+    public EventCallback EditCanceled { get; set; }
+
+    [SupplyParameterFromForm]
+    private QuestionLevel QuestionLevel { get; set; }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        QuestionLevel = await RepositoryProvider.QuestionLevelRepository.Get(ID);
+
+        if (QuestionLevel.ID == 0)
+        {
+            QuestionLevel = new QuestionLevel();
+        }
+    }
+
+    private async Task Submit()
+    {
+        if (QuestionLevel != null)
+        {
+            if (QuestionLevel.ID != 0)
+            {
+                await RepositoryProvider.QuestionLevelRepository.Update(QuestionLevel);
+            }
+            else
+            {
+                await RepositoryProvider.QuestionLevelRepository.Save(QuestionLevel);
+            }
+
+            await EditFinished.InvokeAsync();
+        }
+    }
+
+    private async Task Cancel()
+    {
+        await EditCanceled.InvokeAsync();
+    }
+}

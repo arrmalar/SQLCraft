@@ -1,4 +1,5 @@
 ﻿using SQLCraft.Models;
+using SQLCraft.Utility;
 using SQLCraftFront.Repositories.IRepositories;
 
 namespace SQLCraftFront.Repositories
@@ -13,7 +14,7 @@ namespace SQLCraftFront.Repositories
 
         public async Task<QuestionLevel> Get(int ID)
         {
-            string url = $"https://localhost:7048/api/questionLevel/get/{ID}";
+            string url = $"{URLs.QuestionLevel.GET_QUESTION_LEVEL}/{ID}";
 
             try
             {
@@ -39,7 +40,7 @@ namespace SQLCraftFront.Repositories
 
         public async Task<List<QuestionLevel>> GetAll()
         {
-            string url = "https://localhost:7048/api/questionLevel/getAll";
+            string url = $"{URLs.QuestionLevel.GET_ALL_QUESTION_LEVEL}";
 
             try
             {
@@ -65,7 +66,7 @@ namespace SQLCraftFront.Repositories
 
         public async Task Update(QuestionLevel questionLevel)
         {
-            string url = "https://localhost:7048/api/questionLevel/update";
+            string url = $"{URLs.QuestionLevel.UPDATE_QUESTION_LEVEL}";
 
             try
             {
@@ -90,7 +91,7 @@ namespace SQLCraftFront.Repositories
 
         public async Task Delete(int ID)
         {
-            string url = $"https://localhost:7048/api/questionLevel/delete/{ID}";
+            string url = $"{URLs.QuestionLevel.DELETE_QUESTION_LEVEL}/{ID}";
 
             try
             {
@@ -109,7 +110,7 @@ namespace SQLCraftFront.Repositories
 
         public async Task Save(QuestionLevel questionLevel)
         {
-            string url = "https://localhost:7048/api/questionLevel/save";
+            string url = $"{URLs.QuestionLevel.SAVE_QUESTION_LEVEL}";
 
             try
             {

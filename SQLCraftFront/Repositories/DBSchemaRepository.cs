@@ -1,4 +1,5 @@
 ﻿using SQLCraft.Models;
+using SQLCraft.Utility;
 using SQLCraftFront.Repositories.IRepositories;
 
 namespace SQLCraftFront.Repositories
@@ -13,7 +14,7 @@ namespace SQLCraftFront.Repositories
 
         public async Task<DBSchema> Get(int ID)
         {
-            string url = $"https://localhost:7048/api/dbSchema/get/{ID}";
+            string url = $"{URLs.DBSchema.GET_DBSCHEMA}/{ID}";
 
             try
             {
@@ -39,7 +40,7 @@ namespace SQLCraftFront.Repositories
 
         public async Task<List<DBSchema>> GetAll()
         {
-            string url = "https://localhost:7048/api/dbSchema/getAll";
+            string url = $"{URLs.DBSchema.GET_ALL_DBSCHEMAS}";
 
             try
             {
@@ -65,7 +66,8 @@ namespace SQLCraftFront.Repositories
 
         public async Task Update(DBSchema dbSchema)
         {
-            string url = "https://localhost:7048/api/dbSchema/update";
+
+            string url = $"{URLs.DBSchema.UPDATE_DBSCHEMA}";
 
             try
             {
@@ -90,7 +92,7 @@ namespace SQLCraftFront.Repositories
 
         public async Task Delete(int ID)
         {
-            string url = $"https://localhost:7048/api/dbSchema/delete/{ID}";
+            string url = $"{URLs.DBSchema.DELETE_DBSCHEMA}/{ID}";
 
             try
             {
@@ -109,7 +111,7 @@ namespace SQLCraftFront.Repositories
 
         public async Task Save(DBSchema dbSchema)
         {
-            string url = "https://localhost:7048/api/dbSchema/save";
+            string url = $"{URLs.DBSchema.SAVE_DBSCHEMA}";
 
             try
             {

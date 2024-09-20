@@ -8,8 +8,6 @@ using Riddle.Warehouse.TestCases.DataAccess.Data;
 using SQLCraft.DataAccess.Data;
 using SQLCraft.DataAccess.Repository.IRepository;
 using SQLCraft.DataAccess.Repository;
-using SQLCraft.Services.Interfaces;
-using SQLCraft.Services;
 using SQLCraft.Utility;
 using Microsoft.AspNetCore.Identity.UI.Services;
 
@@ -18,7 +16,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Configuration.AddUserSecrets<Program>();
 
 builder.Services.AddControllers();
-builder.Services.AddHttpClient<ChatGPTService>();
+builder.Services.AddHttpClient();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -77,7 +75,6 @@ builder.Services.ConfigureApplicationCookie(options =>
 
 builder.Services.AddScoped<IUnitOfWorkApplication, UnitOfWorkApplication>();
 builder.Services.AddScoped<IEmailSender, EmailSender>();
-builder.Services.AddScoped<ISQLQueryValidatorService, SQLQueryValidatorService>();
 
 var app = builder.Build();
 

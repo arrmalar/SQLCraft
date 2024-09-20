@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using SQLCraft.DataAccess.Repository.IRepository;
-using SQLCraft.Models.VM;
-using SQLCraft.Services;
-using System.Threading.Tasks;
+using System.Net.Http.Headers;
+using System.Text;
 
 namespace SQLCraft.API.Controllers.User
 {
@@ -10,68 +10,44 @@ namespace SQLCraft.API.Controllers.User
     [ApiController]
     public class ChatGPTController : ControllerBase
     {
-        private readonly IUnitOfWorkApplication _unitOfWork;
-        private readonly ChatGPTService _chatGptService;
-        private readonly string _queryQuestionPart1;
-        private readonly string _queryQuestionPart2;
+        private readonly string _apiKey;
+        private readonly HttpClient _httpClient;
 
-        public ChatGPTController(IUnitOfWorkApplication unitOfWork, IConfiguration configuration, ChatGPTService chatGptService)
+        public ChatGPTController(IConfiguration configuration, HttpClient httpClient)
         {
-            _unitOfWork = unitOfWork;
-            _queryQuestionPart1 = configuration["OpenAIRequests:QueryQuestionPart1"];
-            _queryQuestionPart2 = configuration["OpenAIRequests:QueryQuestionPart2"];
-            _chatGptService = chatGptService;
+            _httpClient = httpClient;
+            _apiKey = configuration.GetSection("OpenAI")["ApiKey"];
         }
 
-        // POST api/chatgpt
-        [HttpPost]
-        public async Task<IActionResult> GenerateByAI([FromBody] ManageQueryRiddle manageQueryRiddle)
+        [HttpPost("GetAnswerAsync")]
+        public async Task<ActionResult<string>> GetAnswerAsync([FromBody] string question)
         {
-            if (!ModelState.IsValid)
+            var request = new
             {
-                return BadRequest(ModelState);
-            }
-
-            if (manageQueryRiddle.QueryRiddle == null ||
-                manageQueryRiddle.QueryRiddle.DBSchemaID == 0 ||
-                manageQueryRiddle.QueryRiddle.QuestionLevelID == 0)
-            {
-                return BadRequest(new { success = false, message = "Invalid input data." });
-            }
-
-            var dbSchema = _unitOfWork.DBSchemaRepository.Get(dbs => dbs.ID == manageQueryRiddle.QueryRiddle.DBSchemaID);
-            var questionLevel = _unitOfWork.QuestionLevelRepository.Get(ql => ql.ID == manageQueryRiddle.QueryRiddle.QuestionLevelID);
-
-            if (dbSchema == null || questionLevel == null)
-            {
-                return NotFound(new { success = false, message = "Database schema or question level not found." });
-            }
-
-            try
-            {
-                var question = System.IO.File.ReadAllText($"wwwroot/dotFiles/{dbSchema.Name}.gv") + " \n " + _queryQuestionPart1 + questionLevel.Name + _queryQuestionPart2;
-
-                if (string.IsNullOrEmpty(question))
+                model = "gpt-3.5-turbo",
+                messages = new[]
                 {
-                    return BadRequest(new { success = false, message = "Question cannot be empty." });
-                }
+                    new { role = "user", content = question }
+                },
+                max_tokens = 1000
+            };
 
-                var answer = await _chatGptService.GetAnswerAsync(question);
+            var jsonRequest = JsonConvert.SerializeObject(request);
+            var content = new StringContent(jsonRequest, Encoding.UTF8, "application/json");
 
-                manageQueryRiddle.QueryRiddle.QuestionText = answer;
-                manageQueryRiddle.QueryRiddle.QuestionCorrectAnswer.CorrectAnswer = answer;
+            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _apiKey);
+            var response = await _httpClient.PostAsync("https://api.openai.com/v1/chat/completions", content);
 
-                return Ok(new
-                {
-                    success = true,
-                    question = manageQueryRiddle.QueryRiddle.QuestionText,
-                    correctAnswer = manageQueryRiddle.QueryRiddle.QuestionCorrectAnswer.CorrectAnswer
-                });
-            }
-            catch (Exception ex)
+            if (!response.IsSuccessStatusCode)
             {
-                return StatusCode(500, new { success = false, message = "An error occurred: " + ex.Message });
+                throw new HttpRequestException($"OpenAI API request failed with status code: {response.StatusCode}");
             }
+
+            var jsonResponse = await response.Content.ReadAsStringAsync();
+            dynamic result = JsonConvert.DeserializeObject(jsonResponse);
+            string answer = result.choices[0].message.content.ToString();
+
+            return Ok(answer);
         }
     }
 }

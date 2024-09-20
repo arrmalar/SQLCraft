@@ -1,0 +1,87 @@
+﻿@page "/"
+
+@* Hero Section *@
+<div class="hero">
+    <div class="hero-text">
+        <h1>SQLCraft - Opanuj Sztukę Tworzenia Zapytania SQL</h1>
+        <p>Rozwiązuj zagadki SQL i zostań mistrzem baz danych!</p>
+        <button class="cta-button" @onclick="NavigateToChallenges">Zacznij teraz</button>
+    </div>
+</div>
+
+@* Features Section *@
+<section class="features">
+    <h2>Co oferuje SQLCraft?</h2>
+    <div class="features-grid">
+        <div class="feature">
+            <h3>Zagadki SQL na różnych poziomach trudności</h3>
+            <p>Rozwiązuj zadania od poziomu początkującego do eksperta. Każde zadanie to realny problem, z którym możesz się spotkać na co dzień.</p>
+        </div>
+        <div class="feature">
+            <h3>Rywalizacja i rankingi</h3>
+            <p>Zdobywaj punkty i porównuj swoje umiejętności z innymi uczestnikami. Walcz o miejsce na szczycie rankingu!</p>
+        </div>
+        <div class="feature">
+            <h3>Interaktywna nauka</h3>
+            <p>Poznaj podstawy i zaawansowane techniki SQL dzięki praktycznym przykładom i interaktywnym ćwiczeniom.</p>
+        </div>
+        <div class="feature">
+            <h3>Śledzenie postępów</h3>
+            <p>Sprawdzaj swoje statystyki, rozwijaj umiejętności i zdobywaj odznaki oraz certyfikaty, które wyróżnią Cię na rynku pracy.</p>
+        </div>
+    </div>
+</section>
+
+@* Example Puzzle Section *@
+<section class="example-puzzle">
+    <h2>Przykładowa zagadka</h2>
+    <h3>Znajdź wszystkich pracowników zarabiających więcej niż średnia w firmie</h3>
+    <p>Masz tabelę <code>employees</code> z kolumnami: <code>name</code>, <code>salary</code>. Napisz zapytanie SQL, które zwróci imiona wszystkich pracowników, których zarobki są większe niż średnia pensja w firmie.</p>
+    <p><strong>Podpowiedź:</strong> Użyj funkcji agregujących i subzapytania.</p>
+    <code>SELECT name FROM employees WHERE salary > (SELECT AVG(salary) FROM employees);</code>
+</section>
+
+@* User Reviews Section *@
+<section class="reviews">
+    <h2>Opinie użytkowników</h2>
+    <div class="reviews-grid">
+        <div class="review">
+            <p>„SQLCraft to doskonałe narzędzie do nauki SQL. Dzięki niemu zrozumiałem wiele skomplikowanych zagadnień!”</p>
+            <p><strong>– Adam, programista</strong></p>
+        </div>
+        <div class="review">
+            <p>„Świetna platforma do ćwiczenia umiejętności SQL! Wyzwania są ciekawe i dają możliwość ciągłego rozwoju.”</p>
+            <p><strong>– Kasia, analityk danych</strong></p>
+        </div>
+    </div>
+</section>
+
+@* Join Now Section *@
+<section class="join-now">
+    <h2>Dołącz do SQLCraft teraz!</h2>
+    <p>Zacznij swoją przygodę z SQL i zdobądź nowe umiejętności, które wyróżnią Cię na rynku pracy.</p>
+    <button class="cta-button" @onclick="NavigateToRegister">Dołącz teraz</button>
+</section>
+
+@* Footer *@
+<footer>
+    <ul>
+        <li><a href="#">O nas</a></li>
+        <li><a href="#">Polityka prywatności</a></li>
+        <li><a href="#">Kontakt</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Social Media</a></li>
+    </ul>
+</footer>
+
+@code {
+    private void NavigateToChallenges()
+    {
+        //NavigationManager.NavigateTo("/challenges");
+    }
+
+    private void NavigateToRegister()
+    {
+        //NavigationManager.NavigateTo("/register");
+    }
+}
