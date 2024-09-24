@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 using SQLCraft.Models;
+using SQLCraft.Models.DTO.Identity;
 
 namespace SQLCraft.DataAccess.Data
 {

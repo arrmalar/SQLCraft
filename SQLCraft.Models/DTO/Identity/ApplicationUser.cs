@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
-namespace SQLCraft.Models
+namespace SQLCraft.Models.DTO.Identity
 {
     public class ApplicationUser : IdentityUser
     {

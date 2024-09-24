@@ -9,7 +9,7 @@ using SQLCraft.DataAccess.Data;
 using SQLCraft.DataAccess.Repository.IRepository;
 using SQLCraft.DataAccess.Repository;
 using SQLCraft.Utility;
-using Microsoft.AspNetCore.Identity.UI.Services;
+using SQLCraft.Models.DTO.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -62,9 +62,9 @@ builder.Services.AddDbContext<UniversityTestCasesDbContext>(options => {
 }
 );
 
-builder.Services.AddIdentity<IdentityUser, IdentityRole>()
-    .AddEntityFrameworkStores<ApplicationDbContext>()
-    .AddDefaultTokenProviders();
+builder.Services.AddAuthorization();
+builder.Services.AddIdentityApiEndpoints<ApplicationUser>()
+    .AddEntityFrameworkStores<ApplicationDbContext>();
 
 builder.Services.ConfigureApplicationCookie(options =>
 {
@@ -74,7 +74,6 @@ builder.Services.ConfigureApplicationCookie(options =>
 });
 
 builder.Services.AddScoped<IUnitOfWorkApplication, UnitOfWorkApplication>();
-builder.Services.AddScoped<IEmailSender, EmailSender>();
 
 var app = builder.Build();
 
@@ -84,8 +83,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.MapIdentityApi<ApplicationUser>();
 app.UseHttpsRedirection();
+
 app.UseAuthentication();
 app.UseAuthorization();
+
 app.MapControllers();
 app.Run();

@@ -1,4 +1,4 @@
-﻿using SQLCraft.Models;
+﻿using SQLCraft.Models.DTO.Identity;
 
 namespace SQLCraft.DataAccess.Repository.IRepository
 {

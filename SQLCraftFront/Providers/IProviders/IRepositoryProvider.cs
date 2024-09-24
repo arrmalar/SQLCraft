@@ -11,5 +11,7 @@ namespace SQLCraftFront.Providers.IProviders
         IDBSchemaRepository DBSchemaRepository { get; }
 
         IQuestionLevelRepository QuestionLevelRepository { get; }
+
+        IApplicationUserRepository ApplicationUserRepository { get; }
     }
 }

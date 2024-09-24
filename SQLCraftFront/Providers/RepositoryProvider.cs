@@ -16,6 +16,8 @@ namespace SQLCraftFront.Providers
 
         public IQuestionLevelRepository QuestionLevelRepository { get; private set; }
 
+        public IApplicationUserRepository ApplicationUserRepository { get; private set; }
+
         public RepositoryProvider(HttpClient httpClient)
         {
             _httpClient = httpClient;
@@ -23,6 +25,7 @@ namespace SQLCraftFront.Providers
             QuestionCorrectAnswerRepository = new QuestionCorrectAnswerRepository(httpClient);
             DBSchemaRepository = new DBSchemaRepository(httpClient);
             QuestionLevelRepository = new QuestionLevelRepository(httpClient);
+            ApplicationUserRepository = new ApplicationUserRepository(httpClient);
         }
     }
 }

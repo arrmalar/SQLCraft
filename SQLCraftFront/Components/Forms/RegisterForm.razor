@@ -1,0 +1,45 @@
+﻿@using SQLCraft.Models.DTO.Identity
+
+@inject IServicesProvider ServicesProvider
+
+<EditForm Model="RegisterDTO" OnValidSubmit="RegisterUser">
+    <FluentValidationValidator></FluentValidationValidator>
+
+    <FieldComponent Label="Email">
+        <Control>
+            <InputText @bind-Value="RegisterDTO.Email" class="form-control"></InputText>
+        </Control>
+        <ValidationControl>
+            <ValidationMessage For="() => RegisterDTO.Email"></ValidationMessage>
+        </ValidationControl>
+    </FieldComponent>
+
+    <FieldComponent Label="Password">
+        <Control>
+            <InputText @bind-Value="RegisterDTO.Password" class="form-control"></InputText>
+        </Control>
+        <ValidationControl>
+            <ValidationMessage For="() => RegisterDTO.Password"></ValidationMessage>
+        </ValidationControl>
+    </FieldComponent>
+
+    <button type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
+</EditForm>
+
+@code {
+    [SupplyParameterFromForm]
+    private RegisterDTO? RegisterDTO { get; set; }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        var s = 0;
+        RegisterDTO = new RegisterDTO();
+    }
+
+    public async Task RegisterUser()
+    {
+        var registerDTO = new RegisterDTO() { Email = RegisterDTO.Email, Password = RegisterDTO.Password };
+        await ServicesProvider.IdentityService.Register(registerDTO);
+    }
+
+}

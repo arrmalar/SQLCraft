@@ -1,4 +1,5 @@
 ﻿using SQLCraftFront.Repositories.IRepositories;
+using SQLCraftFront.Services.IServices;
 
 namespace SQLCraftFront.Providers.IProviders
 {
@@ -7,5 +8,7 @@ namespace SQLCraftFront.Providers.IProviders
         ISQLQueryService SQLQueryService { get; }
 
         IChatGPTService ChatGPTService { get; }
+
+        IIdentityService IdentityService { get; }
     }
 }

@@ -1,16 +1,20 @@
-﻿using Microsoft.IdentityModel.Protocols.OpenIdConnect;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Net.WebRequestMethods;
-
+﻿
 namespace SQLCraft.Utility
 {
     public static class URLs
     {
         private const string Host = "https://localhost:7048/api";
+        private const string HostIdentity = "https://localhost:7048";
+
+        public static class ApplicationUser
+        {
+            public const string GET_APPLICATION_USER = $"{Host}/applicationUser/get";
+            public const string UPDATE_APPLICATION_USER = $"{Host}/applicationUser/update";
+            public const string DELETE_APPLICATION_USER = $"{Host}/applicationUser/delete";
+            public const string GET_ALL_APPLICATION_USERS = $"{Host}/applicationUser/getAll";
+            public const string SAVE_APPLICATION_USER = $"{Host}/applicationUser/save";
+            public const string CHECK_IF_EMAIL_EXISTS = $"{Host}/applicationUser/checkIfEmailExists";
+        }
 
         public static class DBSchema {
             public const string GET_DBSCHEMA = $"{Host}/dbSchema/get";
@@ -55,6 +59,19 @@ namespace SQLCraft.Utility
         public static class ChatGPT
         {
             public const string GET_ANSWER_ASYNC = $"{Host}/chatGPT/getAnswerAsync";
+        }
+
+        public static class Identity 
+        {
+            public const string REGISTER = $"{HostIdentity}/register";
+            public const string LOGIN = $"{HostIdentity}/login";
+            public const string REFRESH = $"{HostIdentity}/refresh";
+            public const string CONFIRM_EMAIL = $"{HostIdentity}/confirmEmail";
+            public const string RESEND_CONFIRMATION_EMAIL = $"{HostIdentity}/resendConfirmationEmail";
+            public const string FORGOT_PASSWORD = $"{HostIdentity}/forgotPassword";
+            public const string RESET_PASSWORD = $"{HostIdentity}/resetPassword";
+            public const string MANAGE_2FA = $"{HostIdentity}/manage/2fa";
+            public const string MANAGE_INFO = $"{HostIdentity}/manage/info";
         }
     }
 }
