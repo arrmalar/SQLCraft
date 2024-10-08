@@ -1,7 +1,9 @@
-﻿using SQLCraft.Models.DTO.Identity;
+﻿using Blazored.LocalStorage;
+using SQLCraft.Models.DTO.Identity;
 using SQLCraft.Models.Validation;
 using SQLCraft.Utility;
-using System.Security.Principal;
+using SQLCraftFront.Notifiers;
+using System.Text;
 using System.Text.Json;
 
 namespace SQLCraftFront.Services.IServices
@@ -9,10 +11,14 @@ namespace SQLCraftFront.Services.IServices
     public class IdentityService : IIdentityService
     {
         private readonly HttpClient _httpClient;
+        private readonly ITokenManagerService _tokenManagerService;
+        private readonly IAuthenticationNotifier _authenticationNotifier;
 
-        public IdentityService(HttpClient httpClient)
+        public IdentityService(HttpClient httpClient, ITokenManagerService tokenManagerService, IAuthenticationNotifier authenticationNotifier)
         {
             _httpClient = httpClient;
+            _tokenManagerService = tokenManagerService;
+            _authenticationNotifier = authenticationNotifier;
         }
 
         public async Task Register(RegisterDTO registerDTO)
@@ -22,8 +28,8 @@ namespace SQLCraftFront.Services.IServices
             try
             {
                 var jsonContent = new StringContent(
-                    System.Text.Json.JsonSerializer.Serialize(registerDTO),
-                    System.Text.Encoding.UTF8,
+                    JsonSerializer.Serialize(registerDTO),
+                    Encoding.UTF8,
                     "application/json"
                 );
 
@@ -63,28 +69,29 @@ namespace SQLCraftFront.Services.IServices
             }
         }
 
-        public async Task<string> Login(string question)
+        public async Task<LoginResponseDTO?> Login(LoginRequestDTO loginRequestDTO)
         {
-            string url = $"{URLs.ChatGPT.GET_ANSWER_ASYNC}";
+            string url = URLs.Identity.LOGIN;
 
             try
             {
-                var jsonContent = new StringContent(
-                    System.Text.Json.JsonSerializer.Serialize(question),
-                    System.Text.Encoding.UTF8,
-                    "application/json"
-                );
-
+                var jsonContent = new StringContent( JsonSerializer.Serialize(loginRequestDTO), Encoding.UTF8, "application/json");
                 HttpResponseMessage response = await _httpClient.PostAsync(url, jsonContent);
 
                 if (response.IsSuccessStatusCode)
                 {
-                    var answer = await response.Content.ReadAsStringAsync();
-                    return answer ?? "";
+                    var loginResponseDTO = await response.Content.ReadFromJsonAsync<LoginResponseDTO>();
+
+                    await _tokenManagerService.SetAccessToken(loginResponseDTO.AccessToken);
+                    await _tokenManagerService.SetRefreshToken(loginResponseDTO.RefreshToken);
+
+                    _authenticationNotifier.NotifyAuthenticationStateChanged();
+
+                    return loginResponseDTO;
                 }
                 else
                 {
-                    Console.WriteLine($"Failed to fetch data: {response.ReasonPhrase}");
+                    Console.WriteLine($"Failed to log in: {response.ReasonPhrase}");
                 }
             }
             catch (Exception ex)
@@ -92,42 +99,16 @@ namespace SQLCraftFront.Services.IServices
                 Console.WriteLine($"An error occurred: {ex.Message}");
             }
 
-            return "";
+            return null;
         }
 
-        public async Task<string> Refresh(string question)
+        public void LogOut()
         {
-            string url = $"{URLs.ChatGPT.GET_ANSWER_ASYNC}";
-
-            try
-            {
-                var jsonContent = new StringContent(
-                    System.Text.Json.JsonSerializer.Serialize(question),
-                    System.Text.Encoding.UTF8,
-                    "application/json"
-                );
-
-                HttpResponseMessage response = await _httpClient.PostAsync(url, jsonContent);
-
-                if (response.IsSuccessStatusCode)
-                {
-                    var answer = await response.Content.ReadAsStringAsync();
-                    return answer ?? "";
-                }
-                else
-                {
-                    Console.WriteLine($"Failed to fetch data: {response.ReasonPhrase}");
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"An error occurred: {ex.Message}");
-            }
-
-            return "";
+            _tokenManagerService.DeleteTokens();
+            _authenticationNotifier.NotifyAuthenticationStateChanged();
         }
 
-        public async Task<string> ConfirmEmail(string question)
+        /*public async Task<string> ConfirmEmail(string question)
         {
             string url = $"{URLs.ChatGPT.GET_ANSWER_ASYNC}";
 
@@ -285,39 +266,6 @@ namespace SQLCraftFront.Services.IServices
             }
 
             return "";
-        }
-
-        public async Task<string> ManageInfo(string question)
-        {
-            string url = $"{URLs.ChatGPT.GET_ANSWER_ASYNC}";
-
-            try
-            {
-                var jsonContent = new StringContent(
-                    System.Text.Json.JsonSerializer.Serialize(question),
-                    System.Text.Encoding.UTF8,
-                    "application/json"
-                );
-
-                HttpResponseMessage response = await _httpClient.PostAsync(url, jsonContent);
-
-                if (response.IsSuccessStatusCode)
-                {
-                    var answer = await response.Content.ReadAsStringAsync();
-                    return answer ?? "";
-                }
-                else
-                {
-                    Console.WriteLine($"Failed to fetch data: {response.ReasonPhrase}");
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"An error occurred: {ex.Message}");
-            }
-
-            return "";
-        }
-
+        }*/
     }
 }

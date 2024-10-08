@@ -13,5 +13,7 @@ namespace SQLCraftFront.Providers.IProviders
         IQuestionLevelRepository QuestionLevelRepository { get; }
 
         IApplicationUserRepository ApplicationUserRepository { get; }
+
+        IApplicationUserRoleRepository ApplicationUserRoleRepository { get; }
     }
 }

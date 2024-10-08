@@ -9,6 +9,7 @@ namespace SQLCraft.Utility
         public static class ApplicationUser
         {
             public const string GET_APPLICATION_USER = $"{Host}/applicationUser/get";
+            public const string GET_APPLICATION_USER_BY_EMAIL = $"{Host}/applicationUser/getByEmail";
             public const string UPDATE_APPLICATION_USER = $"{Host}/applicationUser/update";
             public const string DELETE_APPLICATION_USER = $"{Host}/applicationUser/delete";
             public const string GET_ALL_APPLICATION_USERS = $"{Host}/applicationUser/getAll";
@@ -63,15 +64,23 @@ namespace SQLCraft.Utility
 
         public static class Identity 
         {
-            public const string REGISTER = $"{HostIdentity}/register";
-            public const string LOGIN = $"{HostIdentity}/login";
-            public const string REFRESH = $"{HostIdentity}/refresh";
-            public const string CONFIRM_EMAIL = $"{HostIdentity}/confirmEmail";
-            public const string RESEND_CONFIRMATION_EMAIL = $"{HostIdentity}/resendConfirmationEmail";
-            public const string FORGOT_PASSWORD = $"{HostIdentity}/forgotPassword";
-            public const string RESET_PASSWORD = $"{HostIdentity}/resetPassword";
-            public const string MANAGE_2FA = $"{HostIdentity}/manage/2fa";
-            public const string MANAGE_INFO = $"{HostIdentity}/manage/info";
+            public const string REGISTER = $"{HostIdentity}/auth/register";
+            public const string LOGIN = $"{HostIdentity}/auth/login";
+            public const string REFRESH = $"{HostIdentity}/auth/refresh";
+/*            public const string CONFIRM_EMAIL = $"{HostIdentity}/auth/confirmEmail";
+            public const string RESEND_CONFIRMATION_EMAIL = $"{HostIdentity}/auth/resendConfirmationEmail";
+            public const string FORGOT_PASSWORD = $"{HostIdentity}/auth/forgotPassword";
+            public const string RESET_PASSWORD = $"{HostIdentity}/auth/resetPassword";
+            public const string MANAGE_2FA = $"{HostIdentity}/auth/manage/2fa";*/
+            public const string MANAGE_INFO = $"{HostIdentity}/auth/manage/info";
+        }
+
+        public static class Role
+        {
+            public const string GET_USER_ROLE = $"{Host}/Role/getUserRole";
+            public const string GET_ROLES = $"{Host}/Role/getRoles";
+            public const string ADD_ROLES = $"{Host}/Role/addRoles";
+            public const string ADD_USER_ROLES = $"{Host}/Role/addUserRoles";
         }
     }
 }

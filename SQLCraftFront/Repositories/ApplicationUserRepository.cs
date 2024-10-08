@@ -11,11 +11,38 @@ namespace SQLCraftFront.Repositories
 
         public ApplicationUserRepository(HttpClient httpClient) {
             _httpClient = httpClient;
+
         }  
 
         public async Task<ApplicationUser> Get(string ID)
         {
             string url = $"{URLs.ApplicationUser.GET_APPLICATION_USER}/{ID}";
+
+            try
+            {
+                HttpResponseMessage response = await _httpClient.GetAsync(url);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var applicationUser = await response.Content.ReadFromJsonAsync<ApplicationUser>();
+                    return applicationUser ?? new ApplicationUser();
+                }
+                else
+                {
+                    Console.WriteLine($"Failed to fetch data: {response.ReasonPhrase}");
+                    return new ApplicationUser();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred: {ex.Message}");
+                return new ApplicationUser();
+            }
+        }
+
+        public async Task<ApplicationUser> GetByEmail(string email)
+        {
+            string url = $"{URLs.ApplicationUser.GET_APPLICATION_USER_BY_EMAIL}/{email}";
 
             try
             {

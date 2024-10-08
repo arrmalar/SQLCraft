@@ -1,6 +1,7 @@
 ﻿@using SQLCraft.Models.DTO.Identity
+@using SQLCraftFront.Services.IServices
 
-@inject IServicesProvider ServicesProvider
+@inject IIdentityService IdentityService
 
 <EditForm Model="RegisterDTO" OnValidSubmit="RegisterUser">
     <FluentValidationValidator></FluentValidationValidator>
@@ -38,8 +39,12 @@
 
     public async Task RegisterUser()
     {
-        var registerDTO = new RegisterDTO() { Email = RegisterDTO.Email, Password = RegisterDTO.Password };
-        await ServicesProvider.IdentityService.Register(registerDTO);
-    }
+        var registerDTO = new RegisterDTO() 
+        { 
+            Email = RegisterDTO.Email, 
+            Password = RegisterDTO.Password 
+        };
 
+        await IdentityService.Register(registerDTO);
+    }
 }

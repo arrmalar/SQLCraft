@@ -1,1 +1,106 @@
-﻿
+﻿@using SQLCraft.Models.DTO.Identity
+@inject IRepositoryProvider RepositoryProvider
+@rendermode InteractiveServer
+
+<div>
+    @if (isLoading)
+    {
+        <div class="spinner"></div>
+    }
+    else
+    {
+        @if (EditedApplicationUserID == "-1")
+        {
+            <QuickGrid TGridItem="ApplicationUser" Items="@ApplicationUsers.AsQueryable()" Pagination="@pagination">
+                <PropertyColumn Property="a => a.Id" title="ID" Sortable="true"></PropertyColumn>
+                <PropertyColumn Property="a => a.UserName" title="Username" Sortable="true"></PropertyColumn>
+                <PropertyColumn Property="a => a.Email" title="Email" Sortable="true"></PropertyColumn>
+                <PropertyColumn Property="a => a.EmailConfirmed" title="Email confirmed" Sortable="true"></PropertyColumn>
+                <PropertyColumn Property="a => a.PhoneNumber" title="Phone number" Sortable="true"></PropertyColumn>
+                <PropertyColumn Property="a => a.PhoneNumberConfirmed" title="Phone number confirmed" Sortable="true"></PropertyColumn>
+                <PropertyColumn Property="a => a.TwoFactorEnabled" title="Two factor enabled" Sortable="true"></PropertyColumn>
+                <PropertyColumn Property="a => a.AccessFailedCount" title="Access failed count" Sortable="true"></PropertyColumn>
+                <TemplateColumn>
+                    <div>
+                        <span class="d-flex align-items-center">
+                            <button class="btn btn-primary btn-sm ms-2"
+                                    @onclick="@(() => EditStart(context))"
+                                    title="Edit">
+                                Edit
+                            </button>
+
+                            <button class="btn btn-danger btn-sm ms-2"
+                                    @onclick="@(() => Delete(context))"
+                                    title="Delete">
+                                Delete
+                            </button>
+                        </span>
+                    </div>
+                </TemplateColumn>
+            </QuickGrid>
+            <Paginator State="pagination"></Paginator>
+        }
+        else
+        {
+            <ApplicationUserForm EditFinished="EditSave" EditCanceled="EditCanceled" ID="@EditedApplicationUserID">
+            </ApplicationUserForm>
+        }
+    }
+</div>
+
+
+@code {
+    private List<ApplicationUser> ApplicationUsers { get; set; } = new List<ApplicationUser>();
+    private PaginationState pagination = new PaginationState { ItemsPerPage = 5 };
+    private bool isLoading { get; set; } = true;
+    private string EditedApplicationUserID { get; set; } = "-1";
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            try
+            {
+                await LoadDataAsync();
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                isLoading = false;
+                StateHasChanged();
+            }
+        }
+    }
+
+    private async Task LoadDataAsync()
+    {
+        ApplicationUsers = await RepositoryProvider.ApplicationUserRepository.GetAll();
+    }
+
+    private void EditStart(ApplicationUser applicationUser)
+    {
+        EditedApplicationUserID = applicationUser.Id;
+    }
+
+    private async Task EditSave()
+    {
+        EditedApplicationUserID = "-1";
+        await LoadDataAsync();
+    }
+
+    private void EditCanceled()
+    {
+        EditedApplicationUserID = "-1";
+    }
+
+    private async Task Delete(ApplicationUser applicationUser)
+    {
+        await RepositoryProvider.ApplicationUserRepository.Delete(applicationUser.Id);
+        await LoadDataAsync();
+    }
+}
+
+

@@ -30,10 +30,24 @@ namespace SQLCraft.API.Controllers
             return Ok(true);
         }
 
+
         [HttpGet("get/{id}")]
         public ActionResult<ApplicationUser> Get(string id)
         {
             var applicationUser = _unitOfWork.ApplicationUserRepository.Get(user => user.Id == id);
+
+            if (applicationUser == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(applicationUser);
+        }
+
+        [HttpGet("getByEmail/{email}")]
+        public ActionResult<ApplicationUser> GetByEmail(string email)
+        {
+            var applicationUser = _unitOfWork.ApplicationUserRepository.Get(user => user.Email == email);
 
             if (applicationUser == null)
             {
@@ -103,7 +117,7 @@ namespace SQLCraft.API.Controllers
                     return NotFound();
                 }
 
-                _unitOfWork.ApplicationUserRepository.Update(existingApplicationUser);
+                _unitOfWork.ApplicationUserRepository.Update(applicationUser);
                 _unitOfWork.Save();
                 return NoContent();
             }

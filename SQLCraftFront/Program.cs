@@ -1,14 +1,26 @@
+using Blazored.LocalStorage;
+using Microsoft.AspNetCore.Components.Authorization;
+using Microsoft.IdentityModel.Tokens;
 using SQLCraftFront.Components;
-using SQLCraftFront.Components.Forms.Validators;
+using SQLCraftFront.Handlers;
+using SQLCraftFront.Notifiers;
 using SQLCraftFront.Providers;
 using SQLCraftFront.Providers.IProviders;
+using SQLCraftFront.Repositories;
+using SQLCraftFront.Services.IServices;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddBlazorBootstrap();
 builder.Services.AddRazorComponents().AddInteractiveServerComponents();
 builder.Services.AddHttpClient();
+builder.Services.AddBlazoredLocalStorage();
+builder.Services.AddHttpContextAccessor();
 
+builder.Services.AddSingleton<IAuthenticationNotifier, AuthenticationNotifier>();
+builder.Services.AddScoped<AuthenticationStateProvider, ApiAuthenticationStateProvider>();
+builder.Services.AddScoped<IIdentityService, IdentityService>();
+builder.Services.AddScoped<ITokenManagerService, TokenManagerService>();
 builder.Services.AddScoped<IRepositoryProvider, RepositoryProvider>();
 builder.Services.AddScoped<IServicesProvider, ServicesProvider>();
 

@@ -9,6 +9,8 @@ namespace SQLCraftFront.Repositories.IRepositories
 
         Task<ApplicationUser> Get(string ID);
 
+        Task<ApplicationUser> GetByEmail(string email);
+
         Task Update(ApplicationUser ApplicationUser);
 
         Task Delete(string ID);

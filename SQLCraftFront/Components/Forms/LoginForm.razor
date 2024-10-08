@@ -1,0 +1,45 @@
+﻿@using SQLCraft.Models.DTO.Identity
+@using SQLCraftFront.Services.IServices
+
+@inject IIdentityService IdentityService
+
+<EditForm Model="LoginRequestDTO" OnValidSubmit="LogInUser">
+    <FluentValidationValidator></FluentValidationValidator>
+
+    <FieldComponent Label="Email">
+        <Control>
+            <InputText @bind-Value="LoginRequestDTO.Email" class="form-control"></InputText>
+        </Control>
+        <ValidationControl>
+            <ValidationMessage For="() => LoginRequestDTO.Email"></ValidationMessage>
+        </ValidationControl>
+    </FieldComponent>
+
+    <FieldComponent Label="Password">
+        <Control>
+            <InputText @bind-Value="LoginRequestDTO.Password" class="form-control"></InputText>
+        </Control>
+        <ValidationControl>
+            <ValidationMessage For="() => LoginRequestDTO.Password"></ValidationMessage>
+        </ValidationControl>
+    </FieldComponent>
+
+    <button type="submit" class="w-100 btn btn-lg btn-primary">Log In</button>
+</EditForm>
+
+@code {
+    [SupplyParameterFromForm]
+    private LoginRequestDTO? LoginRequestDTO { get; set; }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        LoginRequestDTO = new LoginRequestDTO();
+    }
+
+    public async Task LogInUser()
+    {
+        await IdentityService.Login(LoginRequestDTO);
+    }
+
+}
+

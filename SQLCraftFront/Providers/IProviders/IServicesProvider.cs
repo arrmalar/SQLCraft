@@ -8,7 +8,5 @@ namespace SQLCraftFront.Providers.IProviders
         ISQLQueryService SQLQueryService { get; }
 
         IChatGPTService ChatGPTService { get; }
-
-        IIdentityService IdentityService { get; }
     }
 }

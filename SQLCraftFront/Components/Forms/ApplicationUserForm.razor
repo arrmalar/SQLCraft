@@ -1,0 +1,121 @@
+﻿@using SQLCraft.Models.DTO.Identity
+@inject IRepositoryProvider RepositoryProvider
+@inject IServicesProvider ServicesProvider
+@inject IConfiguration Configuration
+
+@if (ApplicationUser != null)
+{
+    <EditForm Model="ApplicationUser" FormName="formQuestion" OnValidSubmit="Submit">
+        <FluentValidationValidator></FluentValidationValidator>
+
+        <FieldComponent Label="Username">
+            <Control>
+                <InputText @bind-Value="ApplicationUser.UserName" class="form-control"></InputText>
+            </Control>
+            <ValidationControl>
+                <ValidationMessage For="() => ApplicationUser.UserName"></ValidationMessage>
+            </ValidationControl>
+        </FieldComponent>
+
+        <FieldComponent Label="Email">
+            <Control>
+                <InputText @bind-Value="ApplicationUser.Email" class="form-control"></InputText>
+            </Control>
+            <ValidationControl>
+                <ValidationMessage For="() => ApplicationUser.Email"></ValidationMessage>
+            </ValidationControl>
+        </FieldComponent>
+
+    
+        <FieldComponent Label="Email confirmed">
+            <Control>
+                <InputCheckbox @bind-Value="ApplicationUser.EmailConfirmed"></InputCheckbox>
+            </Control>
+        </FieldComponent>
+
+        <FieldComponent Label="Phone number">
+            <Control>
+                <InputText @bind-Value="ApplicationUser.PhoneNumber" class="form-control"></InputText>
+            </Control>
+            <ValidationControl>
+                <ValidationMessage For="() => ApplicationUser.PhoneNumber"></ValidationMessage>
+            </ValidationControl>
+        </FieldComponent>
+
+        <FieldComponent Label="Phone number confirmed">
+            <Control>
+                <InputCheckbox @bind-Value="ApplicationUser.PhoneNumberConfirmed"></InputCheckbox>
+            </Control>
+        </FieldComponent>
+
+        <FieldComponent Label="Two factor enabled">
+            <Control>
+                <InputCheckbox @bind-Value="ApplicationUser.TwoFactorEnabled"></InputCheckbox>
+            </Control>
+        </FieldComponent>
+
+        <FieldComponent Label="Access failed count">
+            <Control>
+                <InputNumber @bind-Value="ApplicationUser.AccessFailedCount" class="form-control"></InputNumber>
+            </Control>
+            <ValidationControl>
+                <ValidationMessage For="() => ApplicationUser.AccessFailedCount"></ValidationMessage>
+            </ValidationControl>
+        </FieldComponent>
+
+        <button class="btn btn-success btn-sm ms-2" type="submit">
+            Save
+        </button>
+
+        <button class="btn btn-danger btn-sm ms-2" type="button" @onclick="@(() => Cancel())">
+            Cancel
+        </button>
+    </EditForm>
+
+}
+
+@code {
+    [Parameter]
+    public string? ID { get; set; }
+
+    [Parameter]
+    public EventCallback EditFinished { get; set; }
+
+    [Parameter]
+    public EventCallback EditCanceled { get; set; }
+
+    [SupplyParameterFromForm]
+    private ApplicationUser? ApplicationUser { get; set; }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        ApplicationUser = await RepositoryProvider.ApplicationUserRepository.Get(this.ID ?? "");
+
+        if (ApplicationUser == null)
+        {
+            ApplicationUser = new ApplicationUser();
+        }
+    }
+
+    private async Task Submit()
+    {
+        if (ApplicationUser != null)
+        {
+            if (ApplicationUser.Id != null)
+            {
+                await RepositoryProvider.ApplicationUserRepository.Update(ApplicationUser);
+            }
+            else
+            {
+                await RepositoryProvider.ApplicationUserRepository.Save(ApplicationUser);
+            }
+
+            await EditFinished.InvokeAsync();
+        }
+    }
+
+    private async Task Cancel()
+    {
+        await EditCanceled.InvokeAsync();
+    }
+}

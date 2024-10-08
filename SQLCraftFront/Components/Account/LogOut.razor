@@ -1,0 +1,16 @@
+﻿@page "/Account/Logout"
+@using Microsoft.AspNetCore.Components.Authorization
+@using SQLCraftFront.Services.IServices
+
+@inject IIdentityService IdentityService
+@inject NavigationManager NavigationManager
+
+@code {
+
+    protected override async Task OnInitializedAsync()
+    {
+        IdentityService.LogOut();
+        NavigationManager.NavigateTo("/");
+    }
+
+}
