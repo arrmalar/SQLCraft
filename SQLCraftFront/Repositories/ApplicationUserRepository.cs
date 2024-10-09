@@ -2,6 +2,9 @@
 using SQLCraft.Models.DTO.Identity;
 using SQLCraft.Utility;
 using SQLCraftFront.Repositories.IRepositories;
+using SQLCraftFront.Services.IServices;
+using System.Net.Http;
+using System.Net.Http.Headers;
 
 namespace SQLCraftFront.Repositories
 {
@@ -9,12 +12,11 @@ namespace SQLCraftFront.Repositories
     {
         private readonly HttpClient _httpClient;
 
-        public ApplicationUserRepository(HttpClient httpClient) {
-            _httpClient = httpClient;
-
+        public ApplicationUserRepository(IHttpClientFactory httpClientFactory) {
+            _httpClient = httpClientFactory.CreateClient("AuthenticatedHttpClient");
         }  
 
-        public async Task<ApplicationUser> Get(string ID)
+        public async Task<ApplicationUser?> Get(string ID)
         {
             string url = $"{URLs.ApplicationUser.GET_APPLICATION_USER}/{ID}";
 
@@ -25,22 +27,26 @@ namespace SQLCraftFront.Repositories
                 if (response.IsSuccessStatusCode)
                 {
                     var applicationUser = await response.Content.ReadFromJsonAsync<ApplicationUser>();
-                    return applicationUser ?? new ApplicationUser();
+                    return applicationUser;
                 }
                 else
                 {
+                    if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+                    { 
+                        
+                    }
                     Console.WriteLine($"Failed to fetch data: {response.ReasonPhrase}");
-                    return new ApplicationUser();
                 }
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"An error occurred: {ex.Message}");
-                return new ApplicationUser();
             }
+
+            return null;
         }
 
-        public async Task<ApplicationUser> GetByEmail(string email)
+        public async Task<ApplicationUser?> GetByEmail(string email)
         {
             string url = $"{URLs.ApplicationUser.GET_APPLICATION_USER_BY_EMAIL}/{email}";
 
@@ -51,19 +57,15 @@ namespace SQLCraftFront.Repositories
                 if (response.IsSuccessStatusCode)
                 {
                     var applicationUser = await response.Content.ReadFromJsonAsync<ApplicationUser>();
-                    return applicationUser ?? new ApplicationUser();
-                }
-                else
-                {
-                    Console.WriteLine($"Failed to fetch data: {response.ReasonPhrase}");
-                    return new ApplicationUser();
+                    return applicationUser;
                 }
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"An error occurred: {ex.Message}");
-                return new ApplicationUser();
             }
+
+            return null;
         }
 
         public async Task<List<ApplicationUser>> GetAll()

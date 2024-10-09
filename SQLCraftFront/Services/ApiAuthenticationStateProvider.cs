@@ -9,46 +9,34 @@ namespace SQLCraftFront.Repositories
 {
     public class ApiAuthenticationStateProvider : AuthenticationStateProvider
     {
-        private readonly HttpClient _httpClient;
+        private readonly IClaimsManagerService _claimsManagerService;
         private readonly ITokenManagerService _tokenManagerService;
         private readonly IAuthenticationNotifier _authenticationNotifier;
 
-        public ApiAuthenticationStateProvider(HttpClient httpClient, ITokenManagerService tokenManagerService, IAuthenticationNotifier authenticationNotifier)
+        public ApiAuthenticationStateProvider( IClaimsManagerService claimsManagerService, IAuthenticationNotifier authenticationNotifier, ITokenManagerService tokenManagerService)
         {
-            _httpClient = httpClient;
-            _tokenManagerService = tokenManagerService;
+            _claimsManagerService = claimsManagerService;
             _authenticationNotifier = authenticationNotifier;
+            _tokenManagerService = tokenManagerService;
 
-            _authenticationNotifier.OnAuthenticationStateChanged += () => {
+            _authenticationNotifier.OnAuthenticationStateChanged += () =>
+            {
                 NotifyAuthenticationStateChanged(GetAuthenticationStateAsync());
             };
         }
 
         public override async Task<AuthenticationState> GetAuthenticationStateAsync()
         {
-            if (string.IsNullOrEmpty(await _tokenManagerService.GetAccessToken()))
+            if (string.IsNullOrEmpty(await _tokenManagerService.GetAccessToken()) && !(await _tokenManagerService.TryRefreshToken()))
             {
-                if (await _tokenManagerService.TryRefreshToken())
-                {
-                    _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer",await _tokenManagerService.GetAccessToken());
-
-                    var claims = await _tokenManagerService.GetClaims();
-
-                    return new AuthenticationState(new ClaimsPrincipal(new ClaimsIdentity(claims)));
-                }
-                else
-                {
-                    return new AuthenticationState(new ClaimsPrincipal(new ClaimsIdentity()));
-                }
+                return new AuthenticationState(new ClaimsPrincipal(new ClaimsIdentity()));
             }
-            else
-            {
-                _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", await _tokenManagerService.GetAccessToken());
 
-                var claims = await _tokenManagerService.GetClaims();
+            var claims = await _claimsManagerService.GetClaims();
 
-                return new AuthenticationState(new ClaimsPrincipal(new ClaimsIdentity(claims)));
-            }
+            //var x = new AuthenticationState(new ClaimsPrincipal(new ClaimsIdentity()));
+            //x.User.Identity.IsAuthenticated = true;
+            return new AuthenticationState(new ClaimsPrincipal(new ClaimsIdentity(claims, "Bearer")));
         }
     }
 }

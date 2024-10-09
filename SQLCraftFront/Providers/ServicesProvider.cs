@@ -9,17 +9,14 @@ namespace SQLCraftFront.Providers
 {
     public class ServicesProvider : IServicesProvider
     {
-        private HttpClient _httpClient;
-
         public IChatGPTService ChatGPTService { get; private set; }
 
         public ISQLQueryService SQLQueryService { get; private set; }
 
-        public ServicesProvider(HttpClient httpClient, AuthenticationStateProvider authenticationStateProvider)
+        public ServicesProvider(IHttpClientFactory httpClientFactory, AuthenticationStateProvider authenticationStateProvider)
         {
-            _httpClient = httpClient;
-            ChatGPTService = new ChatGPTService(httpClient);
-            SQLQueryService = new SQLQueryService(httpClient);
+            ChatGPTService = new ChatGPTService(httpClientFactory);
+            SQLQueryService = new SQLQueryService(httpClientFactory);
         }
     }
 }

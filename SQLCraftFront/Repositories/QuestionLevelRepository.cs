@@ -1,6 +1,7 @@
 ﻿using SQLCraft.Models;
 using SQLCraft.Utility;
 using SQLCraftFront.Repositories.IRepositories;
+using System.Net.Http;
 
 namespace SQLCraftFront.Repositories
 {
@@ -8,8 +9,8 @@ namespace SQLCraftFront.Repositories
     {
         private readonly HttpClient _httpClient;
 
-        public QuestionLevelRepository(HttpClient httpClient) {
-            _httpClient = httpClient;
+        public QuestionLevelRepository(IHttpClientFactory httpClientFactory) {
+            _httpClient = httpClientFactory.CreateClient("AuthenticatedHttpClient");
         }  
 
         public async Task<QuestionLevel> Get(int ID)

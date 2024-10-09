@@ -14,9 +14,9 @@ namespace SQLCraftFront.Services.IServices
         private readonly ITokenManagerService _tokenManagerService;
         private readonly IAuthenticationNotifier _authenticationNotifier;
 
-        public IdentityService(HttpClient httpClient, ITokenManagerService tokenManagerService, IAuthenticationNotifier authenticationNotifier)
+        public IdentityService(IHttpClientFactory httpClientFactory, ITokenManagerService tokenManagerService, IAuthenticationNotifier authenticationNotifier)
         {
-            _httpClient = httpClient;
+            _httpClient = httpClientFactory.CreateClient();
             _tokenManagerService = tokenManagerService;
             _authenticationNotifier = authenticationNotifier;
         }

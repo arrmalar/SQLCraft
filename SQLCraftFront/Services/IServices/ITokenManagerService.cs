@@ -10,11 +10,7 @@ namespace SQLCraftFront.Services.IServices
 {
     public interface ITokenManagerService
     {
-        Task<List<Claim>> GetClaims();
-
         Task<LoginResponseDTO?> Refresh(string refreshToken);
-
-        Task<ManageInfo?> ManageInfo();
 
         Task<bool> TryRefreshToken();
 

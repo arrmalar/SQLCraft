@@ -3,6 +3,7 @@ using SQLCraft.Utility;
 using SQLCraft.Utility.DataTableParser;
 using SQLCraftFront.Repositories.IRepositories;
 using System.Data;
+using System.Net.Http;
 
 namespace SQLCraftFront.Repositories
 {
@@ -10,9 +11,9 @@ namespace SQLCraftFront.Repositories
     {
         private readonly HttpClient _httpClient;
 
-        public SQLQueryService(HttpClient httpClient)
+        public SQLQueryService(IHttpClientFactory httpClientFactory)
         {
-            _httpClient = httpClient;
+            _httpClient = httpClientFactory.CreateClient("AuthenticatedHttpClient");
         }
 
         public async Task<DataTable> ExecuteQuery(ExecuteQuery executeQuery)

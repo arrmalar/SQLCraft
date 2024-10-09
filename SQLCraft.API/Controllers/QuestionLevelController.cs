@@ -1,10 +1,11 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SQLCraft.DataAccess.Repository.IRepository;
 using SQLCraft.Models;
 
 namespace SQLCraft.API.Controllers.User
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class QuestionLevelController : ControllerBase

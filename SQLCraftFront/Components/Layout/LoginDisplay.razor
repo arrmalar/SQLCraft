@@ -10,3 +10,25 @@
         <a href="account/login">Log in</a>
     </NotAuthorized>
 </AuthorizeView>
+
+@code {
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            try
+            {
+                var x = 0;
+            }
+            catch (Exception ex)
+            {
+                var x = 0;
+            }
+            finally
+            {
+                var x = 0;
+                StateHasChanged();
+            }
+        }
+    }
+}

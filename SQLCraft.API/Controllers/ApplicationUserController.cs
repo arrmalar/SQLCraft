@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SQLCraft.DataAccess.Repository.IRepository;
 using SQLCraft.Models.DTO.Identity;
 
 namespace SQLCraft.API.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class ApplicationUserController : ControllerBase
@@ -19,7 +21,6 @@ namespace SQLCraft.API.Controllers
         [HttpGet("checkIfEmailExists/{email}")]
         public ActionResult<bool> CheckIfEmailExists(string email)
         {
-            var asdfasdf = _unitOfWork.ApplicationUserRepository.GetAll();
             var applicationUser = _unitOfWork.ApplicationUserRepository.Get(user => user.Email == email);
 
             if (applicationUser == null)

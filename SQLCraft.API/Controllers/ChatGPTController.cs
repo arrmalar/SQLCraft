@@ -1,11 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using SQLCraft.DataAccess.Repository.IRepository;
 using System.Net.Http.Headers;
 using System.Text;
 
 namespace SQLCraft.API.Controllers.User
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class ChatGPTController : ControllerBase

@@ -1,5 +1,6 @@
 ﻿using SQLCraft.Utility;
 using SQLCraftFront.Repositories.IRepositories;
+using System.Net.Http;
 
 namespace SQLCraftFront.Repositories
 {
@@ -7,9 +8,9 @@ namespace SQLCraftFront.Repositories
     {
         private readonly HttpClient _httpClient;
 
-        public ChatGPTService(HttpClient httpClient)
+        public ChatGPTService(IHttpClientFactory httpClientFactory)
         {
-            _httpClient = httpClient;
+            _httpClient = httpClientFactory.CreateClient("AuthenticatedHttpClient");
         }
 
         public async Task<string> GetAnswerAsync(string question)
@@ -18,18 +19,12 @@ namespace SQLCraftFront.Repositories
 
             try
             {
-                var jsonContent = new StringContent(
-                    System.Text.Json.JsonSerializer.Serialize(question),
-                    System.Text.Encoding.UTF8,
-                    "application/json"
-                );
-
+                var jsonContent = new StringContent(System.Text.Json.JsonSerializer.Serialize(question), System.Text.Encoding.UTF8, "application/json");
                 HttpResponseMessage response = await _httpClient.PostAsync(url, jsonContent);
 
                 if (response.IsSuccessStatusCode)
                 {
-                    var answer = await response.Content.ReadAsStringAsync();
-                    return answer ?? "";
+                    return await response.Content.ReadAsStringAsync();
                 }
                 else
                 {

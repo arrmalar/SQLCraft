@@ -3,9 +3,11 @@ using SQLCraft.DataAccess.Repository.IRepository;
 using Microsoft.Data.SqlClient;
 using System.Data;
 using SQLCraft.Models.DTO;
+using Microsoft.AspNetCore.Authorization;
 
 namespace SQLCraft.API.Controllers.User
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class SQLQueryController : ControllerBase

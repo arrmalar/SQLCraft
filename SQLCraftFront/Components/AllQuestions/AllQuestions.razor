@@ -41,14 +41,29 @@ else
 @code {
     private List<Question> questions;
 
-    protected override async Task OnInitializedAsync()
-    {
-        questions = await RepositoryProvider.QuestionRepository.GetAll();
-    }
-
     private void SolvePuzzle()
     {
         // Przekierowanie do szczegółów zagadki lub strony do jej rozwiązania
         //NavigationManager.NavigateTo($"/puzzle/{puzzleId}");
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            try
+            {
+                questions = await RepositoryProvider.QuestionRepository.GetAll();
+            }
+            catch (Exception ex)
+            {
+                var x = 0;
+            }
+            finally
+            {
+                var x = 0;
+                StateHasChanged();
+            }
+        }
     }
 }

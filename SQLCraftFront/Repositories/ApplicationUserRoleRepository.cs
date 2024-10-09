@@ -1,5 +1,6 @@
 ﻿using SQLCraft.Utility;
 using SQLCraftFront.Repositories.IRepositories;
+using System.Net.Http;
 
 namespace SQLCraftFront.Repositories
 {
@@ -7,8 +8,8 @@ namespace SQLCraftFront.Repositories
     {
         private readonly HttpClient _httpClient;
 
-        public ApplicationUserRoleRepository(HttpClient httpClient) {
-            _httpClient = httpClient;
+        public ApplicationUserRoleRepository(IHttpClientFactory httpClientFactory) {
+            _httpClient = httpClientFactory.CreateClient("AuthenticatedHttpClient");
         }
 
         public async Task<List<string>?> GetRoles()

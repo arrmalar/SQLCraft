@@ -6,8 +6,6 @@ namespace SQLCraftFront.Providers
 {
     public class RepositoryProvider : IRepositoryProvider
     {
-        private HttpClient _httpClient;
-
         public IQuestionRepository QuestionRepository { get; private set; }
 
         public IQuestionCorrectAnswerRepository QuestionCorrectAnswerRepository { get; private set; }
@@ -19,15 +17,14 @@ namespace SQLCraftFront.Providers
         public IApplicationUserRepository ApplicationUserRepository { get; private set; }
 
         public IApplicationUserRoleRepository ApplicationUserRoleRepository { get; private set; }
-        public RepositoryProvider(HttpClient httpClient)
+        public RepositoryProvider(IHttpClientFactory httpClientFactory)
         {
-            _httpClient = httpClient;
-            QuestionRepository = new QuestionRepository(httpClient);
-            QuestionCorrectAnswerRepository = new QuestionCorrectAnswerRepository(httpClient);
-            DBSchemaRepository = new DBSchemaRepository(httpClient);
-            QuestionLevelRepository = new QuestionLevelRepository(httpClient);
-            ApplicationUserRepository = new ApplicationUserRepository(httpClient);
-            ApplicationUserRoleRepository = new ApplicationUserRoleRepository(httpClient);
+            QuestionRepository = new QuestionRepository(httpClientFactory);
+            QuestionCorrectAnswerRepository = new QuestionCorrectAnswerRepository(httpClientFactory);
+            DBSchemaRepository = new DBSchemaRepository(httpClientFactory);
+            QuestionLevelRepository = new QuestionLevelRepository(httpClientFactory);
+            ApplicationUserRepository = new ApplicationUserRepository(httpClientFactory);
+            ApplicationUserRoleRepository = new ApplicationUserRoleRepository(httpClientFactory);
         }
     }
 }
